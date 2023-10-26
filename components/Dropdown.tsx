@@ -14,7 +14,7 @@ const dropdownOptions: Option[][] = [
     { value: 'Generate', label: 'Generate' },
   ],
   [
-    { value: 'LipSync', label: 'Lip Sync' },
+    { value: 'LipSync', label: 'Lipsync' },
   ],
   [
     { value: 'Video', label: 'Video' },
