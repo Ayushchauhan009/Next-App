@@ -2,12 +2,9 @@ import React from 'react'
 import Timeline from './Timeline'
 import Image from 'next/image'
 
-interface videoProps {
-  selectedVideo: File | null
-}
 
 
-const Guide = ({selectedVideo}: videoProps) => {
+const Guide = () => {
   return (
    <div className=''>
      
@@ -19,9 +16,9 @@ const Guide = ({selectedVideo}: videoProps) => {
       </div>
       <div className='pt-[22px]'>
         <h2 className='font-[500] text-[12px] pb-2'>Video</h2>
-      <Timeline uploadedVideo={selectedVideo} />
+      <Timeline />
       <h2 className='pt-7 font-[500] text-[12px] pb-2'>Audio</h2>
-      <Timeline uploadedVideo={selectedVideo} />
+      <Timeline />
       </div>
      </div>
   )

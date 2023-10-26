@@ -4,24 +4,24 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 
-interface uploadedProps {
-    uploadedVideo: File | null
-}
+// interface uploadedProps {
+//     uploadedVideo: File | null
+// }
 
-const Timeline: React.FC<uploadedProps> = ({ uploadedVideo }: uploadedProps) => {
+const Timeline = () => {
     const [videoDuration, setVideoDuration] = useState(0);
   
-    useEffect(() => {
-      if (uploadedVideo) {
-        const videoElement = document.createElement('video');
-        // Ensure the argument passed to createObjectURL is a Blob or File
-        const videoBlob = new Blob([uploadedVideo]);
-        videoElement.src = URL.createObjectURL(videoBlob);
-        videoElement.addEventListener('loadedmetadata', () => {
-          setVideoDuration(videoElement.duration);
-        });
-      }
-    }, [uploadedVideo]);
+    // useEffect(() => {
+    //   if (uploadedVideo) {
+    //   //   const videoElement = document.createElement('video');
+    //   //   // Ensure the argument passed to createObjectURL is a Blob or File
+    //   //   const videoBlob = new Blob([uploadedVideo]);
+    //   //   videoElement.src = URL.createObjectURL(videoBlob);
+    //   //   videoElement.addEventListener('loadedmetadata', () => {
+    //   //     setVideoDuration(videoElement.duration);
+    //   //   });
+    //   }//
+    // }, [uploadedVideo]);
 
   return (
     <div className=' relative'>

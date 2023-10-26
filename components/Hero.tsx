@@ -6,15 +6,15 @@ import Camp from './Camp';
 import Features from './Features';
 
 
-interface SelectedFile {
-  selectedFile: File | null
-}
+// interface SelectedFile {
+//   selectedFile: File | null
+// }
 
-const Hero = ({selectedFile}: SelectedFile) => {
+const Hero = () => {
   return (
     <section className='max-container flexOne padding-container2 gap-10 pt-10 pb-[33px] md:gap-10 lg:pt-10  '>
       <Camp />
-      <Guide selectedVideo={selectedFile}/>
+      <Guide/>
       <Features />
     </section>
   )
