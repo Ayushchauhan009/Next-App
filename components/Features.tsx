@@ -15,6 +15,23 @@ const AdjustmentControls = () => {
   const [shadows, setShadows] = useState(100);
   const [saturation, setSaturation] = useState(100);
   const [tint, setTint] = useState(0);
+  const [value, setValue] = useState(50); // Initial value
+
+  const handleInput = (event : any) => {
+    const newValue = parseInt(event.target.value, 10);
+    setValue(newValue);
+    updateThumbWidth(newValue);
+  };
+
+  const updateThumbWidth = (newValue: number) => {
+    const thumb = document.querySelector("input[type='range']::-webkit-slider-thumb") as HTMLElement;
+    if (thumb) {
+      const minWidth = 13; // The minimum width
+      const width = minWidth + (newValue - 50); // Adjust the width calculation as needed
+      thumb.style.width = `${width}px`;
+    }
+  };
+  
 
   const updateImageStyles = () => {
     const filterStyle = `brightness(${brightness}%) brightness(${exposure}%)  contrast(${contrast}%) contrast(${highlights}%)  saturate(${saturation}%) hue-rotate(${tint}deg) `;
@@ -25,6 +42,11 @@ const AdjustmentControls = () => {
       image.style.filter = filterStyle;
     }
        
+  };
+
+  const updateGradientBackground = ({value, minValue} : any) => {
+    const gradientValue = (value / (100 - minValue)) * 100;
+    return `linear-gradient(90deg, #73F89D ${gradientValue}%, #ffffff ${gradientValue}%)`;
   };
 
   return (
@@ -39,6 +61,7 @@ const AdjustmentControls = () => {
           value={brightness}
           onChange={(e) => setBrightness(parseInt(e.target.value, 10))}
           onInput={updateImageStyles}
+          style={{ background: updateGradientBackground(brightness) }}
         />
       </div>
 

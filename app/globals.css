@@ -45,6 +45,9 @@ body {
   .padding-container3 {
     @apply px-6 lg:pl-[40px] lg:pr-[27px] 3xl:px-0;
   }
+  .padding-container3 {
+    @apply px-6 lg:pl-[21px] lg:pr-[27px] 3xl:px-0;
+  }
 
   .flexCenter {
     @apply flex items-center justify-center;
@@ -287,35 +290,25 @@ option{
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  /* appearance: none; */
-  width: 13px;
+  width: 13px; /* Initial width */
   height: 18px;
   background: linear-gradient(101.67deg, #73F89D 0%, #48A0F9 100%);
-  border: 2px solid linear-gradient(101.67deg, #73F89D 0%, #48A0F9 100%);
+  border: 2px solid transparent;
   border-radius: 38%;
+  box-shadow: -400px 0 0 400px #302f2f;
   cursor: pointer;
-  
-  box-shadow: -410px 0 0 400px rgba(0, 0, 0, 0.2);
-
-  filter: drop-shadow(5px 0px 130px 0 rgba(0, 0, 0, 1));
-  cursor: pointer;
-  transition: background 0.3s;
+  filter: drop-shadow(5px 0 10px rgba(0, 0, 0, 0.1));
+  transition: width 0.3s; /* Add a transition for smooth width changes */
 }
 
 
 
-/* Create a gradient for the track to make it black only until the thumb */
-/* input[type="range"]::-webkit-slider-runnable-track { */
-  /* background: linear-gradient(to right, #000 0%, #000 50%, #ccc 50%, #ccc 100%); */
-  /* background-size: 200% 100%; Adjust this value to control the transition length */
-  /* transition: background 0.3s;
-} */
+.boxBg{
+  background: linear-gradient(0deg, #FAFAFA, #FAFAFA),
+linear-gradient(0deg, #ECEDED, #ECEDED);
 
-/* Adjust the track color when the thumb is in its position */
-/* input[type="range"]:hover::-webkit-slider-runnable-track {
-  background-position: 100% 0;
-  transition: background 0.3s;
-} */
+}
+
 
 .image-container {
   position: relative;
@@ -340,3 +333,29 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 6px;
   font-weight: 500;
 }
+
+
+
+
+.timeline-bar {
+  display: flex;
+  align-items: end;
+  height: 13px;
+  width: 100%;  
+}
+
+.timeline-line {
+  background: #000;
+  width: 1px;
+
+  margin: 0 5px;
+  height: 80%;
+}
+
+.timeline-line.bigger {
+  background: #000;
+  width: 2px; 
+  height: 100%;
+}
+
+

@@ -45,7 +45,7 @@ const Camp = () => {
             </h2>
           </div>
           {showVideoUpload && (
-            <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] bg-white boxShadow">
+            <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
               <input type="file" accept="video/*" id="file-input" />
               <label htmlFor="file-input" className="cursor-pointer" onChange={handleFileChange}>
                 <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
@@ -57,7 +57,7 @@ const Camp = () => {
 
         {showImageUpload && (
           <div className="px-5">
-            <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] bg-white boxShadow">
+            <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
               <input type="file" accept="image/*" id="file-input2" />
               <label htmlFor="file-input2" className="cursor-pointer" onChange={handleFileChange}>
                 <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
@@ -68,7 +68,7 @@ const Camp = () => {
         )}
 
 <div className="px-5 pt-[45px]">
-            <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] bg-white boxShadow">
+            <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
               <input type="file" accept="audio/*" id="file-input" />
               <label htmlFor="file-input3" className="cursor-pointer" onChange={handleFileChange}>
                 <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
