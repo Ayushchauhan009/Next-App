@@ -28,7 +28,7 @@ const AdjustmentControls = () => {
   };
 
   return (
-    <div className="bg-white w-[290px] h-[790px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col p-5 space-y-8  lg:mt-0 lg:mb-[33px]">
+    <div className="bg-white w-[290px] h-[569px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col p-5 space-y-8  lg:mt-0 lg:mb-[33px]">
       <div className="range-container">
         <label htmlFor="brightness" className='font-[500] text-[12px] mb-6'>Brightness</label>
         <input
@@ -81,7 +81,7 @@ const AdjustmentControls = () => {
         />
       </div>
 
-      <div className="range-container ">
+      {/* <div className="range-container ">
         <label htmlFor="shadows" className='font-[500] text-[12px] mb-6'>Shadow</label>
         <input
           type="range"
@@ -92,7 +92,7 @@ const AdjustmentControls = () => {
           onChange={(e) => setShadows(parseInt(e.target.value, 10))}
           onInput={updateImageStyles}
         />
-      </div>
+      </div> */}
 
       <div className="range-container">
         <label htmlFor="saturation" className='font-[500] text-[12px] mb-6'>Saturation</label>

@@ -4,19 +4,23 @@ import Button from './Button'
 import Guide from './Guide';
 import Camp from './Camp';
 import Features from './Features';
+import Timeline from './Timeline';
 
 
-// interface SelectedFile {
-//   selectedFile: File | null
-// }
+interface SelectedFile {
+  selectedFile: any
+}
 
-const Hero = () => {
+const Hero = ({selectedFile} : SelectedFile) => {
   return (
-    <section className='max-container flexOne padding-container2 gap-10 pt-10 pb-[33px] md:gap-10 lg:pt-10  '>
+    <div className='padding-container2'>
+      <section className='max-container flexOne gap-10 pt-10 pb-[33px] md:gap-10 lg:pt-10  '>
       <Camp />
-      <Guide/>
+      <Guide selectedFile={selectedFile}  />
       <Features />
     </section>
+    <Timeline />
+    </div>
   )
 }
 

@@ -1,27 +1,31 @@
-import React from 'react'
-import Timeline from './Timeline'
-import Image from 'next/image'
+"use client"
 
+import React from 'react';
+import Timeline from './Timeline';
+import Image from 'next/image';
 
-
-const Guide = () => {
+const Guide = ({ selectedFile }: any) => {
   return (
-   <div className=''>
-     
-     <div className='w-[530px] xxl:w-[630px] 2xl:w-[700px] dropShadow rounded-[8px] h-[591px] flex flex-col items-center justify-center text-center font-bold text-[43px]'>
-      <h1>Output</h1> 
-      <div id='image-container'>
-      <Image src="/testImage.jpg" alt='person1' width={600} height={600} id='imageID' className='w-full h-full px-1'/> 
+    <div>
+      <div className='w-[530px] xxl:w-[630px] 2xl:w-[700px] dropShadow rounded-[8px] h-[571px] flex flex-col items-center justify-center text-center font-bold text-[43px]'>
+        {selectedFile ? (
+          <div>
+            {selectedFile.type.startsWith('image/') ? (
+              <Image src={URL.createObjectURL(selectedFile)} alt="Uploaded Image" width={200} height={200} />
+            ) : (
+              <video controls width="200" height="200">
+                <source src={URL.createObjectURL(selectedFile)} type={selectedFile.type} />
+                Your browser does not support the video tag.
+              </video>
+            )}
+          </div>
+        ) : (
+          <h1>Output</h1>
+        )}
       </div>
-      </div>
-      <div className='pt-[22px]'>
-        <h2 className='font-[500] text-[12px] pb-2'>Video</h2>
-      <Timeline />
-      <h2 className='pt-7 font-[500] text-[12px] pb-2'>Audio</h2>
-      <Timeline />
-      </div>
-     </div>
-  )
-}
+      
+    </div>
+  );
+};
 
-export default Guide
+export default Guide;

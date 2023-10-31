@@ -23,7 +23,7 @@ const Navbar = () => {
     <nav className="navShadow z-10 rounded-b-[10px] bg-white">
       <div className='flexBetween max-container padding-container relative z-50 pt-5'>
       <div className="flex items-center">
-        <Image src="/logo.svg" alt="logo" width={74} height={36} />
+        <Image src="/logo.svg" alt="logo" width={52} height={50} />
       </div>
       <div className="hidden space-x-10 lg:flex h-full">
         {/* Dropdown 1 */}
