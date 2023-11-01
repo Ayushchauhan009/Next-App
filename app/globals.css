@@ -259,15 +259,19 @@ option{
 
  input[type="range"] {
   -webkit-appearance: none;
-  /* appearance: none; */
-  /* border: 1px solid black; */
+  appearance: none;
+  
   width: 100%;
-  height: 13px;
-  background: #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  height: 16px;
+  background: linear-gradient(101.67deg, #73F89D 10%, #48A0F9 100%);
+
+  background-image: #fff;
+  box-shadow: -400px 0 20px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   outline: none;
   overflow: hidden;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -288,18 +292,7 @@ option{
   outline: none;
 } */
 
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 13px; /* Initial width */
-  height: 18px;
-  background: linear-gradient(101.67deg, #73F89D 0%, #48A0F9 100%);
-  border: 2px solid transparent;
-  border-radius: 38%;
-  box-shadow: -400px 0 0 400px #302f2f;
-  cursor: pointer;
-  filter: drop-shadow(5px 0 10px rgba(0, 0, 0, 0.1));
-  transition: width 0.3s; /* Add a transition for smooth width changes */
-}
+
 
 
 
@@ -359,3 +352,30 @@ linear-gradient(0deg, #ECEDED, #ECEDED);
 }
 
 
+
+
+
+.custom-range-slider {
+  width: 100%;
+  background: linear-gradient(101.67deg, #73F89D 10%, #48A0F9 100%);
+  height: 5px;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.custom-range-slider::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  /* border: 2px solid #007bff; */
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  transition: background 1s;
+}

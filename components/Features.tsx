@@ -2,35 +2,22 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 
 
 const AdjustmentControls = () => {
-  const [brightness, setBrightness] = useState(100);
+  const [brightness, setBrightness] = useState(0);
   const [exposure, setExposure] = useState(100);
   const [contrast, setContrast] = useState(100);
   const [highlights, setHighlights] = useState(100);
   const [shadows, setShadows] = useState(100);
   const [saturation, setSaturation] = useState(100);
   const [tint, setTint] = useState(0);
-  const [value, setValue] = useState(50); // Initial value
+  
 
-  const handleInput = (event : any) => {
-    const newValue = parseInt(event.target.value, 10);
-    setValue(newValue);
-    updateThumbWidth(newValue);
-  };
-
-  const updateThumbWidth = (newValue: number) => {
-    const thumb = document.querySelector("input[type='range']::-webkit-slider-thumb") as HTMLElement;
-    if (thumb) {
-      const minWidth = 13; // The minimum width
-      const width = minWidth + (newValue - 50); // Adjust the width calculation as needed
-      thumb.style.width = `${width}px`;
-    }
-  };
+ 
   
 
   const updateImageStyles = () => {
@@ -44,9 +31,78 @@ const AdjustmentControls = () => {
        
   };
 
-  const updateGradientBackground = ({value, minValue} : any) => {
-    const gradientValue = (value / (100 - minValue)) * 100;
-    return `linear-gradient(90deg, #73F89D ${gradientValue}%, #ffffff ${gradientValue}%)`;
+  const [sliderValue, setSliderValue] = useState(0);
+  const [sliderValue2, setSliderValue2] = useState(0);
+  const [sliderValue3, setSliderValue3] = useState(0);
+  const [sliderValue4, setSliderValue4] = useState(0);
+  const [sliderValue5, setSliderValue5] = useState(0);
+  const [sliderValue6, setSliderValue6] = useState(0);
+
+  const handleBrightnessChange = (e : any) => {
+    const value = e.target.value;
+    setBrightness(value);
+    setSliderValue(value);
+    updateImageStyles();
+  };
+
+  const handleExposureChange = (e : any) => {
+    const value = e.target.value;
+    setExposure(value);
+    setSliderValue2(value);
+    updateImageStyles();
+  };
+
+  const handleContrastChange = (e : any) => {
+    const value = e.target.value;
+    setContrast(value);
+    setSliderValue3(value);
+    updateImageStyles();
+  };
+
+  const handleHighlightsChange = (e : any) => {
+    const value = e.target.value;
+    setHighlights(value);
+    setSliderValue4(value);
+    updateImageStyles();
+  };
+
+  const handleSaturationChange = (e : any) => {
+    const value = e.target.value;
+    setSaturation(value);
+    setSliderValue5(value);
+    updateImageStyles();
+  };
+
+  const handleTintChange = (e : any) => {
+    const value = e.target.value;
+    setTint(value);
+    setSliderValue6(value);
+    updateImageStyles();
+  };
+
+  const handleSliderChange = (e : any) => {
+    const value = e.target.value;
+    setSliderValue(value);
+    updateImageStyles();
+  };
+
+  const thumbStyle = {
+    background: `linear-gradient(to right, #73F89D, #48A0F9 ${sliderValue - 50}%, #fff ${sliderValue - 100}%)`,
+  };
+  const thumbStyle2 = {
+    background: `linear-gradient(to right, #73F89D, #48A0F9 ${sliderValue2 - 50}%, #fff ${sliderValue2 - 100}%)`,
+  };
+  const thumbStyle3 = {
+    background: `linear-gradient(to right, #73F89D, #48A0F9 ${sliderValue3 - 50}%, #fff ${sliderValue3 - 100}%)`,
+  };
+  const thumbStyle4= {
+    background: `linear-gradient(to right, #73F89D, #48A0F9 ${sliderValue4 - 50}%, #fff ${sliderValue4 - 100}%)`,
+  };
+  const thumbStyle5 = {
+    background: `linear-gradient(to right, #73F89D, #48A0F9 ${sliderValue5 - 50}%, #fff ${sliderValue5 - 100}%)`,
+  };
+  const thumbStyle6 = {
+    background: `linear-gradient(to right, #73F89D, #48A0F9 ${sliderValue6 - 50}%, #fff ${sliderValue6 - 100}%)`,
   };
 
   return (
@@ -55,13 +111,12 @@ const AdjustmentControls = () => {
         <label htmlFor="brightness" className='font-[500] text-[12px] mb-6'>Brightness</label>
         <input
           type="range"
-          id="brightness"
           min="0"
           max="200"
           value={brightness}
-          onChange={(e) => setBrightness(parseInt(e.target.value, 10))}
+          onChange={handleBrightnessChange}
           onInput={updateImageStyles}
-          style={{ background: updateGradientBackground(brightness) }}
+          style={thumbStyle}
         />
       </div>
 
@@ -69,12 +124,13 @@ const AdjustmentControls = () => {
         <label htmlFor="exposure" className='font-[500] text-[12px] mb-6'>Exposure</label>
         <input
           type="range"
-          id="exposure"
+          id='exposure'
           min="0"
           max="200"
           value={exposure}
-          onChange={(e) => setExposure(parseInt(e.target.value, 10))}
+          onChange={handleExposureChange}
           onInput={updateImageStyles}
+          style={thumbStyle2}
         />
       </div>
 
@@ -82,12 +138,13 @@ const AdjustmentControls = () => {
         <label htmlFor="contrast" className='font-[500] text-[12px] mb-6'>Contrast</label>
         <input
           type="range"
-          id="contrast"
+          id='contrast'
           min="0"
           max="200"
           value={contrast}
-          onChange={(e) => setContrast(parseInt(e.target.value, 10))}
+          onChange={handleContrastChange}
           onInput={updateImageStyles}
+          style={thumbStyle3}
         />
       </div>
 
@@ -95,12 +152,13 @@ const AdjustmentControls = () => {
         <label htmlFor="highlights" className='font-[500] text-[12px] mb-6'>Highlights</label>
         <input
           type="range"
-          id="highlights"
+          id='highlights'
           min="0"
           max="200"
           value={highlights}
-          onChange={(e) => setHighlights(parseInt(e.target.value, 10))}
+          onChange={handleHighlightsChange}
           onInput={updateImageStyles}
+          style={thumbStyle4}
         />
       </div>
 
@@ -112,7 +170,7 @@ const AdjustmentControls = () => {
           min="0"
           max="100"
           value={shadows}
-          onChange={(e) => setShadows(parseInt(e.target.value, 10))}
+          onChange={(e : any) => setShadows(parseInt(e.target.value, 10))}
           onInput={updateImageStyles}
         />
       </div> */}
@@ -121,12 +179,13 @@ const AdjustmentControls = () => {
         <label htmlFor="saturation" className='font-[500] text-[12px] mb-6'>Saturation</label>
         <input
           type="range"
-          id="saturation"
+          id='saturation'
           min="0"
           max="200"
           value={saturation}
-          onChange={(e) => setSaturation(parseInt(e.target.value, 10))}
+          onChange={handleSaturationChange}
           onInput={updateImageStyles}
+          style={thumbStyle5}
         />
       </div>
 
@@ -134,12 +193,13 @@ const AdjustmentControls = () => {
         <label htmlFor="tint" className='font-[500] text-[12px] mb-6'>Tint</label>
         <input
           type="range"
-          id="tint"
+          id='tint'
           min="-180"
           max="180"
           value={tint}
-          onChange={(e) => setTint(parseInt(e.target.value, 10))}
+          onChange={handleTintChange}
           onInput={updateImageStyles}
+          style={thumbStyle6}
         />
       </div>
     </div>
