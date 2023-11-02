@@ -3,65 +3,97 @@
 
 
 import Image from 'next/image'
-// import React, { useState } from 'react';
-// import ReactPlayer from 'react-player';
-// import videojs from 'video.js';
-// import 'video.js/dist/video-js.css';
-// import 'videojs-record/dist/css/videojs.record.css';
 
-// const VideoTimeline = () => {
-//   const [player, setPlayer] = useState<ReactPlayer | null>(null);
-
-//   const handlePlay = () => {
-//     if (player) {
-//       player.getInternalPlayer().play();
-//     }
-//   };
-
-//   const handleStop = () => {
-//     if (player) {
-//       player.getInternalPlayer().pause();
-//     }
-//   };
-
-//   // Implement more advanced functionality like Split, Trim, etc. using the libraries
-
-//   return (
-//     <div className="timeline-container">
-//       <div className="timeline-bar">
-//         {/* Video player */}
-//         <div className="timeline-part">
-//           <ReactPlayer
-//             ref={(player) => setPlayer(player)}
-//             url="your-video-url.mp4"
-//             playing={false}
-//           />
-//         </div>
-
-//         {/* Previous, Play, Next buttons */}
-//         <div className="timeline-part">
-//           <div className="timeline-buttons">
-//             <button onClick={handlePlay}>Play</button>
-//             <button onClick={handleStop}>Stop</button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default VideoTimeline;
-
-
-
-
-
-
-import React from 'react'
+import React, { useState} from 'react'
 import TimelineBar from './TimelineBar'
 
 
-const Timeline = () => {
+const Timeline = ({videoDuration} : any) => {
+  const [isDragging, setIsDragging] = useState(false);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [isDoubleClicked, setIsDoubleClicked] = useState(false);
+
+  const handleMouseDown = (e : any) => {
+    if (isDoubleClicked && e.button === 0) {
+      setIsDragging(true);
+      setOffset({
+        x: e.clientX - e.target.getBoundingClientRect().left,
+        y: e.clientY,
+      });
+      e.target.style.cursor = 'grabbing';
+    }
+  };
+
+  const handleMouseUp = (e : any) => {
+    if (isDragging) {
+      setIsDragging(false);
+      e.target.style.cursor = 'grab';
+    }
+  };
+
+  const handleMouseDoubleClick = () => {
+    setIsDoubleClicked(true);
+  };
+
+  const handleMouseClick = () => {
+    if (!isDragging && isDoubleClicked) {
+      setIsDoubleClicked(false);
+    }
+  };
+
+  const handleMouseMove = (e : any) => {
+    if (isDragging) {
+      const parentRect = e.target.parentElement.getBoundingClientRect();
+      const timelineRect = e.target.getBoundingClientRect();
+  
+      const parentWidth = parentRect.width;
+      const timelineWidth = timelineRect.width;
+  
+      // Calculate the new x position within the parent's bounds
+      let x = e.clientX - parentRect.left - offset.x;
+  
+      // Ensure x stays within the parent's bounds
+      x = Math.min(Math.max(x, 0), parentWidth - timelineWidth);
+  
+      const percentage = (x / (parentWidth - timelineWidth)) * 100;
+      const timePosition = (percentage / 100) * videoDuration;
+  
+      e.target.style.left = `${x}px`;
+  
+      // timePosition to update the video playback, if needed.
+    }
+  };
+  
+
+  const generateTimeIntervals = (duration : any) => {
+    const intervalInSeconds = 20;
+    const intervals = [];
+    for (let i = 0; i <= duration; i += intervalInSeconds) {
+      const hours = Math.floor(i / 3600);
+      const minutes = Math.floor((i % 3600) / 60);
+      const seconds = i % 60;
+      intervals.push(
+        `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
+      );
+    }
+    return intervals;
+  };
+
+  const staticTimeIntervals = [
+    '00:00:00:00',
+    '00:00:20:00',
+    '00:00:40:00',
+    '00:01:00:00',
+    '00:01:20:00',
+    '00:01:40:00',
+  ];
+
+  const dynamicTimeIntervals = generateTimeIntervals(videoDuration);
+  const timeIntervals = staticTimeIntervals.concat(dynamicTimeIntervals);
+
+
+
+
   return (
     <div className='bg-white max-container w-full h-[263px]  rounded-[10px] dropShadow mb-[33px]'>
       <div className='h-[65px] flex'>
@@ -133,16 +165,22 @@ const Timeline = () => {
         <Image src="/delete.svg" alt='undo' width={20} height={10}/>
         <Image src="/volume.svg" alt='undo' width={20} height={10}/>
         </div>
-        <div className='relative'>
+        <div className={`relative ${isDoubleClicked ? 'draggable-active' : ''}`}
+        onDoubleClick={handleMouseDoubleClick}
+        onClick={handleMouseClick}>
+        <Image src="/timeLine.svg" alt='undo' width={13} height={1} 
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        
+        className={`absolute top-[-15px] left-[-10px] draggable ${isDoubleClicked ? 'draggable' : ''}`}
+         
+        />
           <div className='flex text-[11px] pr-2 space-x-32'>
-            <p>00:00:00:00</p>
-            <p>00:00:20:00</p>
-            <p>00:00:40:00</p>
-            <p>00:01:00:00</p>
-            <p>00:01:20:00</p>
-            <p>00:01:40:00</p>
-            
-          </div>
+          {timeIntervals.map((interval, index) => (
+            <p key={index}>{interval}</p>
+          ))}
+        </div>
         <TimelineBar numberOfLines={98}/>
         </div>
       </div>

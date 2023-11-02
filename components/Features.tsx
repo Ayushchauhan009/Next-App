@@ -103,7 +103,7 @@ const AdjustmentControls = () => {
   };
 
   const increaseBrightness = () => {
-    setBrightness((prevBrightness) => Math.min(200, prevBrightness + 1)); 
+    setBrightness((NewBrightness) => Math.min(200, NewBrightness + 1)); 
   };
 
 
@@ -333,7 +333,7 @@ const AdjustmentControls = () => {
           onInput={updateImageStyles}
           style={{ background: calculateBackground(saturation) }}
         />
-        <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${saturation / 2}% - 10px )` }}>
+        <span className="current-saturation absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${saturation / 2}% - 10px )` }}>
           {saturation}
         </span>
         
@@ -358,7 +358,7 @@ const AdjustmentControls = () => {
           onInput={updateImageStyles}
           style={{ background: calculateBackground(tint) }}
         />
-        <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${tint / 2}% - 10px )` }}>
+        <span className="current-tint absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${tint / 2}% - 10px )` }}>
           {tint}
         </span>
         
