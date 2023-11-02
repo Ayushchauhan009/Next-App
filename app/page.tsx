@@ -5,11 +5,11 @@ import Guide from "@/components/Guide";
 import Hero from "@/components/Hero";
 import TextIn3D from "./Text3D/page";
 
-export default function Home({selectedFile} : any) {
+export default function Home() {
  
   return (
     <div className=" ">
-    <Hero selectedFile={selectedFile}/>
+    <Hero />
     </div>
   )
 }
