@@ -255,6 +255,7 @@ const AdjustmentControls = () => {
           value={exposure}
           onChange={handleExposureChange}
           onInput={updateImageStyles}
+          className='cursor-pointer'
           style={{ background: calculateBackground(exposure) }}
         />
         <span className="current-exposure absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${exposure / 2}% - 10px )` }}>
@@ -280,6 +281,7 @@ const AdjustmentControls = () => {
           value={contrast}
           onChange={handleContrastChange}
           onInput={updateImageStyles}
+          className='cursor-pointer'
           style={{ background: calculateBackground(contrast) }}
         />
         <span className="current-contrast absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${contrast / 2}% - 10px )` }}>
@@ -305,6 +307,7 @@ const AdjustmentControls = () => {
           value={highlights}
           onChange={handleHighlightsChange}
           onInput={updateImageStyles}
+          className='cursor-pointer'
           style={{ background: calculateBackground(highlights) }}
         />
         <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${highlights / 2}% - 10px )` }}>
@@ -331,6 +334,7 @@ const AdjustmentControls = () => {
           value={saturation}
           onChange={handleSaturationChange}
           onInput={updateImageStyles}
+          className='cursor-pointer'
           style={{ background: calculateBackground(saturation) }}
         />
         <span className="current-saturation absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${saturation / 2}% - 10px )` }}>
@@ -355,6 +359,7 @@ const AdjustmentControls = () => {
           max="200"
           value={tint}
           onChange={handleTintChange}
+          className='cursor-pointer'
           onInput={updateImageStyles}
           style={{ background: calculateBackground(tint) }}
         />

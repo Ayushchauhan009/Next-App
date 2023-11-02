@@ -111,13 +111,14 @@ const Page = () => {
               alt='previous'
               width={12}
               height={12}
+              className='cursor-pointer'
               onClick={() => handlePageChange(currentPage - 1)}
             />
           </div>
           {[currentPage, currentPage + 1, currentPage + 2, currentPage + 3, currentPage + 4].map((page) => (
             <div
               key={page}
-              className={`font-medium text-[18px] ${
+              className={`font-medium cursor-pointer text-[18px] ${
                 page === currentPage ? 'buttonBg' : ''
               }`}
               onClick={() => handlePageChange(page)}
@@ -131,6 +132,7 @@ const Page = () => {
               alt='next'
               width={12}
               height={12}
+              className='cursor-pointer'
               onClick={() => handlePageChange(currentPage + 1)}
             />
           </div>
