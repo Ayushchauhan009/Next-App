@@ -108,14 +108,14 @@ const AdjustmentControls = () => {
   };
 
   const increaseBrightness = () => {
-    setBrightness((NewBrightness) => Math.min(200, NewBrightness + 1)); 
+    setBrightness((prevBrightness) => Math.min(200, prevBrightness + 1)); 
   };
 
 
-  const updateCurrentBrightnessText = (newBrightness : any) => {
+  const updateCurrentBrightnessText = (prevBrightness : any) => {
     const currentBrightnessElement = document.querySelector('.current-brightness');
     if (currentBrightnessElement) {
-      currentBrightnessElement.textContent = newBrightness;
+      currentBrightnessElement.textContent = prevBrightness;
     }
   };
 
@@ -134,10 +134,10 @@ const AdjustmentControls = () => {
   };
 
 
-  const updateCurrentExposureText = (newExposure : any) => {
+  const updateCurrentExposureText = (prevExposure : any) => {
     const currentExposureElement = document.querySelector('.current-exposure');
     if (currentExposureElement) {
-      currentExposureElement.textContent = newExposure;
+      currentExposureElement.textContent = prevExposure;
     }
   };
 
@@ -153,10 +153,10 @@ const AdjustmentControls = () => {
   };
 
 
-  const updateCurrentContrastText = (newContrast : any) => {
+  const updateCurrentContrastText = (prevContrast : any) => {
     const currentContrastElement = document.querySelector('.current-contrast');
     if (currentContrastElement) {
-      currentContrastElement.textContent = newContrast;
+      currentContrastElement.textContent = prevContrast;
     }
   };
   //  ---------------------------------Highlights-----------------------------------
@@ -170,27 +170,27 @@ const AdjustmentControls = () => {
   };
 
 
-  const updateCurrentHighlightsText = (newHighlights : any) => {
+  const updateCurrentHighlightsText = (prevHighlights : any) => {
     const currentHighlightsElement = document.querySelector('.current-highlights');
     if (currentHighlightsElement) {
-      currentHighlightsElement.textContent = newHighlights;
+      currentHighlightsElement.textContent = prevHighlights;
     }
   };
   //  ---------------------------------Saturation-----------------------------------
 
   const decreaseSaturation = () => {
-    setTint((prevSaturation) => Math.max(0, prevSaturation - 1)); 
+    setSaturation((prevSaturation) => Math.max(0, prevSaturation - 1)); 
   };
 
   const increaseSaturation = () => {
-    setTint((prevSaturation) => Math.min(200, prevSaturation + 1)); 
+    setSaturation((prevSaturation) => Math.min(200, prevSaturation + 1)); 
   };
 
 
-  const updateCurrentSaturationText = (newSaturation : any) => {
+  const updateCurrentSaturationText = (prevSaturation : any) => {
     const currentSaturationElement = document.querySelector('.current-saturation');
     if (currentSaturationElement) {
-      currentSaturationElement.textContent = newSaturation;
+      currentSaturationElement.textContent = prevSaturation;
     }
   };
   //  ---------------------------------Tint-----------------------------------
@@ -204,10 +204,10 @@ const AdjustmentControls = () => {
   };
 
 
-  const updateCurrentTintText = (newTint : any) => {
+  const updateCurrentTintText = (prevTint : any) => {
     const currentTintElement = document.querySelector('.current-tint');
     if (currentTintElement) {
-      currentTintElement.textContent = newTint;
+      currentTintElement.textContent = prevTint;
     }
   };
   
