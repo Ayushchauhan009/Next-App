@@ -210,7 +210,7 @@ const AdjustmentControls = () => {
 
 
   return (
-    <div className="bg-white w-[290px] h-[569px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col p-5 space-y-4  lg:mt-0 lg:mb-[33px]">
+    <div className="bg-white w-[290px] h-[569px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col p-5 space-y-4  lg:mt-0">
       <div className='flex font-[600] justify-between px-0'>
         <h3>Effect Options </h3>
         <p>(?)</p>

@@ -21,7 +21,7 @@ const Camp = () => {
   };
 
   return (
-    <section className="bg-white w-[290px] h-[569px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col lg:mt-0 lg:mb-[33px]">
+    <section className="bg-white w-[290px] h-[569px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col lg:mt-0 lg:mb-[15px]">
       <form>
         <div className="px-5">
           <div className="flex items-center space-x-4">

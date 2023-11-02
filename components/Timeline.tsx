@@ -79,7 +79,7 @@ const Timeline = ({videoDuration} : any) => {
 
 
   return (
-    <div className='bg-white max-container w-full h-[263px]  rounded-[10px] dropShadow mb-[33px]'>
+    <div className='bg-white max-container w-full h-[263px]  rounded-[10px] dropShadow mb-[15px]'>
       <div className='h-[65px] flex'>
           <div className='flex padding-container3 items-start py-5 space-x-[27.5px]'>
           <div className='cursor-pointer'>

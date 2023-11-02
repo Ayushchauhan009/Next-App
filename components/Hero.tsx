@@ -14,7 +14,7 @@ interface SelectedFile {
 const Hero = ({selectedFile} : SelectedFile) => {
   return (
     <div className='padding-container2'>
-      <section className='max-container flexOne gap-x-10 pt-10  md:gap-10 lg:pt-10  '>
+      <section className='max-container flexOne gap-x-10 pt-10  md:gap-x-10 lg:pt-10  '>
       <Camp />
       <Guide selectedFile={selectedFile}  />
       <Features />
