@@ -2,24 +2,42 @@
 
 import Options from '@/components/Options'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTab, setActiveTab] = useState('My Creation');
+  const [clickedPage, setClickedPage] = useState(1);
 
-  const handlePageChange = (page : any) => {
-    // Add logic to update the content for the selected page
-    if (page >= 1) {
-      setCurrentPage(page);
+
+  const totalPages = 20; 
+  const handlePageChange = (page: any) => {
+    if (page >= 1 && page <= totalPages) {
+      setClickedPage(page); // Store the clicked page
     }
   };
 
+  const handleLeftArrowClick = () => {
+    if (currentPage > 1) {
+      setClickedPage(currentPage - 1); // Clicking left arrow updates clickedPage
+    }
+  };
+
+  const handleRightArrowClick = () => {
+    if (currentPage < totalPages) {
+      setClickedPage(currentPage + 1); // Clicking right arrow updates clickedPage
+    }
+  };
 
   const handleTabClick = (tab : any) => {
     setActiveTab(tab);
     setCurrentPage(1); 
   };
+
+  useEffect(() => {
+    setCurrentPage(clickedPage);
+  }, [clickedPage]);
+
 
   return (
     <div className='max-container flexTwo padding-container3 gap-10 pt-10 pb-[33px] md:gap-10 lg:pt-10'>
@@ -105,38 +123,44 @@ const Page = () => {
           </div>
         )}
         <div className='flexBetween px-14 space-x-16 my-10 pagination'>
-          <div>
-            <Image
-              src="/leftArrow.svg"
-              alt='previous'
-              width={12}
-              height={12}
-              className='cursor-pointer'
-              onClick={() => handlePageChange(currentPage - 1)}
-            />
-          </div>
-          {[currentPage, currentPage + 1, currentPage + 2, currentPage + 3, currentPage + 4].map((page) => (
-            <div
-              key={page}
-              className={`font-medium cursor-pointer text-[18px] ${
-                page === currentPage ? 'buttonBg' : ''
-              }`}
-              onClick={() => handlePageChange(page)}
-            >
-              {page}
-            </div>
-          ))}
-          <div>
-            <Image
-              src="/rightSideArrow.svg"
-              alt='next'
-              width={12}
-              height={12}
-              className='cursor-pointer'
-              onClick={() => handlePageChange(currentPage + 1)}
-            />
-          </div>
-        </div>
+  <div>
+    <Image
+      src="/leftArrow.svg"
+      alt='previous'
+      width={12}
+      height={12}
+      className='cursor-pointer'
+      onClick={handleLeftArrowClick}
+    />
+  </div>
+  {Array.from({ length: Math.min(totalPages, 4) }, (_, index) => {
+    const page = currentPage - 2 + index; // Calculate the page number
+    return page > 0 && page <= totalPages ? (
+      <div
+        key={page}
+        className={`font-medium cursor-pointer text-[18px] ${
+          page === clickedPage ? 'buttonBg' : ''
+        }`}
+        onClick={() => handlePageChange(page)}
+      >
+        {page}
+      </div>
+    ) : null;
+  })}
+  <div>
+    <Image
+      src="/rightSideArrow.svg"
+      alt='next'
+      width={12}
+      height={12}
+      className='cursor-pointer'
+      onClick={handleRightArrowClick}
+    />
+  </div>
+</div>
+
+
+
       </div>
     </div>
   );

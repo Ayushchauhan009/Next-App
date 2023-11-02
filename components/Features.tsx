@@ -24,10 +24,15 @@ const AdjustmentControls = () => {
     const filterStyle = `brightness(${brightness}%) brightness(${exposure}%)  contrast(${contrast}%) contrast(${highlights}%)  saturate(${saturation}%) hue-rotate(${tint}deg) `;
      
     const image = document.getElementById("imageID");
+    const video = document.getElementById("videoID");
     
     if(image){
       image.style.filter = filterStyle;
+     
     }
+    else if(video){
+      video.style.filter = filterStyle;
+        }
        
   };
 
@@ -213,7 +218,7 @@ const AdjustmentControls = () => {
     <div className="bg-white w-[290px] h-[569px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col p-5 space-y-4  lg:mt-0">
       <div className='flex font-[600] justify-between px-0'>
         <h3>Effect Options </h3>
-        <p>(?)</p>
+        <p className='cursor-pointer'>(?)</p>
       </div>
       <div className="range-container">
         <label htmlFor="brightness" className='font-[500] text-[12px] mb-3'>Brightness</label>
@@ -231,7 +236,7 @@ const AdjustmentControls = () => {
           className='w-full'
           style={{ background: calculateBackground(brightness) }}
         />
-        <span className="current-brightness absolute text-[12px] font-[600] top-[-20px]" style={{ left: `calc(${brightness / 2}% - 10px )` }}>
+        <span className="current-brightness absolute text-[12px] font-[600] top-[-20px]" style={{ left: `calc(${(brightness) / 2}% - 10px )` }}>
           {brightness}
         </span>
         
@@ -376,3 +381,6 @@ const AdjustmentControls = () => {
 };
 
 export default AdjustmentControls;
+
+
+

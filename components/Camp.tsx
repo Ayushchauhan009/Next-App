@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Guide from './Guide'; // Import the Guide component
 
-const Camp = () => {
+const Camp = ({ onVideoUpload, onImageUpload }: any) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [showVideoUpload, setShowVideoUpload] = useState(true);
   const [showImageUpload, setShowImageUpload] = useState(false);
@@ -14,10 +13,14 @@ const Camp = () => {
     setSelectedFile(file);
   };
 
-  const handleUpload = () => {
-    // Handle the upload action for the selected file
-    // You can implement the logic to handle the file here
-    console.log(selectedFile);
+  const handleVideoUpload = (event: any) => {
+    const video = event.target.files[0];
+    onVideoUpload(video);
+  };
+
+  const handleImageUpload = (event: any) => {
+    const image = event.target.files[0];
+    onImageUpload(image);
   };
 
   return (
@@ -46,8 +49,8 @@ const Camp = () => {
           </div>
           {showVideoUpload && (
             <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
-              <input type="file" accept="video/*" id="file-input" />
-              <label htmlFor="file-input" className="cursor-pointer" onChange={handleFileChange}>
+              <input type="file" accept="video/*" id="file-input" onChange={handleVideoUpload} />
+              <label htmlFor="file-input" className="cursor-pointer">
                 <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
                 <p className="text-[#737477] text-[14px] pt-[5px]">Upload Video</p>
               </label>
@@ -58,8 +61,8 @@ const Camp = () => {
         {showImageUpload && (
           <div className="px-5">
             <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
-              <input type="file" accept="image/*" id="file-input2" />
-              <label htmlFor="file-input2" className="cursor-pointer" onChange={handleFileChange}>
+              <input type="file" accept="image/*" id="file-input2" onChange={handleImageUpload} />
+              <label htmlFor="file-input2" className="cursor-pointer">
                 <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
                 <p className="text-[#737477] text-[14px] pt-[5px]">Upload Image</p>
               </label>
@@ -67,23 +70,23 @@ const Camp = () => {
           </div>
         )}
 
-<div className="px-5 pt-[45px]">
-            <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
-              <input type="file" accept="audio/*" id="file-input" />
-              <label htmlFor="file-input3" className="cursor-pointer" onChange={handleFileChange}>
-                <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
-                <p className="text-[#737477] text-[14px] pt-[5px]">Upload Audio</p>
-              </label>
-            </div>
+        <div className="px-5 pt-[45px]">
+          <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
+            <input type="file" accept="audio/*" id="file-input" onChange={handleFileChange} />
+            <label htmlFor="file-input3" className="cursor-pointer">
+              <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
+              <p className="text-[#737477] text-[14px] pt-[5px]">Upload Audio</p>
+            </label>
           </div>
+        </div>
 
         <div className="px-5 pt-[45px]">
-          <button type="button" className="buttonBg w-full py-5 rounded-[8px] text-[14px] text-white font-bold" onClick={handleUpload}>
+          <button type="button" className="buttonBg w-full py-5 rounded-[8px] text-[14px] text-white font-bold">
             Generate
           </button>
         </div>
       </form>
-      
+
       <style jsx>{`
         .active {
           color: white;
