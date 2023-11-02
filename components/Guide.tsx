@@ -20,7 +20,9 @@ const Guide = ({ selectedFile }: any) => {
             )}
           </div>
         ) : (
-          <h1>Output</h1>
+          <div>
+            <h1>Output</h1>
+          </div>
         )}
       </div>
       

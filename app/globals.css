@@ -262,7 +262,7 @@ option{
   appearance: none;
   
   width: 100%;
-  height: 16px;
+  height: 8px;
   background: linear-gradient(101.67deg, #73F89D 10%, #48A0F9 100%);
 
   background-image: #fff;
@@ -274,8 +274,6 @@ option{
   background-repeat: no-repeat;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
-
-
 
 /* For Firefox */
 /* input[type="range"]::-moz-range-track {
@@ -355,7 +353,7 @@ linear-gradient(0deg, #ECEDED, #ECEDED);
 
 
 
-.custom-range-slider {
+/* .custom-range-slider {
   width: 100%;
   background: linear-gradient(101.67deg, #73F89D 10%, #48A0F9 100%);
   height: 5px;
@@ -371,11 +369,11 @@ linear-gradient(0deg, #ECEDED, #ECEDED);
   width: 20px;
   height: 20px;
   background: #fff;
-  /* border: 2px solid #007bff; */
+  /* border: 2px solid #007bff; 
   border-radius: 50%;
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
   position: relative;
   transition: background 1s;
-}
+} */

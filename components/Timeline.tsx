@@ -65,7 +65,7 @@ const Timeline = () => {
   return (
     <div className='bg-white max-container w-full h-[263px]  rounded-[10px] dropShadow mb-[33px]'>
       <div className='h-[65px] flex'>
-          <div className='flex padding-container3 items-start py-5 space-x-[17.5px]'>
+          <div className='flex padding-container3 items-start py-5 space-x-[27.5px]'>
           <div>
             <Image src="/undo.svg" alt='undo' width={18} height={18}/>
           </div>

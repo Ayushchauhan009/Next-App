@@ -10,8 +10,6 @@ export default function Home({selectedFile} : any) {
   return (
     <div className=" ">
     <Hero selectedFile={selectedFile}/>
-    
-   
     </div>
   )
 }
