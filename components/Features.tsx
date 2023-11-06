@@ -8,136 +8,160 @@ import React, { useState } from 'react';
 
 
 const AdjustmentControls = () => {
-  const [brightness, setBrightness] = useState(100);
-  const [exposure, setExposure] = useState(100);
-  const [contrast, setContrast] = useState(100);
-  const [highlights, setHighlights] = useState(100);
- 
-  const [saturation, setSaturation] = useState(100);
-  const [tint, setTint] = useState(100);
-  
+  const [brightness, setBrightness] = useState(0);
+  const [exposure, setExposure] = useState(0);
+  const [contrast, setContrast] = useState(0);
+  const [highlights, setHighlights] = useState(0);
 
- 
-  
+  const [saturation, setSaturation] = useState(0);
+  const [tint, setTint] = useState(0);
+
+
+
+
 
   const updateImageStyles = () => {
     const filterStyle = `brightness(${brightness}%) brightness(${exposure}%)  contrast(${contrast}%) contrast(${highlights}%)  saturate(${saturation}%) hue-rotate(${tint}deg) `;
-     
+
     const image = document.getElementById("imageID");
-    const video = document.getElementById("videoID");
-    
-    if(image){
+
+    if (image) {
       image.style.filter = filterStyle;
-     
     }
-    else if(video){
-      video.style.filter = filterStyle;
-        }
-       
+
   };
 
- 
 
-  const handleBrightnessChange = (e : any) => {
+
+  const handleBrightnessChange = (e: any) => {
     const value = e.target.value;
-    setBrightness(value);
-    const newBrightness = parseInt(e.target.value, 10);
-    updateCurrentBrightnessText(newBrightness);
+    const mappedValue = parseInt(value, 10); // Map the value from 0 to 200 to -100 to 100
+
+    // Ensure that the value remains within the valid range
+    if (mappedValue >= -100 && mappedValue <= 100) {
+      setBrightness(mappedValue);
+      updateCurrentBrightnessText(mappedValue);
+      updateImageStyles();
+    } else if (mappedValue < -100) {
+      setBrightness(-100);
+      updateCurrentBrightnessText(-100);
+      updateImageStyles();
+    } else {
+      setBrightness(100);
+      updateCurrentBrightnessText(100);
+      updateImageStyles();
+    }
+  };
+
+
+  const handleExposureChange = (e: any) => {
+    const value = e.target.value;
+    const mappedValue = parseInt(value, 10);
+    const clampedValue = Math.min(100, Math.max(-100, mappedValue));
+
+    setExposure(clampedValue);
+    updateCurrentExposureText(clampedValue);
     updateImageStyles();
   };
 
-  const handleExposureChange = (e : any) => {
+  const handleContrastChange = (e: any) => {
     const value = e.target.value;
-    setExposure(value);
-    const newExposure = parseInt(e.target.value, 10);
-    updateCurrentExposureText(newExposure);
-    updateImageStyles();
-  };
+    const mappedValue = parseInt(value, 10);
 
-  const handleContrastChange = (e : any) => {
-    const value = e.target.value;
-    setContrast(value);
-    const newContrast = parseInt(e.target.value, 10);
-    updateCurrentContrastText(newContrast);
-    updateImageStyles();
-  };
+    // Ensure that the value remains within the valid range
+    const clampedValue = Math.min(100, Math.max(-100, mappedValue));
 
-  const handleHighlightsChange = (e : any) => {
-    const value = e.target.value;
-    setHighlights(value);
-    const newHighlights = parseInt(e.target.value, 10);
-    updateCurrentHighlightsText(newHighlights);
-    updateImageStyles();
-  };
-
-  const handleSaturationChange = (e : any) => {
-    const value = e.target.value;
-    setSaturation(value);
-    const newSaturation = parseInt(e.target.value, 10);
-    updateCurrentSaturationText(newSaturation); 
-    updateImageStyles();
-  };
-
-  const handleTintChange = (e : any) => {
-    const value = e.target.value;
-    setTint(value);
-    const newTint = parseInt(e.target.value, 10);
-    updateCurrentTintText(newTint); 
+    setContrast(clampedValue);
+    updateCurrentContrastText(clampedValue);
     updateImageStyles();
   };
 
 
+  const handleHighlightsChange = (e: any) => {
+    const value = e.target.value;
+    const mappedValue = parseInt(value, 10);
+
+    // Ensure that the value is within the valid range of -100 to 100
+    const clampedValue = Math.min(100, Math.max(-100, mappedValue));
+
+    setHighlights(clampedValue);
+    updateCurrentHighlightsText(clampedValue);
+    updateImageStyles();
+  };
+
+  const handleSaturationChange = (e: any) => {
+    const value = e.target.value;
+    const mappedValue = parseInt(value, 10);
+
+    // Ensure that the value is within the valid range of -100 to 100
+    const clampedValue = Math.min(100, Math.max(-100, mappedValue));
+
+    setSaturation(clampedValue);
+    updateCurrentSaturationText(clampedValue);
+    updateImageStyles();
+  };
 
 
-  const calculateBackground = (value:any) => {
-    
-    const percentage = (value / 200) * 100;
-    
+  const handleTintChange = (e: any) => {
+    const value = e.target.value;
+    const mappedValue = parseInt(value, 10);
+
+    // Ensure that the value is within the valid range of -100 to 100
+    const clampedValue = Math.min(100, Math.max(-100, mappedValue));
+
+    setTint(clampedValue);
+    updateCurrentTintText(clampedValue);
+    updateImageStyles();
+  };
+
+
+
+  const calculateBackground = (value: any) => {
+    const percentage = ((value + 100) / 200) * 100;
     const background = `linear-gradient(to right, #73F89D 0%, #48A0F9 ${percentage}%, #fff ${percentage}%)`;
-
     return background;
   }
- 
+
 
 
   // --------------------------Brightness---------------------------
 
 
   const decreaseBrightness = () => {
-    setBrightness((prevBrightness) => Math.max(0, prevBrightness - 1)); 
+    setBrightness((prevBrightness) => Math.max(-100, prevBrightness - 1));
   };
 
   const increaseBrightness = () => {
-    setBrightness((prevBrightness) => Math.min(200, prevBrightness + 1)); 
+    setBrightness((prevBrightness) => Math.min(100, prevBrightness + 1));
   };
 
 
-  const updateCurrentBrightnessText = (prevBrightness : any) => {
+  const updateCurrentBrightnessText = (newBrightness: any) => {
     const currentBrightnessElement = document.querySelector('.current-brightness');
     if (currentBrightnessElement) {
-      currentBrightnessElement.textContent = prevBrightness;
+      currentBrightnessElement.textContent = newBrightness;
     }
   };
 
 
 
-      // -------------------------------------Exposure-----------------------------------
+  // -------------------------------------Exposure-----------------------------------
 
 
 
   const decreaseExposure = () => {
-    setExposure((prevExposure) => Math.max(0, prevExposure - 1)); 
+    setExposure((prevExposure) => Math.max(-100, prevExposure - 1));
   };
 
   const increaseExposure = () => {
-    setExposure((prevExposure) => Math.min(200, prevExposure + 1)); 
+    setExposure((prevExposure) => Math.min(100, prevExposure + 1));
   };
 
 
-  const updateCurrentExposureText = (prevExposure : any) => {
+  const updateCurrentExposureText = (newExposure: any) => {
     const currentExposureElement = document.querySelector('.current-exposure');
     if (currentExposureElement) {
-      currentExposureElement.textContent = prevExposure;
+      currentExposureElement.textContent = newExposure;
     }
   };
 
@@ -145,182 +169,184 @@ const AdjustmentControls = () => {
   //  ---------------------------------Contrast-----------------------------------
 
   const decreaseContrast = () => {
-    setContrast((prevContrast) => Math.max(0, prevContrast - 1)); 
+    setContrast((prevContrast) => Math.max(-100, prevContrast - 1));
   };
 
   const increaseContrast = () => {
-    setContrast((prevContrast) => Math.min(200, prevContrast + 1)); 
+    setContrast((prevContrast) => Math.min(100, prevContrast + 1));
   };
 
 
-  const updateCurrentContrastText = (prevContrast : any) => {
+  const updateCurrentContrastText = (newContrast: any) => {
     const currentContrastElement = document.querySelector('.current-contrast');
     if (currentContrastElement) {
-      currentContrastElement.textContent = prevContrast;
+      currentContrastElement.textContent = newContrast;
     }
   };
   //  ---------------------------------Highlights-----------------------------------
 
   const decreaseHighlights = () => {
-    setHighlights((prevHighlights) => Math.max(0, prevHighlights - 1)); 
+    setHighlights((prevHighlights) => Math.max(-100, prevHighlights - 1));
   };
 
   const increaseHighlights = () => {
-    setHighlights((prevHighlights) => Math.min(200, prevHighlights + 1)); 
+    setHighlights((prevHighlights) => Math.min(100, prevHighlights + 1));
   };
 
 
-  const updateCurrentHighlightsText = (prevHighlights : any) => {
+  const updateCurrentHighlightsText = (newHighlights: any) => {
     const currentHighlightsElement = document.querySelector('.current-highlights');
     if (currentHighlightsElement) {
-      currentHighlightsElement.textContent = prevHighlights;
+      currentHighlightsElement.textContent = newHighlights;
     }
   };
   //  ---------------------------------Saturation-----------------------------------
 
   const decreaseSaturation = () => {
-    setSaturation((prevSaturation) => Math.max(0, prevSaturation - 1)); 
+    setTint((prevSaturation) => Math.max(-100, prevSaturation - 1));
   };
 
   const increaseSaturation = () => {
-    setSaturation((prevSaturation) => Math.min(200, prevSaturation + 1)); 
+    setTint((prevSaturation) => Math.min(100, prevSaturation + 1));
   };
 
 
-  const updateCurrentSaturationText = (prevSaturation : any) => {
+  const updateCurrentSaturationText = (newSaturation: any) => {
     const currentSaturationElement = document.querySelector('.current-saturation');
     if (currentSaturationElement) {
-      currentSaturationElement.textContent = prevSaturation;
+      currentSaturationElement.textContent = newSaturation;
     }
   };
   //  ---------------------------------Tint-----------------------------------
 
   const decreaseTint = () => {
-    setTint((prevTint) => Math.max(0, prevTint - 1)); 
+    setTint((prevTint) => Math.max(-100, prevTint - 1));
   };
 
   const increaseTint = () => {
-    setTint((prevTint) => Math.min(200, prevTint + 1)); 
+    setTint((prevTint) => Math.min(100, prevTint + 1));
   };
 
 
-  const updateCurrentTintText = (prevTint : any) => {
+  const updateCurrentTintText = (newTint: any) => {
     const currentTintElement = document.querySelector('.current-tint');
     if (currentTintElement) {
-      currentTintElement.textContent = prevTint;
+      currentTintElement.textContent = newTint;
     }
   };
-  
+
 
 
 
   return (
-    <div className="bg-white w-[290px] h-[569px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col p-5 space-y-4  lg:mt-0">
+    <div className="bg-white w-[290px] h-[569px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col p-5 space-y-4  lg:mt-0 lg:mb-[33px]">
       <div className='flex font-[600] justify-between px-0'>
         <h3>Effect Options </h3>
-        <p className='cursor-pointer'>(?)</p>
+        <p>(?)</p>
       </div>
       <div className="range-container">
         <label htmlFor="brightness" className='font-[500] text-[12px] mb-3'>Brightness</label>
         <div className='flex items-center space-x-3'>
-        <button onClick={decreaseBrightness} className='font-bold  text-[20px]'>-</button>
-        
-           <div className='relative w-full'>
-          <input
-          type="range" 
-          min="0"
-          max="200"
-          value={brightness}
-          onChange={handleBrightnessChange}
-          onInput={updateImageStyles}
-          className='w-full'
-          style={{ background: calculateBackground(brightness) }}
-        />
-        <span className="current-brightness absolute text-[12px] font-[600] top-[-20px]" style={{ left: `calc(${(brightness) / 2}% - 10px )` }}>
-          {brightness}
-        </span>
-        
-        </div>
-        <button onClick={increaseBrightness}  className='font-bold text-[20px]'>+</button>
+          <button onClick={decreaseBrightness} className='font-bold  text-[20px]'>-</button>
+
+          <div className='relative w-full'>
+            <input
+              type="range"
+              min="-100"
+              max="100"
+              step="1"
+              value={brightness}
+              onChange={handleBrightnessChange}
+              onInput={updateImageStyles}
+              className='w-full'
+              style={{ background: calculateBackground(brightness) }}
+            />
+            <span className="current-brightness absolute text-[12px] font-[600] top-[-20px]" style={{ left: `calc(${(brightness + 100) / 2}% - 10px )` }}>
+              {brightness}
+            </span>
+
+
+          </div>
+          <button onClick={increaseBrightness} className='font-bold text-[20px]'>+</button>
         </div>
       </div>
 
       <div className="range-container">
-      <label htmlFor="exposure" className='font-[500] text-[12px] mb-3'>Exposure</label>
-      <div className='flex items-center space-x-3'>
-        <button onClick={decreaseExposure} className='font-bold text-[20px]'>-</button>
-        
-        <div className='w-full relative'>
-        
-        <input
-          type="range"
-          id='exposure'
-          min="0"
-          max="200"
-          value={exposure}
-          onChange={handleExposureChange}
-          onInput={updateImageStyles}
-          className='cursor-pointer'
-          style={{ background: calculateBackground(exposure) }}
-        />
-        <span className="current-exposure absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${exposure / 2}% - 10px )` }}>
-          {exposure}
-        </span>
-        
-        </div>
-        <button onClick={increaseExposure}  className='font-bold text-[20px]'>+</button>
+        <label htmlFor="exposure" className='font-[500] text-[12px] mb-3'>Exposure</label>
+        <div className='flex items-center space-x-3'>
+          <button onClick={decreaseExposure} className='font-bold text-[20px]'>-</button>
+
+          <div className='w-full relative'>
+            <input
+              type="range"
+              id='exposure'
+              min="-100"
+              max="100"
+              step="1"
+              value={exposure}
+              onChange={handleExposureChange}
+              onInput={updateImageStyles}
+              style={{ background: calculateBackground(exposure) }}
+            />
+            <span className="absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(exposure + 100) / 2}% - 10px )` }}>
+              {exposure}
+            </span>
+          </div>
+
+          <button onClick={increaseExposure} className='font-bold text-[20px]'>+</button>
         </div>
       </div>
 
       <div className="range-container">
         <label htmlFor="contrast" className='font-[500] text-[12px] mb-3'>Contrast</label>
         <div className='flex items-center space-x-3'>
-        <button onClick={decreaseContrast} className='font-bold text-[20px]'>-</button>
-        
-        <div className='w-full relative'>
-        <input
-          type="range"
-          id='contrast'
-          min="0"
-          max="200"
-          value={contrast}
-          onChange={handleContrastChange}
-          onInput={updateImageStyles}
-          className='cursor-pointer'
-          style={{ background: calculateBackground(contrast) }}
-        />
-        <span className="current-contrast absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${contrast / 2}% - 10px )` }}>
-          {contrast}
-        </span>
-        
-        </div>
-        <button onClick={increaseContrast}  className='font-bold text-[20px]'>+</button>
+          <button onClick={decreaseContrast} className='font-bold text-[20px]'>-</button>
+
+          <div className='w-full relative'>
+            <input
+              type="range"
+              id='contrast'
+              min="-100"
+              max="100"
+              step="1"
+              value={contrast}
+              onChange={handleContrastChange}
+              onInput={updateImageStyles}
+              style={{ background: calculateBackground(contrast) }}
+            />
+            <span className="absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(contrast + 100) / 2}% - 10px )` }}>
+              {contrast >= 0 ? `${contrast}` : contrast}
+            </span>
+
+
+          </div>
+
+          <button onClick={increaseContrast} className='font-bold text-[20px]'>+</button>
         </div>
       </div>
 
       <div className="range-container">
         <label htmlFor="highlights" className='font-[500] text-[12px] mb-3'>Highlights</label>
         <div className='flex items-center space-x-3'>
-        <button onClick={decreaseHighlights} className='font-bold text-[20px]'>-</button>
-        
-        <div className='w-full relative'>
-        <input
-          type="range"
-          id='highlights'
-          min="0"
-          max="200"
-          value={highlights}
-          onChange={handleHighlightsChange}
-          onInput={updateImageStyles}
-          className='cursor-pointer'
-          style={{ background: calculateBackground(highlights) }}
-        />
-        <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${highlights / 2}% - 10px )` }}>
-          {highlights}
-        </span>
-        
-        </div>
-        <button onClick={increaseHighlights}  className='font-bold text-[20px]'>+</button>
+          <button onClick={decreaseHighlights} className='font-bold text-[20px]'>-</button>
+
+          <div className='w-full relative'>
+            <input
+              type="range"
+              id='highlights'
+              min="-100"
+              max="100"
+              value={highlights}
+              onChange={handleHighlightsChange}
+              onInput={updateImageStyles}
+              style={{ background: calculateBackground(highlights) }}
+            />
+            <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(highlights + 100) / 2}% - 10px )` }}>
+              {highlights}
+            </span>
+
+          </div>
+          <button onClick={increaseHighlights} className='font-bold text-[20px]'>+</button>
         </div>
       </div>
 
@@ -328,52 +354,51 @@ const AdjustmentControls = () => {
       <div className="range-container">
         <label htmlFor="saturation" className='font-[500] text-[12px] mb-3'>Saturation</label>
         <div className='flex items-center space-x-3'>
-        <button onClick={decreaseSaturation} className='font-bold text-[20px]'>-</button>
-        
-        <div className='w-full relative'>
-        <input
-          type="range"
-          id='saturation'
-          min="0"
-          max="200"
-          value={saturation}
-          onChange={handleSaturationChange}
-          onInput={updateImageStyles}
-          className='cursor-pointer'
-          style={{ background: calculateBackground(saturation) }}
-        />
-        <span className="current-saturation absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${saturation / 2}% - 10px )` }}>
-          {saturation}
-        </span>
-        
-        </div>
-        <button onClick={increaseSaturation}  className='font-bold text-[20px]'>+</button>
+          <button onClick={decreaseSaturation} className='font-bold text-[20px]'>-</button>
+
+          <div className='w-full relative'>
+            <input
+              type="range"
+              id='saturation'
+              min="-100"
+              max="100"
+              value={saturation}
+              onChange={handleSaturationChange}
+              onInput={updateImageStyles}
+              style={{ background: calculateBackground(saturation) }}
+            />
+            <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(saturation + 100) / 2}% - 10px )` }}>
+              {saturation}
+            </span>
+
+          </div>
+          <button onClick={increaseSaturation} className='font-bold text-[20px]'>+</button>
         </div>
       </div>
 
       <div className="range-container">
         <label htmlFor="tint" className='font-[500] text-[12px] mb-3'>Tint</label>
         <div className='flex items-center space-x-3'>
-        <button onClick={decreaseTint} className='font-bold text-[20px]'>-</button>
-        
-        <div className='w-full relative'>
-        <input
-          type="range"
-          id='tint'
-          min="0"
-          max="200"
-          value={tint}
-          onChange={handleTintChange}
-          className='cursor-pointer'
-          onInput={updateImageStyles}
-          style={{ background: calculateBackground(tint) }}
-        />
-        <span className="current-tint absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${tint / 2}% - 10px )` }}>
-          {tint}
-        </span>
-        
-        </div>
-        <button onClick={increaseTint}  className='font-bold text-[20px]'>+</button>
+          <button onClick={decreaseTint} className='font-bold text-[20px]'>-</button>
+
+          <div className='w-full relative'>
+            <input
+              type="range"
+              id='tint'
+              min="-100"
+              max="100"
+              value={tint}
+              onChange={handleTintChange}
+              onInput={updateImageStyles}
+              style={{ background: calculateBackground(tint) }}
+            />
+            <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(tint + 100) / 2}% - 10px )` }}>
+              {tint}
+            </span>
+
+
+          </div>
+          <button onClick={increaseTint} className='font-bold text-[20px]'>+</button>
         </div>
       </div>
     </div>
@@ -381,6 +406,3 @@ const AdjustmentControls = () => {
 };
 
 export default AdjustmentControls;
-
-
-
