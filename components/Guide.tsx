@@ -17,7 +17,9 @@ const Guide = ({ video = null, image = null }: any) => {
             )}
           </div>
         ) : image ? (
-          <Image src={URL.createObjectURL(image)} alt="Uploaded Image" width={1000} height={200} />
+          <div className='imageID'>
+            <Image src={URL.createObjectURL(image)} alt="Uploaded Image" width={1000} height={200} />
+          </div>
         ) : (
           <div className='w-[530px] xxl:w-[630px] 2xl:w-[700px] dropShadow rounded-[8px] h-[571px] text-center font-bold text-[43px]'>
             <h1>Output</h1>

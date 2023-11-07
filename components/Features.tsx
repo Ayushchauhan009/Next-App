@@ -23,7 +23,7 @@ const AdjustmentControls = () => {
   const updateImageStyles = () => {
     const filterStyle = `brightness(${brightness + 100}%) brightness(${exposure}%)  contrast(${contrast}%) contrast(${highlights}%)  saturate(${saturation}%) hue-rotate(${tint}deg) `;
 
-    const image = document.getElementById("videoID");
+    const image = document.getElementById("videoID" || "imageID");
     
     if (image) {
       image.style.filter = filterStyle;
