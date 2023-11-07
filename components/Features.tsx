@@ -16,12 +16,12 @@ const AdjustmentControls = () => {
   const [saturation, setSaturation] = useState(0);
   const [tint, setTint] = useState(0);
 
-
+  
 
 
 
   const updateImageStyles = () => {
-    const filterStyle = `brightness(${brightness + 100}%) brightness(${exposure}%)  contrast(${contrast}%) contrast(${highlights}%)  saturate(${saturation}%) hue-rotate(${tint}deg) `;
+    const filterStyle = `brightness(${brightness + 100}%) brightness(${exposure + 100}%)  contrast(${contrast + 100}%) contrast(${highlights + 80}%)  saturate(${saturation + 100}%) hue-rotate(${tint}deg) `;
 
     const image = document.getElementById("videoID" || "imageID");
     
@@ -30,6 +30,11 @@ const AdjustmentControls = () => {
     }
 
   };
+
+
+
+
+  
 
 
 
