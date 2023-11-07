@@ -111,6 +111,7 @@ const Page = () => {
           <div className='w-[180px] xxl:w-[198px] h-[295px] rounded-[12px] bg-[#C4C4C4]'></div>
           <div className='w-[180px] xxl:w-[198px] h-[295px] rounded-[12px] bg-[#C4C4C4]'></div>
           <div className='w-[180px] xxl:w-[198px] h-[295px] rounded-[12px] bg-[#C4C4C4]'></div>
+            
           </div>
         )}
         {activeTab === 'Public' && (

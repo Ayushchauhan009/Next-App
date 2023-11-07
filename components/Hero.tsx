@@ -18,6 +18,7 @@ const Hero = () => {
 
   const handleImageUpload = (image : any) => {
     setImageData(image);
+    setVideoData(null);
   }
   const handleVideoUpload = (video : any) => {
     setVideoData(video);
@@ -27,7 +28,7 @@ const Hero = () => {
       <section className='max-container flexOne gap-x-10 pt-10  md:gap-x-10 lg:pt-10  '>
       <Camp  onVideoUpload={handleVideoUpload} onImageUpload={handleImageUpload} />
       <div className='w-[530px] xxl:w-[630px] 2xl:w-[700px] dropShadow rounded-[8px] h-[571px] flex flex-col items-center justify-center '>
-      {videoData ? (<Guide video={videoData} image={imageData}/>) : ( 
+      {videoData ? (<Guide video={videoData}/>) : imageData ? ( <Guide  image={imageData} /> ) : ( 
         <div className='w-[530px] xxl:w-[630px] 2xl:w-[700px] font-bold text-[43px] dropShadow rounded-[8px] h-[571px] flex flex-col items-center justify-center '>Output</div>
       )}
       </div>

@@ -37,9 +37,9 @@ const Navbar = () => {
             <div className="absolute z-50 bg-white border border-gray-200 rounded-[20px] mt-2 py-2 w-48 left-0 hidden group-hover:block">
               {/* Dropdown content */}
               <div className='flex flex-col justify-between items-center z-50 '>
-              <a href="#" className='border-b text-center w-full pb-2'>Item 1</a>
-              <a href="#" className='border-b w-full py-2  text-center'>Item 2</a>
-              <a href="#" className=' text-center pt-2'>Item 3</a>
+              <a href="#" className='border-b text-center w-full pb-2'>Products</a>
+              <a href="#" className=' w-full pt-2  text-center'>Generate</a>
+              {/* <a href="#" className=' text-center pt-2'>Item 3</a> */}
               </div>
               
             </div>
@@ -56,9 +56,9 @@ const Navbar = () => {
           <div className="absolute z-50 bg-white border border-gray-200 rounded-[20px] mt-2 py-2 w-48 left-0 hidden group-hover:block">
               {/* Dropdown content */}
               <div className='flex flex-col justify-between items-center z-50 '>
-              <a href="#" className='border-b text-center w-full pb-2'>Item 1</a>
-              <a href="#" className='border-b w-full py-2  text-center'>Item 2</a>
-              <a href="#" className=' text-center pt-2'>Item 3</a>
+              <a href="#" className=' text-center w-full'>Plans</a>
+              {/* <a href="#" className='border-b w-full py-2  text-center'>Item 2</a> */}
+              {/* <a href="#" className=' text-center pt-2'>Item 3</a> */}
               </div>
               
             </div>
