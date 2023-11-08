@@ -11,72 +11,87 @@ const VolEffects = () => {
   const [flanger, setFlanger] = useState(0);
   const [reverb, setReverb] = useState(0);
   const [tremolo, setTremolo] = useState(0);
-  const audioContext = new AudioContext();
+  const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
 
   useEffect(() => {
-     const audioInputElement = document.getElementById('audioInput');
-    // Initialize audio context and connect to the destination
-    const masterGain = audioContext.createGain();
-    masterGain.connect(audioContext.destination);
-
-    // Set the master gain level to control overall volume
-    masterGain.gain.value = volume;
-  }, [volume]);
-
-  // Function to create and connect an effect node to the master gain
-  const applyEffect = (effect: AudioNode, setter: (value: number) => void, value: number) => {
-    const effectGain = audioContext.createGain();
-    effectGain.gain.value = value;
-
-    effect.connect(effectGain);
-    effectGain.connect(audioContext.destination);
-
-    setter(value);
-  };
-
-  // Function to create and connect a distortion effect
-  const applyDistortionEffect = () => {
-    const distortionNode = audioContext.createWaveShaper();
-    const amount = distortion * 50; // Adjust the multiplier as needed
-    const curve = new Float32Array(audioContext.sampleRate);
-
-    for (let i = 0; i < audioContext.sampleRate; i++) {
-      const x = (i / audioContext.sampleRate) * 2 - 1;
-      curve[i] = Math.tanh(x * amount);
+    // Check if AudioContext is available in the browser
+    if (window.AudioContext) {
+      const context = new AudioContext();
+      setAudioContext(context);
     }
+  }, []);
 
-    distortionNode.curve = curve;
-    applyEffect(distortionNode, setDistortion, distortion);
-  };
+  if (!audioContext) {
+    return <div>Your browser does not support the AudioContext API.</div>;
+  }
 
-  // Function to create and connect a flanger effect
-  const applyFlangerEffect = () => {
-    const flangerNode = audioContext.createDelay();
-    flangerNode.delayTime.value = flanger * 0.01; // Adjust the multiplier as needed
-    applyEffect(flangerNode, setFlanger, flanger);
-  };
 
-  // Function to create and connect a reverb effect
-  const applyReverbEffect = () => {
-    const reverbNode = audioContext.createConvolver();
-    // Set the impulse response buffer for reverb (you need to load a valid impulse response buffer)
-    // reverbNode.buffer = yourImpulseResponseBuffer;
-    applyEffect(reverbNode, setReverb, reverb);
-  };
+  useEffect(() => {
+    const audioInputElement = document.getElementById('audioInput');
+   // Initialize audio context and connect to the destination
+   const masterGain = audioContext.createGain();
+   masterGain.connect(audioContext.destination);
 
-  // Function to create and connect a tremolo effect
-  const applyTremoloEffect = () => {
-    const tremoloNode = audioContext.createGain();
-    const frequency = tremolo * 10; // Adjust the multiplier as needed
-    const oscillator = audioContext.createOscillator();
+   // Set the master gain level to control overall volume
+   masterGain.gain.value = volume;
+ }, [volume]);
 
-    oscillator.type = 'sine';
-    oscillator.frequency.value = frequency;
-    oscillator.connect(tremoloNode.gain);
-    oscillator.start();
+ // Function to create and connect an effect node to the master gain
+ const applyEffect = (effect: AudioNode, setter: (value: number) => void, value: number) => {
+   const effectGain = audioContext.createGain();
+   effectGain.gain.value = value;
 
-    applyEffect(tremoloNode, setTremolo, tremolo);
-  };
+   effect.connect(effectGain);
+   effectGain.connect(audioContext.destination);
+
+   setter(value);
+ };
+
+ // Function to create and connect a distortion effect
+ const applyDistortionEffect = () => {
+   const distortionNode = audioContext.createWaveShaper();
+   const amount = distortion * 50; // Adjust the multiplier as needed
+   const curve = new Float32Array(audioContext.sampleRate);
+
+   for (let i = 0; i < audioContext.sampleRate; i++) {
+     const x = (i / audioContext.sampleRate) * 2 - 1;
+     curve[i] = Math.tanh(x * amount);
+   }
+
+   distortionNode.curve = curve;
+   applyEffect(distortionNode, setDistortion, distortion);
+ };
+
+ // Function to create and connect a flanger effect
+ const applyFlangerEffect = () => {
+   const flangerNode = audioContext.createDelay();
+   flangerNode.delayTime.value = flanger * 0.01; // Adjust the multiplier as needed
+   applyEffect(flangerNode, setFlanger, flanger);
+ };
+
+ // Function to create and connect a reverb effect
+ const applyReverbEffect = () => {
+   const reverbNode = audioContext.createConvolver();
+   // Set the impulse response buffer for reverb (you need to load a valid impulse response buffer)
+   // reverbNode.buffer = yourImpulseResponseBuffer;
+   applyEffect(reverbNode, setReverb, reverb);
+ };
+
+ // Function to create and connect a tremolo effect
+ const applyTremoloEffect = () => {
+   const tremoloNode = audioContext.createGain();
+   const frequency = tremolo * 10; // Adjust the multiplier as needed
+   const oscillator = audioContext.createOscillator();
+
+   oscillator.type = 'sine';
+   oscillator.frequency.value = frequency;
+   oscillator.connect(tremoloNode.gain);
+   oscillator.start();
+
+   applyEffect(tremoloNode, setTremolo, tremolo);
+ };
+
+  
 
   const toggleDiv = (index : any) => {
     if (index === openDiv) {
