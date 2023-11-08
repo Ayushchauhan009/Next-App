@@ -25,7 +25,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <Image src="/logo.svg" alt="logo" width={52} height={50} />
       </div>
-      <div className="hidden space-x-10 lg:flex h-full">
+      <div className="hidden space-x-8 lg:flex h-full">
         {/* Dropdown 1 */}
         <div className="relative group">
           <div className="regular-16 text-[#15181C] flexCenter cursor-pointer  pb-1.5 ">
@@ -34,7 +34,7 @@ const Navbar = () => {
             </span>
           </div>
           
-            <div className="absolute z-50 bg-white border border-gray-200 rounded-[20px] mt-2 py-2 w-48 left-0 hidden group-hover:block">
+            <div className="absolute z-50 bg-white border border-gray-200 ml-10 rounded-[20px] mt-2 py-2 w-48 left-0 hidden group-hover:block">
               {/* Dropdown content */}
               <div className='flex flex-col justify-between items-center z-50 '>
               <a href="#" className='border-b text-center w-full pb-2'>Products</a>

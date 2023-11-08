@@ -22,27 +22,21 @@ const AdjustmentControls = () => {
 
   const updateImageStyles = () => {
     const filterStyle = `brightness(${brightness + 100}%) brightness(${exposure + 100}%)  contrast(${contrast + 100}%) contrast(${highlights + 80}%)  saturate(${saturation + 100}%) hue-rotate(${tint}deg) `;
-
-    const image = document.getElementById("videoID" || "imageID");
-    
+    const image = document.getElementById("imageID");
+    const video = document.getElementById("videoID");
+  
     if (image) {
       image.style.filter = filterStyle;
     }
-
+    if (video) {
+      video.style.filter = filterStyle;
+    }
   };
-
-
-
-
-  
-
 
 
   const handleBrightnessChange = (e: any) => {
     const value = e.target.value;
-    const mappedValue = parseInt(value, 10); // Map the value from 0 to 200 to -100 to 100
-
-    // Ensure that the value remains within the valid range
+    const mappedValue = parseInt(value, 10); 
     if (mappedValue >= -100 && mappedValue <= 100) {
       setBrightness(mappedValue);
       updateCurrentBrightnessText(mappedValue);

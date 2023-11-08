@@ -220,6 +220,9 @@ option{
 #file-input2  {
   display: none;
 }
+#file-input3 {
+  display: none;
+}
 
 
 .buttonBg{
@@ -326,6 +329,11 @@ linear-gradient(0deg, #ECEDED, #ECEDED);
 }
 
 
+.volButton{
+  background: linear-gradient(270deg, #4CA9F0 -0.03%, #70F2A4 100%);
+}
+
+
 
 
 .timeline-bar {
@@ -379,3 +387,26 @@ linear-gradient(0deg, #ECEDED, #ECEDED);
 } */
 
 
+.vol-effect {
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+  max-height: 2em; /* Closed height */
+  cursor: pointer;
+}
+
+.vol-effect.open {
+  max-height: 250px; /* Open height */
+}
+
+.input-container {
+  border-bottom: 1px solid rgb(180, 180, 180);
+}
+
+
+
+.current-volume {
+  position: absolute;
+  top: -10px;
+  left: calc((100% - 10px) * var(--value)); /* Adjust as needed */
+  /* Other styling properties */
+}

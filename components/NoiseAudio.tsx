@@ -3,24 +3,12 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const NoiseAudio = ({ onVideoUpload, onImageUpload }: any) => {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [showVideoUpload, setShowVideoUpload] = useState(true);
-  const [showImageUpload, setShowImageUpload] = useState(false);
+const NoiseAudio = ({ onAudioUpload }: any) => {
+ 
 
-  const handleFileChange = (event: any) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
-  };
-
-  const handleVideoUpload = (event: any) => {
-    const video = event.target.files[0];
-    onVideoUpload(video);
-  };
-
-  const handleImageUpload = (event: any) => {
-    const image = event.target.files[0];
-    onImageUpload(image);
+  const handleAudioUpload = (event: any) => {
+    const audio = event.target.files[0];
+    onAudioUpload(audio);
   };
 
   return (
@@ -31,7 +19,7 @@ const NoiseAudio = ({ onVideoUpload, onImageUpload }: any) => {
         <div className="px-5 ">
             <h2 className="font-semibold pt-[10px] pb-[12px]">Audio</h2>
           <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
-            <input type="file" accept="audio/*" id="file-input" onChange={handleFileChange} />
+            <input type="file" accept="audio/*" id="file-input3" onChange={handleAudioUpload} />
             <label htmlFor="file-input3" className="cursor-pointer">
               <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
               <p className="text-[#737477] text-[14px] pt-[5px]">Upload Audio</p>
