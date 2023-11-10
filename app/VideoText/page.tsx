@@ -1,19 +1,12 @@
 "use client"
 
-
 import Timeline from '@/components/Timeline'
 import Filters from '@/components/Video/Filters'
 import GenerateAud from '@/components/Video/GenerateAud'
 import OutputVideo from '@/components/Video/OutputVideo'
 import React, {useState} from 'react'
 
-
-
-
-
 const page = () => {
-
-
   const [videoData, setVideoData] = useState<File | undefined>(undefined);
   const handleVideoUpload = (video: File) => {
     setVideoData(video);
