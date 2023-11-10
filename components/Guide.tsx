@@ -1,25 +1,39 @@
 import React from 'react';
-import Image from 'next/image';
+import CustomAudio from './CustomAudio';
 
-const Guide = ({ video = null, image = null }: any) => {
+interface GuideProps {
+  video?: File | undefined;
+  image?: File | undefined;
+  audio?: File | undefined;
+}
+
+const Guide: React.FC<GuideProps> = ({ video, image, audio }) => {
   return (
     <div>
       <div>
-        {video ? (
+        {video && (
           <div>
-            
-              <video controls id='videoID' width="1000" height="1000">
-                <source src={URL.createObjectURL(video)} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            
+            <video controls width="1000" height="" id='videoID' className='aspect-video oveflow-hidden mb-3 object-contain'>
+              <source src={URL.createObjectURL(video)} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            {audio && <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '200%' }} />}
           </div>
-        ) : image ? (
-          <div id='imageID'>
-            <Image src={URL.createObjectURL(image)} alt="Uploaded Image" width={1000} height={200} className="overflow-hidden object-contain" />
+        )}
+
+        {!video && image && (
+          <div className='relative'>
+            <img src={URL.createObjectURL(image)} id='imageID' alt="Uploaded Image" width={800} height="" className="overflow-hidden mb-3 object-contain" />
+            {audio && <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '200%' }} />}
           </div>
-        ) : (
-          <div className='w-[530px] xxl:w-[630px] 2xl:w-[700px] dropShadow rounded-[8px] h-[571px] text-center font-bold text-[43px]'>
+        )}
+
+        {!video && !image && audio && (
+          <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', display:'flex' }} />
+        )}
+
+        {!video && !image && !audio && (
+          <div className='w-[530px] xxl:w-[630px] 2xl:w-[700px] dropShadow rounded-[8px] h-[571px] text-center flex items-center justify-center font-bold text-[43px]'>
             <h1>Output</h1>
           </div>
         )}

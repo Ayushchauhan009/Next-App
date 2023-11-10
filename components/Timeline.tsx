@@ -6,9 +6,50 @@ import Image from 'next/image'
 
 import React, { useState} from 'react'
 import TimelineBar from './TimelineBar'
+import CustomAudio from './CustomAudio';
+
+function initializeAudioBars(audioElement: HTMLAudioElement) {
+  const audioBars = document.getElementById("audio-bars");
+
+  if (!audioBars) {
+    return;
+  }
+
+  const numberOfBars = 100;
+
+  for (let i = 0; i < numberOfBars; i++) {
+    const audioBar = document.createElement("div");
+    audioBar.className = "audio-bar";
+    audioBars.appendChild(audioBar);
+  }
+
+  audioElement.addEventListener("timeupdate", updateAudioBars);
+}
 
 
-const Timeline = ({videoDuration} : any) => {
+
+function updateAudioBars() {
+  const audioElement = document.getElementById("audioID") as HTMLAudioElement;
+  const audioBars = document.getElementById("audio-bars");
+
+  if (!audioElement || !audioBars) {
+    return;
+  }
+
+  const currentTime = audioElement.currentTime;
+  const duration = audioElement.duration;
+  const percentage = (currentTime / duration) * 100;
+
+  audioBars.style.width = percentage + "%";
+}
+
+
+
+
+
+
+const Timeline = ({videoDuration, audio} : any) => {
+  console.log('Audio prop:', audio);
   const [isDragging, setIsDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0 });
   const [isDoubleClicked, setIsDoubleClicked] = useState(false);
@@ -174,10 +215,18 @@ const Timeline = ({videoDuration} : any) => {
         <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer'/>
       </div>
       <hr />
+      <div>
       <div className='flex space-x-3 padding-container3  pb-2 my-auto h-[80px]'>
       <Image src="/audio.svg" alt='undo' width={20} height={10} className='cursor-pointer'/>
         <Image src="/lock.svg" alt='undo' width={12} height={10} className='cursor-pointer'/>
         <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer'/>
+        {audio && (
+          <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', marginLeft:"20px", marginTop: "5px",  display: 'flex', alignItems: 'center' }} />
+        )}
+      </div>
+      
+
+      
       </div>
     </div>
   )

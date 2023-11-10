@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-const Camp = ({ onVideoUpload, onImageUpload }: any) => {
+const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [showVideoUpload, setShowVideoUpload] = useState(true);
   const [showImageUpload, setShowImageUpload] = useState(false);
@@ -21,6 +21,10 @@ const Camp = ({ onVideoUpload, onImageUpload }: any) => {
   const handleImageUpload = (event: any) => {
     const image = event.target.files[0];
     onImageUpload(image);
+  };
+  const handleAudUpload = (event: any) => {
+    const audio = event.target.files[0];
+    onAudioUpload(audio);
   };
 
   return (
@@ -72,7 +76,7 @@ const Camp = ({ onVideoUpload, onImageUpload }: any) => {
 
         <div className="px-5 pt-[45px]">
           <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
-            <input type="file" accept="audio/*" id="file-input" onChange={handleFileChange} />
+            <input type="file" accept="audio/*" id="file-input3" onChange={handleAudUpload} />
             <label htmlFor="file-input3" className="cursor-pointer">
               <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
               <p className="text-[#737477] text-[14px] pt-[5px]">Upload Audio</p>

@@ -327,6 +327,10 @@ linear-gradient(0deg, #ECEDED, #ECEDED);
   border-radius: 6px;
   font-weight: 500;
 }
+.buttonBg2{
+  background: linear-gradient(270deg, #4CA9F0 -0.03%, #70F2A4 100%);
+  font-weight: 500;
+}
 
 
 .volButton{
@@ -409,4 +413,39 @@ linear-gradient(0deg, #ECEDED, #ECEDED);
   top: -10px;
   left: calc((100% - 10px) * var(--value)); /* Adjust as needed */
   /* Other styling properties */
+}
+
+.custom-audio-player {
+  position: relative;
+  width: 100%;
+  height: 60px;
+}
+.custom-audio-player audio{
+  display: none !important;
+  visibility: hidden;
+}
+
+
+
+.audio-bars {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  width: 100%;
+  height: 60px;
+  background-color: transparent;
+}
+
+.audio-bar {
+  display: inline-flex;
+  width: 4px;
+  height: 100%;
+  background-color: #333;
+  margin-right: 2px;
+}
+
+.range-container2 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2px;
 }
