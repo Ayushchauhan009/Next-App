@@ -447,7 +447,7 @@ const Filters = () => {
         </div>
       </div>
         </div>
-        <button type="button" className="buttonBg w-full py-5 rounded-[8px] text-[14px] text-white font-bold">
+        <button type="button" className="buttonBg w-full -mt-3 py-5 rounded-[8px] text-[14px] text-white font-bold">
             Edit
           </button>
       </div>
