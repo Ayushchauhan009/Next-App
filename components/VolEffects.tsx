@@ -311,10 +311,11 @@ const VolEffects = () => {
             <p className='font-semibold text-[10px]'>Volume level:</p>
             <div className='flex items-center space-x-3'>
               <button
-                className='decrease-volume font-bold text-[20px]'
+                className='decrease-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={decreaseVolume}
               >
-                -
+                <span className='text-[10px]'>0</span>
+            <span className='-mt-3'>-</span>
               </button>
               <div className='relative w-full'>
                 <input
@@ -328,15 +329,16 @@ const VolEffects = () => {
                   className='w-full'
                   style={{ background: calculateBackground(volume) }}
                 />
-                <span className='absolute current-volume text-[12px] font-[600] top-[-10px] mt-2' style={{ left: `calc(${(volume * 100)}% - 10px )` }}>
+                <span className='absolute current-volume text-[10px] font-[600] top-[-10px] mt-2' style={{ left: `calc(${(volume * 100)}% - 10px )` }}>
                   {volume.toFixed(2)}
                 </span>
               </div>
               <button
-                className='increase-volume font-bold text-[20px]'
+                className='increase-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={increaseVolume}
               >
-                +
+                <span className='text-[10px]'>1</span>
+            <span className='-mt-3'>+</span>
               </button>
             </div>
             <button className='volButton w-full py-2 my-2 rounded-[8px] text-[10px] text-white'>
@@ -357,11 +359,12 @@ const VolEffects = () => {
           <div className='input-container'>
             <p className='font-semibold text-[10px]'>Distortion level:</p>
             <div className='flex items-center space-x-3'>
-              <button
-                className='decrease-volume font-bold text-[20px]'
+            <button
+                className='decrease-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={decreaseDistortion}
               >
-                -
+                <span className='text-[10px]'>0</span>
+            <span className='-mt-3'>-</span>
               </button>
               <div className='relative w-full'>
                 <input
@@ -375,15 +378,16 @@ const VolEffects = () => {
                   className='w-full'
                   style={{ background: calculateBackground(distortion) }}
                 />
-                <span className='absolute current-distortion text-[12px] font-[600] top-[-10px] mt-2'  style={{ left: `calc(${(distortion * 100)}% - 10px )` }}>
+                <span className='absolute current-distortion text-[10px] font-[600] top-[-10px] mt-2'  style={{ left: `calc(${(distortion * 100)}% - 10px )` }}>
                   {distortion.toFixed(2)}
                 </span>
               </div>
               <button
-                className='increase-volume font-bold text-[20px]'
+                className='decrease-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={increaseDistortion}
               >
-                +
+                <span className='text-[10px]'>1</span>
+            <span className='-mt-3'>+</span>
               </button>
             </div>
             <button className='volButton w-full py-2 my-2 rounded-[8px] text-[10px] text-white'>
@@ -404,11 +408,12 @@ const VolEffects = () => {
           <div className='input-container'>
             <p className='font-semibold text-[10px]'>Delay level:</p>
             <div className='flex items-center space-x-3'>
-              <button
-                className='decrease-volume font-bold text-[20px]'
+            <button
+                className='decrease-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={decreaseDelay}
               >
-                -
+                <span className='text-[10px]'>0</span>
+            <span className='-mt-3'>-</span>
               </button>
               <div className='relative w-full'>
                 <input
@@ -422,15 +427,16 @@ const VolEffects = () => {
                   className='w-full'
                   style={{ background: calculateBackground(delay) }}
                 />
-                <span className='absolute current-delay text-[12px] font-[600] top-[-10px] mt-2'  style={{ left: `calc(${(delay * 100)}% - 10px )` }}>
+                <span className='absolute current-delay text-[10px] font-[600] top-[-10px] mt-2'  style={{ left: `calc(${(delay * 100)}% - 10px )` }}>
                   {delay.toFixed(2)}
                 </span>
               </div>
               <button
-                className='increase-volume font-bold text-[20px]'
+                className='decrease-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={increaseDelay}
               >
-                +
+                <span className='text-[10px]'>1</span>
+            <span className='-mt-3'>+</span>
               </button>
             </div>
             <button className='volButton w-full py-2 my-2 rounded-[8px] text-[10px] text-white'>
@@ -451,11 +457,12 @@ const VolEffects = () => {
           <div className='input-container'>
             <p className='font-semibold text-[10px]'>Flanger level:</p>
             <div className='flex items-center space-x-3'>
-              <button
-                className='decrease-volume font-bold text-[20px]'
+            <button
+                className='decrease-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={decreaseFlanger}
               >
-                -
+                <span className='text-[10px]'>0</span>
+            <span className='-mt-3'>-</span>
               </button>
               <div className='relative w-full'>
                 <input
@@ -469,15 +476,16 @@ const VolEffects = () => {
                   className='w-full'
                   style={{ background: calculateBackground(flanger) }}
                 />
-                <span className='absolute current-volume text-[12px] font-[600] top-[-10px] mt-2' style={{ left: `calc(${(flanger * 100)}% - 10px )` }}>
+                <span className='absolute current-volume text-[10px] font-[600] top-[-10px] mt-2' style={{ left: `calc(${(flanger * 100)}% - 10px )` }}>
                   {flanger.toFixed(2)}
                 </span>
               </div>
               <button
-                className='increase-volume font-bold text-[20px]'
+                className='decrease-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={increaseFlanger}
               >
-                +
+                <span className='text-[10px]'>1</span>
+            <span className='-mt-3'>+</span>
               </button>
             </div>
             <button className='volButton w-full py-2 my-2 rounded-[8px] text-[10px] text-white'>
@@ -498,11 +506,12 @@ const VolEffects = () => {
           <div className='input-container'>
             <p className='font-semibold text-[10px]'>Reverb level:</p>
             <div className='flex items-center space-x-3'>
-              <button
-                className='decrease-volume font-bold text-[20px]'
+            <button
+                className='decrease-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={decreaseReverb}
               >
-                -
+                <span className='text-[10px]'>0</span>
+            <span className='-mt-3'>-</span>
               </button>
               <div className='relative w-full'>
                 <input
@@ -516,15 +525,16 @@ const VolEffects = () => {
                   className='w-full'
                   style={{ background: calculateBackground(reverb) }}
                 />
-                <span className='absolute current-volume text-[12px] font-[600] top-[-10px] mt-2' style={{ left: `calc(${(reverb * 100)}% - 10px )` }}>
+                <span className='absolute current-volume text-[10px] font-[600] top-[-10px] mt-2' style={{ left: `calc(${(reverb * 100)}% - 10px )` }}>
                   {reverb.toFixed(2)}
                 </span>
               </div>
               <button
-                className='increase-volume font-bold text-[20px]'
+                className='decrease-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={increaseReverb}
               >
-                +
+                <span className='text-[10px]'>1</span>
+            <span className='-mt-3'>+</span>
               </button>
             </div>
             <button className='volButton w-full py-2 my-2 rounded-[8px] text-[10px] text-white'>
@@ -545,11 +555,12 @@ const VolEffects = () => {
           <div className='input-container'>
             <p className='font-semibold text-[10px]'>Tremolo level:</p>
             <div className='flex items-center space-x-3'>
-              <button
-                className='decrease-volume font-bold text-[20px]'
+            <button
+                className='decrease-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={decreaseTremolo}
               >
-                -
+                <span className='text-[10px]'>0</span>
+            <span className='-mt-3'>-</span>
               </button>
               <div className='relative w-full'>
                 <input
@@ -563,15 +574,16 @@ const VolEffects = () => {
                   className='w-full'
                   style={{ background: calculateBackground(tremolo) }}
                 />
-                <span className='absolute current-volume text-[12px] font-[600] top-[-10px] mt-2' style={{ left: `calc(${(tremolo * 100)}% - 10px )` }}>
+                <span className='absolute current-volume text-[10px] font-[600] top-[-10px] mt-2' style={{ left: `calc(${(tremolo * 100)}% - 10px )` }}>
                   {tremolo.toFixed(2)}
                 </span>
               </div>
               <button
-                className='increase-volume font-bold text-[20px]'
+                className='decrease-volume font-bold flex flex-col items-center  text-[20px]'
                 onClick={increaseTremolo}
               >
-                +
+                <span className='text-[10px]'>1</span>
+            <span className='-mt-3'>+</span>
               </button>
             </div>
             <button className='volButton w-full py-2 my-2 rounded-[8px] text-[10px] text-white'>

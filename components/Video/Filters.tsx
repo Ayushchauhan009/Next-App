@@ -261,12 +261,15 @@ const Filters = () => {
           <p className="font-medium ">Edit Text</p>
           <input type="text" placeholder='Type your text...' className='boxBg outline-none text-[12px] my-2' />
         </div>
-        <div className={`3Div w-[254px] h-[336px] my-[15px] py-2 px-2 border rounded-[8px] boxBg boxShadow ${activeButton === 3 ? 'opacity-100' : 'opacity-50 pointer-events-none'}`}>
+        <div className={`3Div w-[254px] h-[350px] my-[15px] py-2 px-2 border rounded-[8px] boxBg boxShadow ${activeButton === 3 ? 'opacity-100' : 'opacity-50 pointer-events-none'}`}>
         <h3 className="font-medium">Effect Options</h3>
           <div className="range-container2">
         <label htmlFor="brightness" className='font-[500] text-[12px] mb-0'>Brightness</label>
         <div className='flex items-center space-x-3'>
-          <button onClick={decreaseBrightness} className='font-bold  text-[20px]'>-</button>
+        <button onClick={decreaseBrightness} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>-100</span>
+            <span className='-mt-3'>-</span>
+          </button>
 
           <div className='relative w-full'>
             <input
@@ -286,13 +289,19 @@ const Filters = () => {
 
 
           </div>
-          <button onClick={increaseBrightness} className='font-bold text-[20px]'>+</button>
+          <button onClick={increaseBrightness} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>+</span>
+          </button>
         </div>
       </div>
       <div className="range-container2">
         <label htmlFor="exposure" className='font-[500] text-[12px] mb-0'>Exposure</label>
         <div className='flex items-center space-x-3'>
-          <button onClick={decreaseExposure} className='font-bold text-[20px]'>-</button>
+        <button onClick={increaseExposure} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>-100</span>
+            <span className='-mt-3'>-</span>
+          </button>
 
           <div className='w-full relative'>
             <input
@@ -311,13 +320,19 @@ const Filters = () => {
             </span>
           </div>
 
-          <button onClick={increaseExposure} className='font-bold text-[20px]'>+</button>
+          <button onClick={increaseExposure} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>+</span>
+          </button>
         </div>
       </div>
       <div className="range-container2">
         <label htmlFor="contrast" className='font-[500] text-[12px] mb-0'>Contrast</label>
         <div className='flex items-center space-x-3'>
-          <button onClick={decreaseContrast} className='font-bold text-[20px]'>-</button>
+        <button onClick={decreaseContrast} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>-100</span>
+            <span className='-mt-3'>-</span>
+          </button>
 
           <div className='w-full relative'>
             <input
@@ -338,13 +353,19 @@ const Filters = () => {
 
           </div>
 
-          <button onClick={increaseContrast} className='font-bold text-[20px]'>+</button>
+          <button onClick={increaseContrast} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>+</span>
+          </button>
         </div>
       </div>
       <div className="range-container2">
         <label htmlFor="highlights" className='font-[500] text-[12px] mb-0'>Highlights</label>
         <div className='flex items-center space-x-3'>
-          <button onClick={decreaseHighlights} className='font-bold text-[20px]'>-</button>
+        <button onClick={decreaseHighlights} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>-100</span>
+            <span className='-mt-3'>-</span>
+          </button>
 
           <div className='w-full relative'>
             <input
@@ -362,7 +383,10 @@ const Filters = () => {
             </span>
 
           </div>
-          <button onClick={increaseHighlights} className='font-bold text-[20px]'>+</button>
+          <button onClick={increaseHighlights} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>+</span>
+          </button>
         </div>
       </div>
       <div className="range-container2">
@@ -396,7 +420,10 @@ const Filters = () => {
       <div className="range-container2">
         <label htmlFor="tint" className='font-[500] text-[12px] mb-0'>Tint</label>
         <div className='flex items-center space-x-3'>
-          <button onClick={decreaseTint} className='font-bold text-[20px]'>-</button>
+          <button onClick={decreaseTint} className='font-bold flex flex-col items-center text-[20px]'>
+          <span className='text-[10px]'>-100</span>
+            <span className='-mt-3'>-</span>
+          </button>
 
           <div className='w-full relative'>
             <input
@@ -415,7 +442,8 @@ const Filters = () => {
 
 
           </div>
-          <button onClick={increaseTint} className='font-bold text-[20px]'>+</button>
+          <button onClick={increaseTint} className='font-bold text-[20px] flex flex-col items-center'><span className='text-[10px]'>100</span>
+            <span className='-mt-3'>+</span></button>
         </div>
       </div>
         </div>

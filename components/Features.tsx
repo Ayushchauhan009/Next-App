@@ -202,11 +202,11 @@ const AdjustmentControls = () => {
   //  ---------------------------------Saturation-----------------------------------
 
   const decreaseSaturation = () => {
-    setTint((prevSaturation) => Math.max(-100, prevSaturation - 1));
+    setSaturation((prevSaturation) => Math.max(-100, prevSaturation - 1));
   };
 
   const increaseSaturation = () => {
-    setTint((prevSaturation) => Math.min(100, prevSaturation + 1));
+    setSaturation((prevSaturation) => Math.min(100, prevSaturation + 1));
   };
 
 
@@ -246,7 +246,10 @@ const AdjustmentControls = () => {
       <div className="range-container">
         <label htmlFor="brightness" className='font-[500] text-[12px] mb-3'>Brightness</label>
         <div className='flex items-center space-x-3'>
-          <button onClick={decreaseBrightness} className='font-bold  text-[20px]'>-</button>
+        <button onClick={decreaseBrightness} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>-100</span>
+            <span className='-mt-3'>-</span>
+          </button>
 
           <div className='relative w-full'>
             <input
@@ -266,14 +269,20 @@ const AdjustmentControls = () => {
 
 
           </div>
-          <button onClick={increaseBrightness} className='font-bold text-[20px]'>+</button>
+          <button onClick={increaseBrightness} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>+</span>
+          </button>
         </div>
       </div>
 
       <div className="range-container">
         <label htmlFor="exposure" className='font-[500] text-[12px] mb-3'>Exposure</label>
         <div className='flex items-center space-x-3'>
-          <button onClick={decreaseExposure} className='font-bold text-[20px]'>-</button>
+        <button onClick={decreaseExposure} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>-</span>
+          </button>
 
           <div className='w-full relative'>
             <input
@@ -292,14 +301,20 @@ const AdjustmentControls = () => {
             </span>
           </div>
 
-          <button onClick={increaseExposure} className='font-bold text-[20px]'>+</button>
+          <button onClick={increaseExposure} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>+</span>
+          </button>
         </div>
       </div>
 
       <div className="range-container">
         <label htmlFor="contrast" className='font-[500] text-[12px] mb-3'>Contrast</label>
         <div className='flex items-center space-x-3'>
-          <button onClick={decreaseContrast} className='font-bold text-[20px]'>-</button>
+        <button onClick={decreaseContrast} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>-</span>
+          </button>
 
           <div className='w-full relative'>
             <input
@@ -320,14 +335,20 @@ const AdjustmentControls = () => {
 
           </div>
 
-          <button onClick={increaseContrast} className='font-bold text-[20px]'>+</button>
+          <button onClick={increaseContrast} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>+</span>
+          </button>
         </div>
       </div>
 
       <div className="range-container">
         <label htmlFor="highlights" className='font-[500] text-[12px] mb-3'>Highlights</label>
         <div className='flex items-center space-x-3'>
-          <button onClick={decreaseHighlights} className='font-bold text-[20px]'>-</button>
+        <button onClick={decreaseHighlights} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>-100</span>
+            <span className='-mt-3'>-</span>
+          </button>
 
           <div className='w-full relative'>
             <input
@@ -345,7 +366,10 @@ const AdjustmentControls = () => {
             </span>
 
           </div>
-          <button onClick={increaseHighlights} className='font-bold text-[20px]'>+</button>
+          <button onClick={increaseHighlights} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>+</span>
+          </button>
         </div>
       </div>
 
@@ -353,7 +377,10 @@ const AdjustmentControls = () => {
       <div className="range-container">
         <label htmlFor="saturation" className='font-[500] text-[12px] mb-3'>Saturation</label>
         <div className='flex items-center space-x-3'>
-          <button onClick={decreaseSaturation} className='font-bold text-[20px]'>-</button>
+        <button onClick={decreaseSaturation} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>-100</span>
+            <span className='-mt-3'>-</span>
+          </button>
 
           <div className='w-full relative'>
             <input
@@ -371,15 +398,20 @@ const AdjustmentControls = () => {
             </span>
 
           </div>
-          <button onClick={increaseSaturation} className='font-bold text-[20px]'>+</button>
+          <button onClick={increaseSaturation} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>+</span>
+          </button>
         </div>
       </div>
 
       <div className="range-container">
         <label htmlFor="tint" className='font-[500] text-[12px] mb-3'>Tint</label>
         <div className='flex items-center space-x-3'>
-          <button onClick={decreaseTint} className='font-bold text-[20px]'>-</button>
-
+        <button onClick={decreaseTint} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>-100</span>
+            <span className='-mt-3'>-</span>
+          </button>
           <div className='w-full relative'>
             <input
               type="range"
@@ -397,7 +429,10 @@ const AdjustmentControls = () => {
 
 
           </div>
-          <button onClick={increaseTint} className='font-bold text-[20px]'>+</button>
+          <button onClick={increaseTint} className='font-bold flex flex-col items-center  text-[20px]'>
+            <span className='text-[10px]'>100</span>
+            <span className='-mt-3'>+</span>
+          </button>
         </div>
       </div>
     </div>
