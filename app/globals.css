@@ -264,7 +264,7 @@ option{
   -webkit-appearance: none;
   appearance: none;
   
-  width: 100%;
+  /* width: 0%; */
   height: 8px;
   background: linear-gradient(101.67deg, #73F89D 10%, #48A0F9 100%);
 
