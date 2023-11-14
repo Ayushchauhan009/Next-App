@@ -310,6 +310,7 @@ const Filters = () => {
               min="-100"
               max="100"
               step="1"
+              className='w-full'
               value={exposure}
               onChange={handleExposureChange}
               onInput={updateImageStyles}
@@ -341,6 +342,7 @@ const Filters = () => {
               min="-100"
               max="100"
               step="1"
+              className='w-full'
               value={contrast}
               onChange={handleContrastChange}
               onInput={updateImageStyles}
@@ -375,6 +377,7 @@ const Filters = () => {
               max="100"
               value={highlights}
               onChange={handleHighlightsChange}
+              className='w-full'
               onInput={updateImageStyles}
               style={{ background: calculateBackground(highlights) }}
             />
@@ -403,6 +406,7 @@ const Filters = () => {
               max="100"
               value={saturation}
               onChange={handleSaturationChange}
+              className='w-full'
               onInput={updateImageStyles}
               style={{ background: calculateBackground(saturation) }}
             />
@@ -434,6 +438,7 @@ const Filters = () => {
               value={tint}
               onChange={handleTintChange}
               onInput={updateImageStyles}
+              className='w-full'
               style={{ background: calculateBackground(tint) }}
             />
             <span className="current-highlights absolute text-[12px] font-[600] top-[-10px]" style={{ left: `calc(${(tint + 100) / 2}% - 10px )` }}>

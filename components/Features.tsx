@@ -294,6 +294,7 @@ const AdjustmentControls = () => {
               value={exposure}
               onChange={handleExposureChange}
               onInput={updateImageStyles}
+              className='w-full'
               style={{ background: calculateBackground(exposure) }}
             />
             <span className="absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(exposure + 100) / 2}% - 10px )` }}>
@@ -325,6 +326,7 @@ const AdjustmentControls = () => {
               step="1"
               value={contrast}
               onChange={handleContrastChange}
+              className='w-full'
               onInput={updateImageStyles}
               style={{ background: calculateBackground(contrast) }}
             />
@@ -359,6 +361,7 @@ const AdjustmentControls = () => {
               value={highlights}
               onChange={handleHighlightsChange}
               onInput={updateImageStyles}
+              className='w-full'
               style={{ background: calculateBackground(highlights) }}
             />
             <span className="current-highlights absolute text-[12px] font-[600] top-[-15px]" style={{ left: `calc(${(highlights + 100) / 2}% - 10px )` }}>
@@ -389,6 +392,7 @@ const AdjustmentControls = () => {
               min="-100"
               max="100"
               value={saturation}
+              className='w-full'
               onChange={handleSaturationChange}
               onInput={updateImageStyles}
               style={{ background: calculateBackground(saturation) }}
@@ -419,6 +423,7 @@ const AdjustmentControls = () => {
               min="-100"
               max="100"
               value={tint}
+              className='w-full'
               onChange={handleTintChange}
               onInput={updateImageStyles}
               style={{ background: calculateBackground(tint) }}
