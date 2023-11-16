@@ -210,8 +210,8 @@ const Timeline = ({videoDuration, audio} : any) => {
       <hr />
       <div className='h-[75px] flex space-x-3 padding-container3  pb-2 my-auto'>
         <Image src="/music.svg" alt='undo' width={25} height={10} className='cursor-pointer w-[12px] xxl:w-[25px]'/>
-        <Image src="/lock.svg" alt='undo' width={12} height={10} className='cursor-pointer w-[12px]'/>
-        <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer w-[12px]'/>
+        <Image src="/lock.svg" alt='undo' width={12} height={10} className='cursor-pointer w-[12px] '/>
+        <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer w-[12px] xxl:w-[20px]'/>
       </div>
       <hr />
       <div>
