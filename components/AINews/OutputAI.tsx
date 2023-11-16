@@ -8,7 +8,7 @@ interface GuideProps {
   audio?: File | undefined;
 }
 
-const OutputVideo: React.FC<GuideProps> = ({ video, image, audio }) => {
+const OutputAI: React.FC<GuideProps> = ({ video, image, audio }) => {
   return (
     <div>
       <div>
@@ -41,7 +41,7 @@ const OutputVideo: React.FC<GuideProps> = ({ video, image, audio }) => {
         )}
 
         {!video && !image && !audio && (
-          <div className=''>
+          <div className='w-[570px] xxl:w-[660px] 2xl:w-[820px] dropShadow rounded-[8px] h-[790px] my-auto flex items-center justify-center text-center font-bold text-[43px]'>
             <h1>Output</h1>
           </div>
         )}
@@ -50,4 +50,4 @@ const OutputVideo: React.FC<GuideProps> = ({ video, image, audio }) => {
   );
 };
 
-export default OutputVideo;
+export default OutputAI;

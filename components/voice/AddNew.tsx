@@ -108,7 +108,7 @@ const AddNew = () => {
           <button
             type="button"
             className="buttonBg w-full h-[50px] rounded-[8px] text-[14px] text-white font-bold"
-            onClick={openPopup}
+            
           >
             Generate
           </button>
@@ -121,7 +121,7 @@ const AddNew = () => {
             <div className="p-5 space-y-6">
                 <div className="flex space-x-3">
                 <label htmlFor="voiceName" className="whitespace-nowrap">Voice Name:</label>
-              <input type="text" id="voiceName" className="w-full mb-3 border rounded-[5px]" />
+              <input type="text" id="voiceName" className="w-full mb-3 outline-none px-2 border rounded-[5px]" />
                 </div>
                 <div className="flex items-center mb-3">
                 <label htmlFor="customCheckboxPopup" className="cursor-pointer">Public Figure:</label>
@@ -129,7 +129,9 @@ const AddNew = () => {
                   type="checkbox"
                   id="customCheckboxPopup"
                   checked={isChecked}
-                  onChange={() => setIsChecked(!isChecked)}
+                  onChange={() => setIsChecked(!isChecked)
+                  
+                  }
                   className="appearance-none border rounded w-8 h-6 ml-2 cursor-pointer"
                 />
                 

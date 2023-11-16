@@ -280,7 +280,7 @@ const AdjustmentControls = () => {
         <label htmlFor="exposure" className='font-[500] text-[12px] mb-3'>Exposure</label>
         <div className='flex items-center space-x-3'>
         <button onClick={decreaseExposure} className='font-bold flex flex-col items-center  text-[20px]'>
-            <span className='text-[10px]'>100</span>
+            <span className='text-[10px]'>-100</span>
             <span className='-mt-3'>-</span>
           </button>
 
@@ -313,7 +313,7 @@ const AdjustmentControls = () => {
         <label htmlFor="contrast" className='font-[500] text-[12px] mb-3'>Contrast</label>
         <div className='flex items-center space-x-3'>
         <button onClick={decreaseContrast} className='font-bold flex flex-col items-center  text-[20px]'>
-            <span className='text-[10px]'>100</span>
+            <span className='text-[10px]'>-100</span>
             <span className='-mt-3'>-</span>
           </button>
 
