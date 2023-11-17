@@ -37,7 +37,9 @@ const OutputVideo: React.FC<GuideProps> = ({ video, image, audio }) => {
         )} */}
 
         {!video && !image && audio && (
-          <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%' }} />
+         
+           <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%' }} />
+         
         )}
 
         {!video && !image && !audio && (

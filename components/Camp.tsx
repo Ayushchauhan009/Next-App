@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
+import CustomAudio from "./CustomAudio";
+import CustomAudProp from "./CustomAudProp";
 
 const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -20,8 +22,9 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
     const video = event.target.files[0];
     onVideoUpload(video);
     setUploadedFile(video);
+    setUploadedFile3(null);
     setShowVideoUpload(true);
-    // setShowImageUpload(false);
+    
   };
 
   const handleImageUpload = (event: any) => {
@@ -29,6 +32,7 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
     onImageUpload(image);
     setUploadedFile2(image);
     setShowImageUpload(true);
+    setUploadedFile3(null);
     // setShowVideoUpload(false);
   };
 
@@ -84,7 +88,9 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
              
             ) : (
             <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
-              <input type="file" accept="video/*" id="file-input" onChange={handleVideoUpload} />
+              <input type="file" accept="video/*" id="file-input" onChange={handleVideoUpload} onClick={() => {
+                  setUploadedFile2(null);
+                }}/>
               <label htmlFor="file-input" className="cursor-pointer">
                 <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
                 <p className="text-[#737477] text-[14px] pt-[5px]">Upload Video</p>
@@ -97,10 +103,15 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
         {showImageUpload && (
           <div className="px-5">
             {uploadedFile2 ? (
-              <img src={URL.createObjectURL(uploadedFile2)} alt="Uploaded Image" className="mx-auto rounded-[8px] h-[149px] w-[250px] object-cover" />
+              <div>
+                
+                <img src={URL.createObjectURL(uploadedFile2)} alt="Uploaded Image" className="mx-auto rounded-[8px] h-[149px] w-[250px] object-cover" />
+              </div>
             ) : (
               <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
-                <input type="file" accept="image/*" id="file-input2" onChange={handleImageUpload} />
+                <input type="file" accept="image/*" id="file-input2" onChange={handleImageUpload} onClick={() => {
+                  setUploadedFile(null);
+                }}/>
                 <label htmlFor="file-input2" className="cursor-pointer">
                   <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
                   <p className="text-[#737477] text-[14px] pt-[5px]">Upload Image</p>
@@ -113,10 +124,9 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
         
           <div className="px-5 pt-[45px]">
             {uploadedFile3 ? (
-              <audio className="mx-auto rounded-[8px] h-[50px] w-[250px]">
-                <source src={URL.createObjectURL(uploadedFile3)} type="audio/*" />
-                Your browser does not support the audio element.
-              </audio>
+             <div className=' border  rounded-[8px] pt-12 h-[149px] w-[250px] boxBg boxShadow'>
+              <CustomAudProp src={URL.createObjectURL(uploadedFile3)} style={{ width: '200%', display: "flex" }} />
+           </div>
             ) : (
               <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
                 <input type="file" accept="audio/*" id="file-input3" onChange={handleAudUpload} />

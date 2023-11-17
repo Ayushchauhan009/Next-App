@@ -8,7 +8,7 @@ interface AudioProps {
   style?: React.CSSProperties;
 }
 
-const CustomAudio: React.FC<AudioProps> = ({ src, style }) => {
+const CustomAudProp: React.FC<AudioProps> = ({ src, style }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const barsRef = useRef<HTMLDivElement | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
@@ -19,7 +19,7 @@ const CustomAudio: React.FC<AudioProps> = ({ src, style }) => {
 
     if (!audioElement || !barsElement) return;
 
-    const numberOfBars = 40; // Adjust the number of bars as needed
+    const numberOfBars = 20; // Adjust the number of bars as needed
 
     for (let i = 0; i < numberOfBars; i++) {
       const audioBar = document.createElement('div');
@@ -45,7 +45,7 @@ const CustomAudio: React.FC<AudioProps> = ({ src, style }) => {
   }, []);
 
   return (
-    <div className="custom-audio-player" style={style}>
+    <div className="custom-audio-player -ml-3" style={style}>
       <audio ref={audioRef} controls>
         <source src={src} type="audio/mp3" />
         Your browser does not support the audio tag.
@@ -55,5 +55,5 @@ const CustomAudio: React.FC<AudioProps> = ({ src, style }) => {
   );
 };
 
-export default CustomAudio;
+export default CustomAudProp;
 

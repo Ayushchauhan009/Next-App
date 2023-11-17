@@ -36,7 +36,7 @@ const Hero = () => {
           onImageUpload={handleImageUpload}
           onAudioUpload={handleAudioUpload}
         />
-        <div className='w-[530px] xxl:w-[630px] 2xl:w-[700px] dropShadow rounded-[8px] h-[571px] flex flex-col items-center justify-center '>
+        <div className='w-[530px] xxl:w-[630px] 2xl:w-[700px] dropShadow rounded-[8px] h-[571px]   '>
           <Guide video={videoData} image={imageData} audio={audioData} />
         </div>
         <Features />

@@ -220,7 +220,7 @@ const Timeline = ({videoDuration, audio} : any) => {
         <Image src="/lock.svg" alt='undo' width={12} height={10} className='cursor-pointer'/>
         <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer'/>
         {audio && (
-          <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', marginLeft:"20px", marginTop: "5px",  display: 'flex', alignItems: 'center' }} />
+          <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', marginLeft:"30px", marginTop: "10px",  display: 'flex', alignItems: 'center' }} />
         )}
       </div>
       

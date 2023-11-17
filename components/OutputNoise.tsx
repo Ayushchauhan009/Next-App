@@ -3,6 +3,7 @@
 
 import React, {useState} from 'react';
 import Image from 'next/image';
+import CustomAudio from './CustomAudio';
 
 const OutputNoise = ({ audio = null }: any) => {
    
@@ -27,13 +28,11 @@ const OutputNoise = ({ audio = null }: any) => {
         {audio ? (
           <div>
             
-              <audio controls id='audioInput'>
-                <source src={URL.createObjectURL(audio)} type="audio/mp3" />
-              </audio>
+            <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', paddingTop: "300px"}} />
             
           </div>
         ) :  (
-          <div className='w-[530px] xxl:w-[630px] 2xl:w-[790px] dropShadow rounded-[8px] h-[571px] text-center font-bold text-[43px]'>
+          <div className='w-[530px] xxl:w-[630px]  dropShadow rounded-[8px] h-[571px] flex items-center justify-center text-center font-bold text-[43px]'>
             <h1>Output</h1>
           </div>
         )}

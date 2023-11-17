@@ -12,24 +12,24 @@ const Guide: React.FC<GuideProps> = ({ video, image, audio }) => {
     <div>
       <div>
         {video && (
-          <div>
-            <video controls width="1000" height="" id='videoID' className='aspect-video oveflow-hidden mb-3 object-contain'>
+          <div className='pt-20'>
+            <video controls width="1000" height="" id='videoID' className='aspect-video  oveflow-hidden mb-3 object-contain'>
               <source src={URL.createObjectURL(video)} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            {audio && <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '200%' }} />}
+            {audio && <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '200%', display:"flex" }} />}
           </div>
         )}
 
         {!video && image && (
           <div className='relative'>
             <img src={URL.createObjectURL(image)} id='imageID' alt="Uploaded Image" width={800} height="" className="overflow-hidden mb-3 object-contain" />
-            {audio && <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '200%' }} />}
+            {audio && <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '200%', display: "flex" }} />}
           </div>
         )}
 
         {!video && !image && audio && (
-          <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', display:'flex' }} />
+          <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', paddingTop: "300px"}} />
         )}
 
         {!video && !image && !audio && (
