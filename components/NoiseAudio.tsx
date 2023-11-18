@@ -2,13 +2,16 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import CustomAudProp from "./CustomAudProp";
 
 const NoiseAudio = ({ onAudioUpload }: any) => {
+  const [audioUploaded, setAudioUploaded] = useState(null);
  
 
   const handleAudioUpload = (event: any) => {
     const audio = event.target.files[0];
     onAudioUpload(audio);
+    setAudioUploaded(audio);
   };
 
   return (
@@ -16,15 +19,20 @@ const NoiseAudio = ({ onAudioUpload }: any) => {
       <form>
         
 
-        <div className="px-5 ">
-            <h2 className="font-semibold pt-[10px] pb-[12px]">Audio</h2>
-          <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
-            <input type="file" accept="audio/*" id="file-input3" onChange={handleAudioUpload} />
-            <label htmlFor="file-input3" className="cursor-pointer">
-              <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
-              <p className="text-[#737477] text-[14px] pt-[5px]">Upload Audio</p>
-            </label>
-          </div>
+        <div className="px-5 py-5">
+        {audioUploaded ? (
+             <div className=' border  rounded-[8px] pt-12 h-[149px] w-[250px] boxBg boxShadow'>
+              <CustomAudProp src={URL.createObjectURL(audioUploaded)} style={{ width: '200%', display: "flex" }} />
+           </div>
+            ) : (
+              <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
+                <input type="file" accept="audio/*" id="file-input3" onChange={handleAudioUpload} />
+                <label htmlFor="file-input3" className="cursor-pointer">
+                  <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
+                  <p className="text-[#737477] text-[14px] pt-[5px]">Upload Audio</p>
+                </label>
+              </div>
+            )}
         </div>
 
         <div className="px-5 pt-[45px]">

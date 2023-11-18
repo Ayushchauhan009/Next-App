@@ -22,8 +22,8 @@ const Guide: React.FC<GuideProps> = ({ video, image, audio }) => {
         )}
 
         {!video && image && (
-          <div className='relative'>
-            <img src={URL.createObjectURL(image)} id='imageID' alt="Uploaded Image" width={800} height="" className="overflow-hidden mb-3 object-contain" />
+          <div className='relative pt-0 lg:pt-5'>
+            <img src={URL.createObjectURL(image)} id='imageID' alt="Uploaded Image" width={700} height="" className="overflow-hidden aspect-video mb-3 object-contain" />
             {audio && <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '200%', display: "flex" }} />}
           </div>
         )}

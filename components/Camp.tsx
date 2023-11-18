@@ -22,7 +22,7 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
     const video = event.target.files[0];
     onVideoUpload(video);
     setUploadedFile(video);
-    setUploadedFile3(null);
+    
     setShowVideoUpload(true);
     
   };
@@ -32,7 +32,7 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
     onImageUpload(image);
     setUploadedFile2(image);
     setShowImageUpload(true);
-    setUploadedFile3(null);
+
     // setShowVideoUpload(false);
   };
 
@@ -52,10 +52,7 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
               className={`font-medium text-[12px] mt-[12px] cursor-pointer mb-[12px] ${showVideoUpload ? 'active' : ''}`}
               onClick={() => {
                 setShowVideoUpload(true);
-                setShowImageUpload(false);
-                
-                setUploadedFile3(null);
-              
+                setShowImageUpload(false);              
               }}
             >
               Video
@@ -65,9 +62,6 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
               onClick={() => {
                 setShowImageUpload(true);
                 setShowVideoUpload(false);
-                // setUploadedFile(null);
-                // setUploadedFile3(null);
-                
               }}
             >
               Image
@@ -90,6 +84,7 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
             <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
               <input type="file" accept="video/*" id="file-input" onChange={handleVideoUpload} onClick={() => {
                   setUploadedFile2(null);
+                  setUploadedFile3(null);
                 }}/>
               <label htmlFor="file-input" className="cursor-pointer">
                 <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
@@ -111,6 +106,7 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
               <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
                 <input type="file" accept="image/*" id="file-input2" onChange={handleImageUpload} onClick={() => {
                   setUploadedFile(null);
+                  setUploadedFile3(null);
                 }}/>
                 <label htmlFor="file-input2" className="cursor-pointer">
                   <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />

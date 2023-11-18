@@ -122,7 +122,7 @@ const Timeline = ({videoDuration, audio} : any) => {
   return (
     <div className='bg-white max-container w-full h-[263px]  rounded-[10px] dropShadow mb-[15px]'>
       <div className='h-[65px] flex'>
-          <div className='flex padding-container3 items-start py-5 space-x-[27.5px]'>
+          <div className='flex padding-container3 items-start py-5 2xl:px-5 space-x-[27.5px]'>
           <div className='cursor-pointer'>
             <Image src="/undo.svg" alt='undo' width={18} height={18}/>
           </div>
@@ -166,7 +166,7 @@ const Timeline = ({videoDuration, audio} : any) => {
             <p className=' text-[12px] mt-2'>Duplicate</p>
           </div>
           </div>
-          <div className='flex py-5 space-x-10 padding-container items-center'>
+          <div className='flex py-5 space-x-10  padding-container items-center'>
         <div className='flex  space-x-4'>
         <Image src="/previous.svg" alt='undo' width={20} height={18} className='cursor-pointer'/>
         <Image src="/playButton.svg" alt='undo' width={20} height={18} className='cursor-pointer'/>
@@ -183,8 +183,8 @@ const Timeline = ({videoDuration, audio} : any) => {
       </div>
       </div>
       <hr />
-      <div className='h-[44px] flex space-x-4 items-end'>
-        <div className='flex space-x-3 padding-container3 h-full pb-2 items-end'>
+      <div className='h-[44px] flex space-x-4 2xl:px-3 items-end'>
+        <div className='flex space-x-3 pl-3 xxl:padding-container3 h-full pb-2 items-end'>
         <Image src="/addNew.svg" alt='undo' width={20} height={10}/>
         <Image src="/delete.svg" alt='undo' width={20} height={10}/>
         <Image src="/volume.svg" alt='undo' width={20} height={10}/>
@@ -208,24 +208,21 @@ const Timeline = ({videoDuration, audio} : any) => {
         </div>
       </div>
       <hr />
-      <div className='h-[75px] flex space-x-3 padding-container3  pb-2 my-auto'>
-        <Image src="/music.svg" alt='undo' width={25} height={10} className='cursor-pointer w-[12px] xxl:w-[25px]'/>
+      <div className='h-[75px] flex space-x-3 pl-3 xxl:padding-container3 2xl:px-3 pb-2 my-auto'>
+        <Image src="/music.svg" alt='undo' width={25} height={10} className='cursor-pointer w-[15px] xxl:w-[25px]'/>
         <Image src="/lock.svg" alt='undo' width={12} height={10} className='cursor-pointer w-[12px] '/>
-        <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer w-[12px] xxl:w-[20px]'/>
+        <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer w-[18px] xxl:w-[20px]'/>
       </div>
       <hr />
       <div>
-      <div className='flex space-x-3 padding-container3  pb-2 my-auto h-[80px]'>
-      <Image src="/audio.svg" alt='undo' width={20} height={10} className='cursor-pointer'/>
-        <Image src="/lock.svg" alt='undo' width={12} height={10} className='cursor-pointer'/>
-        <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer'/>
+      <div className='flex space-x-3  pl-2 xxl:padding-container3 2xl:px-3 pb-2 my-auto h-[80px]'>
+      <Image src="/audio.svg" alt='undo' width={23} height={10} className='cursor-pointer w-[18px] xxl:w-[23px]'/>
+        <Image src="/lock.svg" alt='undo' width={12} height={10} className='cursor-pointer w-[12px]'/>
+        <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer xxl:w-[20px]' />
         {audio && (
           <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', marginLeft:"30px", marginTop: "10px",  display: 'flex', alignItems: 'center' }} />
         )}
       </div>
-      
-
-      
       </div>
     </div>
   )
