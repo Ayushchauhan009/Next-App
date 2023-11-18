@@ -19,7 +19,7 @@ const CustomAudProp: React.FC<AudioProps> = ({ src, style }) => {
 
     if (!audioElement || !barsElement) return;
 
-    const numberOfBars = 20; // Adjust the number of bars as needed
+    const numberOfBars = 35; // Adjust the number of bars as needed
 
     for (let i = 0; i < numberOfBars; i++) {
       const audioBar = document.createElement('div');
