@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from 'react';
-// import './CustomAudio.css'; // Import your CSS file for styling
+
 
 interface AudioProps {
   src: string;

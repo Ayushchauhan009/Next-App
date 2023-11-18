@@ -7,6 +7,8 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [showVideoUpload, setShowVideoUpload] = useState(true);
   const [showImageUpload, setShowImageUpload] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState(null);
+
 
   const handleFileChange = (event: any) => {
     const file = event.target.files[0];
@@ -16,6 +18,10 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
   const handleVideoUpload = (event: any) => {
     const video = event.target.files[0];
     onVideoUpload(video);
+    setUploadedFile(video);
+    
+    setShowVideoUpload(true);
+    
   };
 
   const handleImageUpload = (event: any) => {
@@ -44,13 +50,24 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
           </div>
         </div>
           <p className=" font-semibold mb-[10px]">Upload a Video</p>
-            <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
-              <input type="file" accept="video/*" id="file-input" onChange={handleVideoUpload} />
-              <label htmlFor="file-input" className="cursor-pointer">
-                <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
-                <p className="text-[#737477] text-[14px] pt-[5px]">Upload Video</p>
-              </label>
-            </div>
+          {uploadedFile ? (
+           
+           <video 
+          className="mx-auto rounded-[8px] h-[149px] w-[250px] object-cover">
+           
+         <source src={URL.createObjectURL(uploadedFile)} type="video/mp4"></source>
+          </video>
+
+        
+       ) : (
+       <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
+         <input type="file" accept="video/*" id="file-input" onChange={handleVideoUpload}/>
+         <label htmlFor="file-input" className="cursor-pointer">
+           <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
+           <p className="text-[#737477] text-[14px] pt-[5px]">Upload Video</p>
+         </label>
+       </div>
+     )}
           
         </div>
 
