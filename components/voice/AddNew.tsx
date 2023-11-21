@@ -90,6 +90,9 @@ const AddNew = () => {
     };
   }, [isPopupOpen]);
 
+
+  
+
   return (
     <div className="relative">
       <form className="bg-white w-[290px] h-[790px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col lg:mt-0 lg:mb-[33px]">
@@ -219,6 +222,7 @@ const AddNew = () => {
           </div>
         </div>
       )}
+      
     </div>
   );
 };
