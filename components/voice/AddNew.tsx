@@ -167,7 +167,7 @@ const AddNew = () => {
             //   onInput={updateImageStyles}
               style={{ background: calculateBackground(epoch) }}
             />
-            <span className="current-epoch absolute text-[10px] font-[600] top-[-10px]" style={{ left: `calc(${(epoch - 10) /10}% - 10px )` }}>
+            <span className="current-epoch absolute text-[10px] font-[600] top-[-10px]" style={{ left: `calc(${(epoch - 10) /10}% - 1px )` }}>
               {epoch}
             </span>
 

@@ -120,8 +120,11 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
         
           <div className="px-5 pt-[45px]">
             {uploadedFile3 ? (
-             <div className=' border  rounded-[8px] pt-12 h-[149px] w-[250px] boxBg boxShadow'>
-              <CustomAudProp src={URL.createObjectURL(uploadedFile3)} style={{ width: '200%', display: "flex" }} />
+             <div className=' border  rounded-[8px] h-[149px] w-[250px] boxBg boxShadow'>
+              <video width="1000" height="" id='videoID' className='aspect-video oveflow-hidden mb-3 object-contain'>
+              <source src='/Audio.mp4' type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
            </div>
             ) : (
               <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">

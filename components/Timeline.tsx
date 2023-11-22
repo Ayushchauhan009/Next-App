@@ -4,7 +4,7 @@
 
 import Image from 'next/image'
 
-import React, { useState} from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import TimelineBar from './TimelineBar'
 import CustomAudio from './CustomAudio';
 
@@ -48,8 +48,10 @@ function updateAudioBars() {
 
 
 
-const Timeline = ({videoDuration, audio} : any) => {
-  console.log('Audio prop:', audio);
+const Timeline = ({videoDuration, audio,  audioSrc, isPlaying, onTogglePlay } : any) => {
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0 });
   const [isDoubleClicked, setIsDoubleClicked] = useState(false);
@@ -87,6 +89,16 @@ const Timeline = ({videoDuration, audio} : any) => {
     setIsDragging(false);
     e.target.style.cursor = 'grab';
   };
+
+  useEffect(() => {
+    if (isPlaying) {
+      if (audioRef.current) audioRef.current.play().catch((error: any) => console.error('Error playing audio:', error));
+      if (videoRef.current) videoRef.current.play().catch((error: any) => console.error('Error playing video:', error));
+    } else {
+      if (audioRef.current) audioRef.current.pause();
+      if (videoRef.current) videoRef.current.pause();
+    }
+  }, [isPlaying]);
   
   
 
@@ -169,7 +181,7 @@ const Timeline = ({videoDuration, audio} : any) => {
           <div className='flex py-5 space-x-10  padding-container items-center'>
         <div className='flex  space-x-4'>
         <Image src="/previous.svg" alt='undo' width={20} height={18} className='cursor-pointer'/>
-        <Image src="/playButton.svg" alt='undo' width={20} height={18} className='cursor-pointer'/>
+        <button onClick={onTogglePlay}><Image src="/playButton.svg" alt='undo' width={20} height={18} className='cursor-pointer'/></button>
         <Image src="/next.svg" alt='undo' width={20} height={18} className='cursor-pointer'/>
         </div>
         <div className='mt-3'>
@@ -220,8 +232,20 @@ const Timeline = ({videoDuration, audio} : any) => {
         <Image src="/lock.svg" alt='undo' width={12} height={10} className='cursor-pointer w-[12px]'/>
         <Image src="/eye.svg" alt='undo' width={20} height={10} className='cursor-pointer xxl:w-[20px]' />
         {audio && (
-          <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', marginLeft:"30px", marginTop: "10px",  display: 'flex', alignItems: 'center' }} />
-        )}
+  <div style={{ width: '100%', marginLeft: '30px', marginTop: '10px', display: 'flex', alignItems: 'center' }}>
+    {/* Display the video */}
+    <video width="1000" height="" id="videoID" className="aspect-video pt-40 overflow-hidden mb-3 object-contain">
+      <source src="/Audio.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    {/* Play the uploaded audio */}
+    <audio controls style={{ marginLeft: '30px' }}>
+      <source src={URL.createObjectURL(audio)} type="audio/mp4" />
+      Your browser does not support the audio tag.
+    </audio>
+  </div>
+)}
       </div>
       </div>
     </div>

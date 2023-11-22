@@ -8,6 +8,7 @@ interface GuideProps {
 }
 
 const Guide: React.FC<GuideProps> = ({ video, image, audio }) => {
+  const audioSrc = '/Audio.mp4';
   return (
     <div>
       <div>
@@ -29,7 +30,11 @@ const Guide: React.FC<GuideProps> = ({ video, image, audio }) => {
         )}
 
         {!video && !image && audio && (
-          <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', paddingTop: "300px"}} />
+          // <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', paddingTop: "300px"}} />
+          <video width="1000" height="" id='videoID' className='aspect-video pt-40 oveflow-hidden mb-3 object-contain'>
+              <source src={audioSrc} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
         )}
 
         {!video && !image && !audio && (
