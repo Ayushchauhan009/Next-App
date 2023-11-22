@@ -22,9 +22,7 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
     const video = event.target.files[0];
     onVideoUpload(video);
     setUploadedFile(video);
-    
     setShowVideoUpload(true);
-    
   };
 
   const handleImageUpload = (event: any) => {
@@ -32,8 +30,6 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
     onImageUpload(image);
     setUploadedFile2(image);
     setShowImageUpload(true);
-
-    // setShowVideoUpload(false);
   };
 
   const handleAudUpload = (event: any) => {
@@ -120,11 +116,8 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
         
           <div className="px-5 pt-[45px]">
             {uploadedFile3 ? (
-             <div className=' border  rounded-[8px] h-[149px] w-[250px] boxBg boxShadow'>
-              <video width="1000" height="" id='videoID' className='aspect-video oveflow-hidden mb-3 object-contain'>
-              <source src='/Audio.mp4' type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+             <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
+             <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
            </div>
             ) : (
               <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">

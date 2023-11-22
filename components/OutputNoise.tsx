@@ -26,10 +26,9 @@ const OutputNoise = ({ audio = null }: any) => {
         </div> */}
       <div>
         {audio ? (
-          <div>
+          <div className="flex items-center justify-center">
             
-            <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', paddingTop: "300px", marginLeft:"-20px"}} />
-            
+            <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-[250px]' />
           </div>
         ) :  (
           <div className='w-[530px] xxl:w-[630px]  dropShadow rounded-[8px] h-[571px] pt-32 flex items-center justify-center text-center font-bold text-[43px]'>

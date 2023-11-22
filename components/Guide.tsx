@@ -18,23 +18,42 @@ const Guide: React.FC<GuideProps> = ({ video, image, audio }) => {
               <source src={URL.createObjectURL(video)} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            {audio && <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '200%', display:"flex" }} />}
+            {audio && ( 
+              <div>
+                <audio controls hidden>
+                <source src={URL.createObjectURL(audio)} type="audio/mp3" />
+                Your browser does not support the audio tag.
+                </audio>
+                <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
+              </div>
+            )}
           </div>
         )}
 
         {!video && image && (
           <div className='relative pt-0 lg:pt-5'>
             <img src={URL.createObjectURL(image)} id='imageID' alt="Uploaded Image" width={700} height="" className="overflow-hidden aspect-video mb-3 object-contain" />
-            {audio && <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '200%', display: "flex" }} />}
+            {audio && ( 
+              <div>
+                <audio controls hidden>
+          <source src={URL.createObjectURL(audio)} type="audio/mp3" />
+          Your browser does not support the audio tag.
+        </audio>
+        <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
+              </div>
+            )}
           </div>
         )}
 
         {!video && !image && audio && (
           // <CustomAudio src={URL.createObjectURL(audio)} style={{ width: '100%', paddingTop: "300px"}} />
-          <video width="1000" height="" id='videoID' className='aspect-video pt-40 oveflow-hidden mb-3 object-contain'>
-              <source src={audioSrc} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+         <div className='flex items-center justify-center '>
+           <audio controls hidden>
+          <source src={URL.createObjectURL(audio)} type="audio/mp3" />
+          Your browser does not support the audio tag.
+        </audio>
+        <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-[250px]' />
+         </div>
         )}
 
         {!video && !image && !audio && (
