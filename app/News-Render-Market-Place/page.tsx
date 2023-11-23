@@ -458,7 +458,7 @@ const Page = () => {
         
         </div>
         )}
-        <div className='pagination flex justify-around mt-10'>
+        <div className='pagination flex justify-evenly px-20 mt-10'>
           <button className='pagination-button' onClick={handleLeftArrowClick}>
             <Image src="/leftArrow.svg" alt='left' width={12} height={20} />
           </button>

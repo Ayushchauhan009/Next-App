@@ -241,7 +241,7 @@ const NewAudio = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
       </form>
       {showAudioPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-        <div className="bg-white w-[569px] py-20 h-[574px] rounded-[10px] popup-content">
+        <div className="bg-white w-[569px] pt-2 h-[356px] rounded-[10px] popup-content">
           <div className="p-5 space-y-6">
             <div className="flex">
             <label htmlFor="uploadFile">Upload a Wav file or a zip of wav files:</label>
@@ -325,7 +325,7 @@ const NewAudio = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
       )}
       {isPopupOpen2 && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-        <div className="bg-white w-[569px] py-20 h-[574px] rounded-[10px] popup-content2">
+        <div className="bg-white w-[569px] h-[443px] rounded-[10px] popup-content2">
           <div className="p-5 space-y-6">
           <div className="flex space-x-3">
                 <label htmlFor="voiceName" className="whitespace-nowrap">Render Name:</label>
@@ -345,7 +345,7 @@ const NewAudio = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
           </div>
           <div className="mb-3">
                 <label htmlFor="customCheckboxPopup" className=" pb-3">An introductory message</label>
-                <textarea name="" id="" className="w-full mb-3 max-h-20 p-2 text-[14px] outline-none px-2 border rounded-[5px]"></textarea>
+                <textarea name="" id="" className="w-full mb-3 max-h-20 resize-none p-2 text-[14px] outline-none px-2 border rounded-[5px]"></textarea>
                 
               </div>
            
