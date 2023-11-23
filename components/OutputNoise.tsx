@@ -28,7 +28,7 @@ const OutputNoise = ({ audio = null }: any) => {
         {audio ? (
           <div className="flex items-center justify-center">
             
-            <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-[250px]' />
+            <img src="Audiowave.svg" alt="AudioWave" className='w-[1000px] h-full mt-[80px] xxl:mt-[40px]' />
           </div>
         ) :  (
           <div className='w-[530px] xxl:w-[630px]  dropShadow rounded-[8px] h-[571px] pt-32 flex items-center justify-center text-center font-bold text-[43px]'>

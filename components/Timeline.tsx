@@ -246,7 +246,7 @@ const Timeline = ({ videoDuration, audio }: any) => {
                 <source src={URL.createObjectURL(audio)} type="audio/mp3" />
                 Your browser does not support the audio tag.
               </audio>
-              <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2 xxl:ml-6 2xl:ml-0 '  />
+              <img src="AudioWave.png" alt="AudioWave" className='w-[400px] h-[70px] mt-2' />
             </div>
           )}
           

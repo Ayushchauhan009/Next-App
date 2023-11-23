@@ -117,7 +117,7 @@ const Camp = ({ onVideoUpload, onImageUpload, onAudioUpload }: any) => {
           <div className="px-5 pt-[45px]">
             {uploadedFile3 ? (
              <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">
-             <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
+             <img src="Audiowave.svg" alt="AudioWave" className='w-[1000px] h-[200px] mt-2' />
            </div>
             ) : (
               <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[250px] boxBg boxShadow">

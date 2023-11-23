@@ -13,8 +13,8 @@ const Guide: React.FC<GuideProps> = ({ video, image, audio }) => {
     <div>
       <div>
         {video && (
-          <div className='pt-20'>
-            <video controls width="1000" height="" id='videoID' className='aspect-video  oveflow-hidden mb-3 object-contain'>
+          <div className='pt-10'>
+            <video controls width="1000" height="" id='videoID' className='aspect-video  oveflow-hidden object-contain'>
               <source src={URL.createObjectURL(video)} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
@@ -24,7 +24,7 @@ const Guide: React.FC<GuideProps> = ({ video, image, audio }) => {
                 <source src={URL.createObjectURL(audio)} type="audio/mp3" />
                 Your browser does not support the audio tag.
                 </audio>
-                <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
+                <img src="Audiowave.png" alt="AudioWave" className='mt-4 w-full h-[100px]' />
               </div>
             )}
           </div>
@@ -39,7 +39,7 @@ const Guide: React.FC<GuideProps> = ({ video, image, audio }) => {
           <source src={URL.createObjectURL(audio)} type="audio/mp3" />
           Your browser does not support the audio tag.
         </audio>
-        <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-2' />
+        <img src="Audiowave.png" alt="AudioWave" className='mt-4 w-full h-[100px]' />
               </div>
             )}
           </div>
@@ -52,7 +52,7 @@ const Guide: React.FC<GuideProps> = ({ video, image, audio }) => {
           <source src={URL.createObjectURL(audio)} type="audio/mp3" />
           Your browser does not support the audio tag.
         </audio>
-        <img src="waveAudio.png" alt="AudioWave" className='w-[300px] h-[60px] mt-[250px]' />
+        <img src="Audiowave.svg" alt="AudioWave" className='w-[1000px] h-full mt-[80px] xxl:mt-[40px]' />
          </div>
         )}
 
