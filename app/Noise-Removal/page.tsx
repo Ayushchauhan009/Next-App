@@ -36,9 +36,11 @@ const page = () => {
         After
       </button>
         </div>
+      <div className='bg-white'>
       {audioData ? (<OutputNoise audio={audioData}/>) : ( 
-        <div className='w-[530px] xxl:w-[630px] font-bold text-[43px] text-center pt-[300px] dropShadow rounded-[8px] h-[735px]'>Output</div>
-      )}
+        <div className='w-[530px] xxl:w-[630px] font-bold text-[43px] text-center pt-[300px] boxBg dropShadow rounded-[8px] h-[735px]'>Output</div>
+      )} 
+      </div>
       </div>
         <VolEffects />
     </div>

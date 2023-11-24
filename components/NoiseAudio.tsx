@@ -20,8 +20,11 @@ const NoiseAudio = ({ onAudioUpload }: any) => {
         
 
         <div className="px-5 py-5">
+          <div className="font-semibold  pb-[12px] flex justify-between"><h2 className="">Audio</h2>
+            
+          </div>
         {audioUploaded ? (
-             <div className=' border  rounded-[8px]  h-[149px] w-[250px] boxBg boxShadow'>
+             <div className=' border rounded-[8px]  h-[149px] w-[250px] bg-white boxShadow'>
                <img src="Audiowave.svg" alt="AudioWave" className='w-[1000px] h-[200px] -mt-6' />
            </div>
             ) : (
