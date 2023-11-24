@@ -13,7 +13,7 @@ const OutputVideo: React.FC<GuideProps> = ({ video, image, audio }) => {
     <div>
       <div>
         {video && !image && (
-          <div>
+          <div className='bg-white h-[669px] pt-40 3xl:pt-20'>
             <video controls width="1000" height="" id='videoID' className='aspect-video oveflow-hidden object-contain'>
               <source src={URL.createObjectURL(video)} type="video/mp4" />
               Your browser does not support the video tag.
