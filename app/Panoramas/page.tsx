@@ -7,7 +7,7 @@ const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTab, setActiveTab] = useState('My Creation');
   const [clickedPage, setClickedPage] = useState(1);
-  const totalPages = 20;
+  const totalPages = 10;
 
   const handlePageChange = (page:any) => {
     if (page >= 1 && page <= totalPages) {
@@ -173,7 +173,7 @@ const Page = () => {
           ))}
         </div>
         )}
-        <div className="pagination flex justify-evenly px-20 mt-10">
+        <div className="pagination flex justify-center space-x-[55px] mt-10">
           <button className="pagination-button" onClick={handleLeftArrowClick}>
             <Image src="/leftArrow.svg" alt="left" width={12} height={20} />
           </button>
@@ -185,7 +185,7 @@ const Page = () => {
               >
                 1
               </button>
-              {startPage > 2 && <span className="pagination-ellipsis my-auto">...</span>}
+              {startPage > 3 && <span className="pagination-ellipsis my-auto">...</span>}
             </>
           )}
           {Array.from({ length: endPage - startPage + 1 }, (_, index) => {
@@ -202,7 +202,7 @@ const Page = () => {
           })}
           {endPage < totalPages && (
             <>
-              {endPage < totalPages - 1 && <span className="pagination-ellipsis my-auto">...</span>}
+              {endPage < totalPages - 3 && <span className="pagination-ellipsis my-auto">...</span>}
               <button
                 className={`pagination-button ${endPage === totalPages ? 'active paginationBG' : ''}`}
                 onClick={() => handlePageChange(totalPages)}
