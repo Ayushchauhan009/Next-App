@@ -451,3 +451,7 @@ linear-gradient(0deg, #ECEDED, #ECEDED);
   flex-direction: column;
   margin-bottom: 2px;
 }
+
+.PopupBg{
+  background-color: rgba(0, 0, 0, 0.5);
+}

@@ -1,21 +1,26 @@
+
 "use client"
 
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const Options = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedOption, setSelectedOption] = useState("text"); // Initialize with "text"
 
-  const handleFileChange = (event :any) => {
+  const handleFileChange = (event:any) => {
     const file = event.target.files[0];
     setSelectedFile(file);
   };
 
-  const handleOptionClick = (option: any) => {
+  const handleOptionClick = (option:any) => {
     setSelectedOption(option);
   };
+
+  useEffect(() => {
+    // Reset selected file when the option changes
+    setSelectedFile(null);
+  }, [selectedOption]);
 
   const renderInputBasedOnOption = () => {
     if (selectedOption === "text") {
@@ -31,15 +36,29 @@ const Options = () => {
         <div className="mx-auto border flex flex-col rounded-[8px] justify-center items-center h-[149px] w-[200px] boxBg boxShadow">
           <input type="file" accept={selectedOption === "image" ? "image/*" : "video/*"} id="file-input2" onChange={handleFileChange} />
           <label htmlFor="file-input2" className="cursor-pointer">
-            <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
-            <p className="text-[#737477] text-[14px] pt-[5px]">
-              {selectedOption === "image" ? "Upload Image" : "Upload Video"}
-            </p>
+            {selectedFile && selectedOption === "image" && (
+              <img src={URL.createObjectURL(selectedFile)} alt="Uploaded Image" className="mx-auto" />
+            )}
+            {selectedFile && selectedOption === "video" && (
+              <video width="100%" height="100%" controls>
+                <source src={URL.createObjectURL(selectedFile)} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
+            {!selectedFile && (
+              <>
+                <Image src="/upload.svg" alt="Upload Icon" width={20} height={20} className="mx-auto" />
+                <p className="text-[#737477] text-[14px] pt-[5px]">
+                  {selectedOption === "image" ? "Upload Image" : "Upload Video"}
+                </p>
+              </>
+            )}
           </label>
         </div>
       );
     }
   };
+  
 
   return (
     <form className="bg-white w-[290px] h-[790px] rounded-[10px] boxShadow 2xl:max-container relative flex flex-col lg:mt-0 lg:mb-[33px]">
@@ -49,7 +68,7 @@ const Options = () => {
           <div className="px-[11px] pt-[5px]">
             <div className="mx-auto border flex space-x-6 rounded-[8px] justify-center items-center bg-white boxShadow">
               <p
-                className={`my-[8px] text-[12px] py-1 cursor-pointer rounded-[6px]  px-3 ${
+                className={`my-[8px] text-[12px] py-1 cursor-pointer rounded-[6px] px-3 ${
                   selectedOption === "text" ? "bg-[#2B303A] text-white" : "text-black"
                 }`}
                 onClick={() => handleOptionClick("text")}
