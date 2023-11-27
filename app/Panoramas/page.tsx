@@ -180,7 +180,7 @@ const Page = () => {
           {startPage > 1 && (
             <>
               <button
-                className={`pagination-button ${startPage === 1 ? 'active buttonBg' : ''}`}
+                className={`pagination-button ${startPage === 1 ? 'active buttonBg  text-white' : ''}`}
                 onClick={() => handlePageChange(1)}
               >
                 1
@@ -193,7 +193,7 @@ const Page = () => {
             return page > 0 && page <= totalPages ? (
               <button
                 key={page}
-                className={`pagination-button ${page === clickedPage ? 'active buttonBg' : ''}`}
+                className={`pagination-button ${page === clickedPage ? 'active buttonBg text-white' : ''}`}
                 onClick={() => handlePageChange(page)}
               >
                 {page}
@@ -204,7 +204,7 @@ const Page = () => {
             <>
               {endPage < totalPages - 3 && <span className="pagination-ellipsis my-auto">...</span>}
               <button
-                className={`pagination-button ${endPage === totalPages ? 'active paginationBG' : ''}`}
+                className={`pagination-button ${endPage === totalPages ? 'active paginationBG  text-white' : ''}`}
                 onClick={() => handlePageChange(totalPages)}
               >
                 {totalPages}

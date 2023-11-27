@@ -37,10 +37,10 @@ const Options = () => {
           <input type="file" accept={selectedOption === "image" ? "image/*" : "video/*"} id="file-input2" onChange={handleFileChange} />
           <label htmlFor="file-input2" className="cursor-pointer">
             {selectedFile && selectedOption === "image" && (
-              <img src={URL.createObjectURL(selectedFile)} alt="Uploaded Image" className="mx-auto" />
+              <img src={URL.createObjectURL(selectedFile)} alt="Uploaded Image" className="object-contain w-auto h-28 aspect-video" />
             )}
             {selectedFile && selectedOption === "video" && (
-              <video width="100%" height="100%" controls>
+              <video width="100%" height="100%" >
                 <source src={URL.createObjectURL(selectedFile)} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>

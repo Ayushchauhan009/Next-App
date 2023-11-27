@@ -408,7 +408,7 @@ const Page = () => {
             <>
               <button
                 className={`pagination-button ${
-                  startPage === 1 ? 'active buttonBg' : ''
+                  startPage === 1 ? 'active buttonBg text-white' : ''
                 }`}
                 onClick={() => handlePageChange(1)}
               >
@@ -425,7 +425,7 @@ const Page = () => {
               <button
                 key={page}
                 className={`pagination-button ${
-                  page === clickedPage ? 'active buttonBg' : ''
+                  page === clickedPage ? 'active buttonBg text-white' : ''
                 }`}
                 onClick={() => handlePageChange(page)}
               >
@@ -440,7 +440,7 @@ const Page = () => {
               )}
               <button
                 className={`pagination-button ${
-                  endPage === totalPages ? 'active paginationBG' : ''
+                  endPage === totalPages ? 'active paginationBG text-white' : ''
                 }`}
                 onClick={() => handlePageChange(totalPages)}
               >
