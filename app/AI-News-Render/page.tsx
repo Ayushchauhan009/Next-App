@@ -15,7 +15,7 @@ const page = () => {
     
   };
   return (
-    <div className='max-container flexOne padding-container3 gap-10 pt-10 pb-[33px] md:gap-10 lg:pt-10'>
+    <div className='max-container flexCenter padding-container space-x-5 gap-10 pt-10 pb-[33px] md:gap-5 lg:pt-10'>
       <NewAudio onImageUpload={handleImageUpload}/>
       <div className='w-[570px] xxl:w-[660px] 2xl:w-[820px] dropShadow rounded-[8px] h-[790px]   '>
       <OutputAI image={imageData}/>

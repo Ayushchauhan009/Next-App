@@ -45,7 +45,7 @@ const AiNewsReader = () => {
             <section className="bg-[#FAFAFA] w-[250px] h-[274px] border  rounded-[10px] z-10 boxShadow">
                 <div>
                     <div className="px-[11px] pt-[5px]">
-                        <div className="mx-auto border flex space-x-0 px-2 rounded-[8px] justify-between items-center bg-[#FAFAFA] boxShadow z-50">
+                        <div className="mx-auto border flex space-x-0 px-2 rounded-[8px] justify-around items-center bg-[#FAFAFA] boxShadow z-50">
                             <p
                                 className={`my-[8px] text-[12px] py-1 cursor-pointer rounded-[6px] font-medium px-3 ${selectedOption === "persona" ? "bg-[#2B303A] text-white" : "text-black"
                                     }`}
@@ -101,10 +101,10 @@ const AiNewsReader = () => {
                 </div> */}
                 <div className="flex justify-between items-center">
                     <div className="text-zinc-900 text-sm font-medium font-['Inter']">Text Box</div>
-                    <Image src="/record.svg" alt="Record Icon" width={35} height={35} />
+                    <Image src="/record.svg" alt="Record Icon" width={35} height={35} className="cursor-pointer"/>
                 </div>
                 <div>
-                    <input type="text" className="outline-none bg-white "/>
+                    <input type="text" className="outline-none bg-white"/>
                 </div>
                 <button className="w-[88px] h-[34px] px-2.5 py-[16.50px] bg-gradient-to-r from-green-300 to-blue-400 rounded-lg justify-center items-center gap-2.5 inline-flex text-white text-sm font-semibold absolute bottom-5 right-5 hover:from-blue-400 hover:to-green-300 transition-all">Enter</button>
             </section>

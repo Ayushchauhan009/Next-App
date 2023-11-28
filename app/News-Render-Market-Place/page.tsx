@@ -1,14 +1,31 @@
 "use client"
 
+import RatingStars from '@/components/RatingStars';
 import AddNew from '@/components/voice/AddNew';
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
+
+
+
+
+
+const imagePaths = [
+  '/model1.svg',
+  '/model2.svg',
+  '/model3.svg',
+  '/model1.svg',
+  // ... you can repeat the same image path or add different paths for the remaining indices
+  // '/commonModel.svg', // For the common image
+];
+
+
+
 
 const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTab, setActiveTab] = useState('My Creation');
   const [clickedPage, setClickedPage] = useState(1);
-  const totalPages = 20;
+  const totalPages = 10;
 
   const handlePageChange = (page: any) => {
     if (page >= 1 && page <= totalPages) {
@@ -44,6 +61,13 @@ const Page = () => {
 
   if (endPage === totalPages) {
     startPage = Math.max(1, totalPages - maxVisiblePages + 1);
+  }
+
+
+  const [activePerson, setActivePerson] = useState(null);
+
+  const handlePersonClick = (index:any) => {
+    setActivePerson(index);
   }
 
   return (
@@ -85,377 +109,83 @@ const Page = () => {
         {/* Content for each tab based on currentPage */}
         {activeTab === 'My Creation' && (
           <div className='grid grid-cols-6 gap-x-[17px] gap-y-[50px] mt-5'>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
+          {[...Array(12)].map((_, index) => (
+            <div key={index} className={`w-[180px] cursor-pointer xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
+              activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
+            }`} onClick={() => handlePersonClick(index)}>
+              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
+                <div className='flex justify-between space-x-40 mt-2'>
+                  <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2' />
+                  <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2' />
                 </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-            </div>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
+                {index < 4 && (
+                  <img
+                    src={imagePaths[index]}
+                    alt='models'
+                    className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                  />
+                )}
+                <div className=''>
+                  <RatingStars />
                 </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
+              </div>
+              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
             </div>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-                </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-            </div>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-                </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-            </div>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-                </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-            </div>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-                </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-            </div>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-                </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-            </div>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-                </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-            </div>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-                </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-            </div>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-                </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-            </div>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-                </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-            </div>
-            <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                    <div className='flex justify-between space-x-40 mt-2'>
-                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                    <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                    </div>
-                    <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-                </div>
-                <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-            </div>
-          
-          </div>
+          ))}
+        </div>
         )}
         {activeTab === 'My Saved' && (
-          <div className='grid grid-cols-6 gap-x-[17px] gap-y-[50px] mt-5'>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
+        <div className='grid grid-cols-6 gap-x-[17px] gap-y-[50px] mt-5'>
+        {[...Array(12)].map((_, index) => (
+          <div key={index} className={`w-[180px] cursor-pointer xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
+            activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
+          }`} onClick={() => handlePersonClick(index)}>
+            <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
+              <div className='flex justify-between space-x-40 mt-2'>
+                <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2' />
+                <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2' />
               </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
+              {index < 4 && (
+                <img
+                  src={imagePaths[index]}
+                  alt='models'
+                  className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                />
+              )}
+              <div className=''>
+                <RatingStars />
               </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
+            </div>
+            <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
           </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-        
-        </div>
+        ))}
+      </div>
         )}
         {activeTab === 'Public' && (
           <div className='grid grid-cols-6 gap-x-[17px] gap-y-[50px] mt-5'>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
+          {[...Array(12)].map((_, index) => (
+            <div key={index} className={`w-[180px] cursor-pointer xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
+              activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
+            }`} onClick={() => handlePersonClick(index)}>
               <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
+                <div className='flex justify-between space-x-40 mt-2'>
+                  <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2' />
+                  <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2' />
+                </div>
+                {index < 4 && (
+                  <img
+                    src={imagePaths[index]}
+                    alt='models'
+                    className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                  />
+                )}
+                <div className=''>
+                  <RatingStars />
+                </div>
               </div>
               <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-          <div className='w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD]'>
-              <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                  <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2'/>
-                  <Image src="/3Dots.svg" alt='dots' width={10} height={14} className='mb-2'/>
-                  </div>
-                  <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2'/>
-              </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
-          </div>
-        
+            </div>
+          ))}
         </div>
         )}
         <div className='pagination flex justify-evenly px-20 mt-10'>

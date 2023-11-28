@@ -2,11 +2,22 @@
 
 import Options from '@/components/Options'
 import Image from 'next/image'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect} from 'react'
 
 
+// import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 
-const PopupComponent = ({ isOpen, index, handleClose, handleOptionClick, selectedOption, renderInputBasedOnOption } : any) => {
+// GLB model file path
+// const glbFilePath = '/path/to/your/model.glb';
+
+
+// import dynamic from 'next/dynamic';
+
+// interface YourComponentProps {}
+
+// const GLBViewer = dynamic(() => import('@/components/GLBViewer'), { ssr: false });
+
+const PopupComponent = ({ isOpen, index, handleClose, handleOptionClick, selectedOption} : any) => {
   useEffect(() => {
     const handleOutsideClick = (event:any) => {
       if (isOpen && !event.target.closest(`.popup-${index}`)) {
@@ -20,43 +31,59 @@ const PopupComponent = ({ isOpen, index, handleClose, handleOptionClick, selecte
       document.removeEventListener('click', handleOutsideClick);
     };
   }, [isOpen, handleClose, index]);
+
+
+  const renderInputBasedOnOption:any = () => {
+    switch (selectedOption) {
+      case 'text':
+        return <div>
+          Render your 3D content
+          </div>; // Add your 3D content rendering logic
+      case 'image':
+        return <div>Render your image content here</div>; // Add your image content rendering logic
+      case 'video':
+        return <div>Render your video content here</div>; // Add your video content rendering logic
+      default:
+        return null;
+    }
+  };
   return (
     isOpen && (
       <div className="z-50 fixed w-[100%] flex items-center justify-center h-[100%] PopupBg inset-0">
         <div className="">
-          <section className="bg-white popup w-[283px] h-[240px] border mx-5 rounded-[10px] z-50 boxShadow">
-            <div>
-              <div className="px-[11px] pt-[5px]">
-                <div className="mx-auto border flex space-x-6 rounded-[8px] justify-center items-center bg-white boxShadow">
-                  <p
-                    className={`my-[8px] text-[12px] py-1 cursor-pointer rounded-[6px]  px-3 ${
-                      selectedOption === 'text' ? 'bg-[#2B303A] text-white' : 'text-black'
-                    }`}
-                    onClick={() => handleOptionClick('text')}
-                  >
-                    3D
-                  </p>
-                  <p
-                    className={`my-[8px] text-[12px] cursor-pointer rounded-[6px] px-2 py-1 ${
-                      selectedOption === 'image' ? 'bg-[#2B303A] text-white' : 'text-black'
-                    }`}
-                    onClick={() => handleOptionClick('image')}
-                  >
-                    Video
-                  </p>
-                  <p
-                    className={`text-[12px] my-[8px] cursor-pointer rounded-[6px] px-2 py-1 ${
-                      selectedOption === 'video' ? 'bg-[#2B303A] text-white' : ''
-                    }`}
-                    onClick={() => handleOptionClick('video')}
-                  >
-                    Panorama
-                  </p>
-                </div>
-              </div>
-              <div className="px-5 pt-[34px]">{renderInputBasedOnOption()}</div>
-            </div>
-          </section>
+        <section className="bg-white popup w-[283px] h-[240px] border mx-5 rounded-[10px] z-50 boxShadow">
+      <div>
+        <div className="px-[11px] pt-[5px]">
+          <div className="mx-auto border flex space-x-6 rounded-[8px] justify-center items-center bg-white boxShadow">
+            <p
+              className={`my-[8px] text-[12px] py-1 cursor-pointer rounded-[6px] px-3 ${
+                selectedOption === 'text' ? 'bg-[#2B303A] text-white' : 'text-black'
+              }`}
+              onClick={() => handleOptionClick('text')}
+            >
+              3D
+            </p>
+            <p
+              className={`my-[8px] text-[12px] cursor-pointer rounded-[6px] px-2 py-1 ${
+                selectedOption === 'image' ? 'bg-[#2B303A] text-white' : 'text-black'
+              }`}
+              onClick={() => handleOptionClick('image')}
+            >
+              Video
+            </p>
+            <p
+              className={`text-[12px] my-[8px] cursor-pointer rounded-[6px] px-2 py-1 ${
+                selectedOption === 'video' ? 'bg-[#2B303A] text-white' : ''
+              }`}
+              onClick={() => handleOptionClick('video')}
+            >
+              Panorama
+            </p>
+          </div>
+        </div>
+        <div className="px-5 pt-[34px]">{renderInputBasedOnOption()}</div>
+      </div>
+    </section>
         </div>
       </div>
     )
@@ -287,7 +314,7 @@ const Page = () => {
          }}
          selectedOption={selectedOption}
          renderInputBasedOnOption={() => {
-           return <div></div>;
+           return <div>Hi there</div>;
          }}
        />
      </div>

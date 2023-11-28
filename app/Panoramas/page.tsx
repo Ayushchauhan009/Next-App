@@ -2,6 +2,20 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import RatingStars from '@/components/RatingStars';
+
+
+
+const imagePaths = [
+  '/model1.svg',
+  '/model2.svg',
+  '/model3.svg',
+  '/model1.svg',
+];
+
+
+
+
 
 const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -87,59 +101,79 @@ const Page = () => {
         </div>
         {/* Content for each tab based on currentPage */}
         {activeTab === 'My Creation' && (
-          <div className="grid grid-cols-6 gap-x-[25px] 3xl:gap-x-[50px] gap-y-[50px] mt-5">
-            {[...Array(36)].map((_, index) => (
-              <div key={index} className= {`relative w-[180px] xxl:w-[198px] h-[265px] cursor-pointer dropShadow rounded-[12px] bg-[#338CDD] ${
-                activePerson === index ? 'bg-gradient-to-l  from-[#4CA9F0] to-[#70F2A4]' : ''
-              }`}
-              onClick={() => handlePersonClick(index)}>
-                {/* <div className="w-[180px] xxl:w-[198px] h-[265px] items-center flex-col justify-between rounded-[12px] bg-[#338CDD] flex"> */}
-                  <div className="w-[180px] xxl:w-[198px] h-[219px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex ">
-                    <div className="flex justify-between space-x-[140px] mt-2 ">
-                      <Image src="/more.svg" alt="more" width={14} height={20} className="mb-2 cursor-pointer" />
-                      <div className="relative">
-                        <Image src="/3Dots.svg" alt="dots" width={8} height={8} className="mb-2 mr-0 cursor-pointer z-20" />
-                      </div>
-                    </div>
-                    <Image src="/stars.svg" alt="stars" width={100} height={20} className="mb-2" />
-                  </div>
+           <div className="grid grid-cols-6 gap-x-[25px] 3xl:gap-x-[50px] gap-y-[50px] mt-5">
+           {[...Array(36)].map((_, index) => (
+             <div
+               key={index}
+               className={`relative w-[180px] xxl:w-[198px] h-[265px] cursor-pointer dropShadow rounded-[12px] bg-[#338CDD] ${
+                 activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
+               }`}
+               onClick={() => handlePersonClick(index)}
+             >
+               <div className="w-[180px] xxl:w-[198px] h-[219px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex">
+                 <div className="flex justify-between space-x-[140px] mt-2 ">
+                   <Image src="/more.svg" alt="more" width={14} height={20} className="mb-2 cursor-pointer" />
+                   <div className="relative">
+                     <Image src="/3Dots.svg" alt="dots" width={8} height={8} className="mb-2 mr-0 cursor-pointer z-20" />
+                   </div>
+                 </div>
                  
-                
-                <p
-                    className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
-                    
-                  >
-                    Person Name
-                  </p>
-              </div>
-            ))}
-          </div>
+                 {index < 4 && (
+                   <img
+                     src={imagePaths[index]}
+                     alt='models'
+                     className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                   />
+                 )}
+                 <div className='mb-2'>
+                   <RatingStars />
+                 </div>
+               </div>
+               
+               <p
+                 className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
+               >
+                 Person Name
+               </p>
+             </div>
+           ))}
+         </div>
         )}
         {activeTab === 'My Saved' && (
           <div className="grid grid-cols-6 gap-x-[25px] 3xl:gap-x-[50px] gap-y-[50px] mt-5">
           {[...Array(36)].map((_, index) => (
-            <div key={index} className= {`relative w-[180px] xxl:w-[198px] h-[265px] cursor-pointer dropShadow rounded-[12px] bg-[#338CDD] ${
-              activePerson === index ? 'bg-gradient-to-l  from-[#4CA9F0] to-[#70F2A4]' : ''
-            }`}
-            onClick={() => handlePersonClick(index)}>
-              {/* <div className="w-[180px] xxl:w-[198px] h-[265px] items-center flex-col justify-between rounded-[12px] bg-[#338CDD] flex"> */}
-                <div className="w-[180px] xxl:w-[198px] h-[219px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex ">
-                  <div className="flex justify-between space-x-[140px] mt-2 ">
-                    <Image src="/more.svg" alt="more" width={14} height={20} className="mb-2 cursor-pointer" />
-                    <div className="relative">
-                      <Image src="/3Dots.svg" alt="dots" width={8} height={8} className="mb-2 mr-0 cursor-pointer z-20" />
-                    </div>
+            <div
+              key={index}
+              className={`relative w-[180px] xxl:w-[198px] h-[265px] cursor-pointer dropShadow rounded-[12px] bg-[#338CDD] ${
+                activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
+              }`}
+              onClick={() => handlePersonClick(index)}
+            >
+              <div className="w-[180px] xxl:w-[198px] h-[219px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex">
+                <div className="flex justify-between space-x-[140px] mt-2 ">
+                  <Image src="/more.svg" alt="more" width={14} height={20} className="mb-2 cursor-pointer" />
+                  <div className="relative">
+                    <Image src="/3Dots.svg" alt="dots" width={8} height={8} className="mb-2 mr-0 cursor-pointer z-20" />
                   </div>
-                  <Image src="/stars.svg" alt="stars" width={100} height={20} className="mb-2" />
                 </div>
-               
+                
+                {index < 4 && (
+                  <img
+                    src={imagePaths[index]}
+                    alt='models'
+                    className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                  />
+                )}
+                <div className='mb-2'>
+                  <RatingStars />
+                </div>
+              </div>
               
               <p
-                  className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
-                  
-                >
-                  Person Name
-                </p>
+                className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
+              >
+                Person Name
+              </p>
             </div>
           ))}
         </div>
@@ -147,28 +181,38 @@ const Page = () => {
         {activeTab === 'Public' && (
           <div className="grid grid-cols-6 gap-x-[25px] 3xl:gap-x-[50px] gap-y-[50px] mt-5">
           {[...Array(36)].map((_, index) => (
-            <div key={index} className= {`relative w-[180px] xxl:w-[198px] h-[265px] cursor-pointer dropShadow rounded-[12px] bg-[#338CDD] ${
-              activePerson === index ? 'bg-gradient-to-l  from-[#4CA9F0] to-[#70F2A4]' : ''
-            }`}
-            onClick={() => handlePersonClick(index)}>
-              {/* <div className="w-[180px] xxl:w-[198px] h-[265px] items-center flex-col justify-between rounded-[12px] bg-[#338CDD] flex"> */}
-                <div className="w-[180px] xxl:w-[198px] h-[219px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex ">
-                  <div className="flex justify-between space-x-[140px] mt-2 ">
-                    <Image src="/more.svg" alt="more" width={14} height={20} className="mb-2 cursor-pointer" />
-                    <div className="relative">
-                      <Image src="/3Dots.svg" alt="dots" width={8} height={8} className="mb-2 mr-0 cursor-pointer z-20" />
-                    </div>
+            <div
+              key={index}
+              className={`relative w-[180px] xxl:w-[198px] h-[265px] cursor-pointer dropShadow rounded-[12px] bg-[#338CDD] ${
+                activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
+              }`}
+              onClick={() => handlePersonClick(index)}
+            >
+              <div className="w-[180px] xxl:w-[198px] h-[219px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex">
+                <div className="flex justify-between space-x-[140px] mt-2 ">
+                  <Image src="/more.svg" alt="more" width={14} height={20} className="mb-2 cursor-pointer" />
+                  <div className="relative">
+                    <Image src="/3Dots.svg" alt="dots" width={8} height={8} className="mb-2 mr-0 cursor-pointer z-20" />
                   </div>
-                  <Image src="/stars.svg" alt="stars" width={100} height={20} className="mb-2" />
                 </div>
-               
+                
+                {index < 4 && (
+                  <img
+                    src={imagePaths[index]}
+                    alt='models'
+                    className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                  />
+                )}
+                <div className='mb-2'>
+                  <RatingStars />
+                </div>
+              </div>
               
               <p
-                  className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
-                  
-                >
-                  Person Name
-                </p>
+                className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
+              >
+                Person Name
+              </p>
             </div>
           ))}
         </div>

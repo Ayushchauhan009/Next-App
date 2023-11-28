@@ -236,6 +236,21 @@ const Filters = () => {
     }
   };
 
+
+
+  const [isActiveRemove, setIsActiveRemove] = useState(true);
+  const [isActiveTrack, setIsActiveTrack] = useState(false);
+
+  const handleItemClick = (item:any) => {
+    if (item === 'remove') {
+      setIsActiveRemove(true);
+      setIsActiveTrack(false);
+    } else if (item === 'track') {
+      setIsActiveRemove(false);
+      setIsActiveTrack(true);
+    }
+  };
+
   return (
     <div className="bg-white w-[290px] flex h-[669px]  boxShadow 2xl:max-container relative space-x-[18px] rounded-[10px] lg:mt-0 p-5    lg:mb-[33px]">
       <div className=''>
@@ -251,11 +266,17 @@ const Filters = () => {
             <p>Y</p>
           </div>
           <div className='flex items-center space-x-3 my-3 ml-2'>
-            <div className='bg-[#ECEDED] border boxShadow w-[32px] h-[25px] rounded-[5px]'></div>
-            <p className='text-[14px]'>Remove</p>
-            <div className='bg-[#ECEDED] border boxShadow w-[32px] h-[25px] rounded-[5px]'></div>
-            <p className='text-[14px]'>Track</p>
-          </div>
+      <div
+        className={`bg-[#ECEDED] cursor-pointer  boxShadow w-[32px] h-[25px] rounded-[5px] ${isActiveRemove ? 'bg-black' : ''} ${isActiveRemove ? 'p-2' : ''}`}
+        onClick={() => handleItemClick('remove')}
+      ></div>
+      <p className={`text-[14px] cursor-pointer ${isActiveRemove ? 'text-black' : ''}`} onClick={() => handleItemClick('remove')}>Remove</p>
+      <div
+        className={`bg-[#ECEDED] cursor-pointer boxShadow w-[32px]  h-[25px] rounded-[5px] ${isActiveTrack ? 'bg-black border-[#ECEDED]' : ''} ${isActiveTrack ? 'p-2' : ''}`}
+        onClick={() => handleItemClick('track')}
+      ></div>
+      <p className={`text-[14px] cursor-pointer ${isActiveTrack ? 'text-black' : ''}`} onClick={() => handleItemClick('track')}>Track</p>
+    </div>
         </div>
         <div className={`2Div w-[254px] h-[86px] my-[15px] py-2 px-2 border rounded-[8px] boxBg boxShadow ${activeButton === 2 ? 'opacity-100' : 'opacity-50 pointer-events-none'}`}>
           <p className="font-medium ">Edit Text</p>
