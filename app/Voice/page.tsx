@@ -160,7 +160,7 @@ const Page = () => {
         {activeTab === 'Public' && (
           <div className='grid grid-cols-5 gap-x-[17px] gap-y-[50px] mt-5'>
           {[...Array(10)].map((_, index) => (
-            <div key={index} className={`w-[180px] cursor-pointer xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
+            <div key={index} className={`w-[180px]  xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
               activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
             }`} onClick={() => handlePersonClick(index)}>
               <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>

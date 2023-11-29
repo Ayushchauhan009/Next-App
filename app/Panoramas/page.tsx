@@ -126,7 +126,7 @@ const Page = () => {
            {[...Array(36)].map((_, index) => (
              <div
                key={index}
-               className={`relative w-[180px] xxl:w-[198px] h-[265px] cursor-pointer dropShadow rounded-[12px] bg-[#338CDD] ${
+               className={`relative w-[180px] xxl:w-[198px] h-[265px]  dropShadow rounded-[12px] bg-[#338CDD] ${
                  activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
                }`}
                
@@ -185,7 +185,7 @@ const Page = () => {
           {[...Array(36)].map((_, index) => (
             <div
               key={index}
-              className={`relative w-[180px] xxl:w-[198px] h-[265px] cursor-pointer dropShadow rounded-[12px] bg-[#338CDD] ${
+              className={`relative w-[180px] xxl:w-[198px] h-[265px]  dropShadow rounded-[12px] bg-[#338CDD] ${
                 activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
               }`}
               onClick={() => handlePersonClick(index)}
@@ -243,7 +243,7 @@ const Page = () => {
           {[...Array(36)].map((_, index) => (
             <div
               key={index}
-              className={`relative w-[180px] xxl:w-[198px] h-[265px] cursor-pointer dropShadow rounded-[12px] bg-[#338CDD] ${
+              className={`relative w-[180px] xxl:w-[198px] h-[265px] dropShadow rounded-[12px] bg-[#338CDD] ${
                 activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
               }`}
               onClick={() => handlePersonClick(index)}
