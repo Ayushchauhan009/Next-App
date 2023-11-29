@@ -143,7 +143,7 @@ const Page = () => {
                    <img
                      src={imagePaths[index]}
                      alt='models'
-                     className='model-Image w-[170px] h-auto -mt-4 cursor-pointer'
+                     className='model-Image w-[170px] h-auto -mt-4'
                    />
                  )}
                  <div className='mb-2'>
@@ -202,7 +202,7 @@ const Page = () => {
                   <img
                     src={imagePaths[index]}
                     alt='models'
-                    className='model-Image w-[170px] h-auto -mt-4 cursor-pointer'
+                    className='model-Image w-[170px] h-auto -mt-4'
                   />
                 )}
                 <div className='mb-2'>
@@ -260,7 +260,7 @@ const Page = () => {
                   <img
                     src={imagePaths[index]}
                     alt='models'
-                    className='model-Image w-[170px] h-auto -mt-4 cursor-pointer'
+                    className='model-Image w-[170px] h-auto -mt-4'
                   />
                 )}
                 <div className='mb-2'>
