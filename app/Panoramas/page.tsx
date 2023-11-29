@@ -129,7 +129,7 @@ const Page = () => {
                className={`relative w-[180px] xxl:w-[198px] h-[265px] cursor-pointer dropShadow rounded-[12px] bg-[#338CDD] ${
                  activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
                }`}
-               onClick={() => handlePersonClick(index)}
+               
              >
                <div className="w-[180px] xxl:w-[198px] h-[219px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex">
                  <div className="flex justify-between space-x-[140px] mt-2 ">
@@ -152,6 +152,7 @@ const Page = () => {
                </div>
                
                <p
+               key={index}
                  className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
                  onClick={() => {handlePersonClick(index)}}
                >

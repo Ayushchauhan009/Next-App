@@ -110,7 +110,7 @@ const Page = () => {
                activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
              }`} onClick={() => handlePersonClick(index)}>
                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                 <div className='flex justify-between space-x-40 mt-2'>
+                 <div className='flex justify-around space-x-36 mt-2'>
                    <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2' />
                    <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2' />
                  </div>
@@ -118,10 +118,10 @@ const Page = () => {
                    <img
                      src={imagePaths[index]}
                      alt='models'
-                     className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                     className='model-Image w-[170px] h-auto -mt-4 cursor-pointer'
                    />
                  )}
-                 <div className=''>
+                 <div className='mb-2'>
                    <RatingStars />
                  </div>
                </div>
@@ -137,7 +137,7 @@ const Page = () => {
                activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
              }`} onClick={() => handlePersonClick(index)}>
                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                 <div className='flex justify-between space-x-40 mt-2'>
+                 <div className='flex justify-around space-x-36 mt-2'>
                    <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2' />
                    <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2' />
                  </div>
@@ -145,10 +145,10 @@ const Page = () => {
                    <img
                      src={imagePaths[index]}
                      alt='models'
-                     className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                     className='model-Image w-[170px] h-auto -mt-4 cursor-pointer'
                    />
                  )}
-                 <div className=''>
+                 <div className='mb-2'>
                    <RatingStars />
                  </div>
                </div>
@@ -164,7 +164,7 @@ const Page = () => {
               activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
             }`} onClick={() => handlePersonClick(index)}>
               <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                <div className='flex justify-between space-x-40 mt-2'>
+                <div className='flex justify-around space-x-36 mt-2'>
                   <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2' />
                   <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2' />
                 </div>
@@ -172,10 +172,10 @@ const Page = () => {
                   <img
                     src={imagePaths[index]}
                     alt='models'
-                    className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                    className='model-Image w-[170px] h-auto -mt-4 cursor-pointer'
                   />
                 )}
-                <div className=''>
+                <div className='mb-2'>
                   <RatingStars />
                 </div>
               </div>
