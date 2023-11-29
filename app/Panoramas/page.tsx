@@ -122,7 +122,7 @@ const Page = () => {
                    <img
                      src={imagePaths[index]}
                      alt='models'
-                     className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                     className='model-Image w-[170px] h-auto -mt-4 cursor-pointer'
                    />
                  )}
                  <div className='mb-2'>
@@ -161,7 +161,7 @@ const Page = () => {
                   <img
                     src={imagePaths[index]}
                     alt='models'
-                    className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                    className='model-Image w-[170px] h-auto -mt-4 cursor-pointer'
                   />
                 )}
                 <div className='mb-2'>
@@ -200,7 +200,7 @@ const Page = () => {
                   <img
                     src={imagePaths[index]}
                     alt='models'
-                    className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                    className='model-Image w-[170px] h-auto -mt-4 cursor-pointer'
                   />
                 )}
                 <div className='mb-2'>
@@ -209,7 +209,7 @@ const Page = () => {
               </div>
               
               <p
-                className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
+                className={`font-semibold flex justify-center items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
               >
                 Person Name
               </p>

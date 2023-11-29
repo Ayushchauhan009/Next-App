@@ -12,8 +12,6 @@ const imagePaths = [
   '/model2.svg',
   '/model3.svg',
   '/model1.svg',
-  // ... you can repeat the same image path or add different paths for the remaining indices
-  // '/commonModel.svg', // For the common image
 ];
 
 
