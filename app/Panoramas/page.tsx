@@ -188,7 +188,7 @@ const Page = () => {
               className={`relative w-[180px] xxl:w-[198px] h-[265px]  dropShadow rounded-[12px] bg-[#338CDD] ${
                 activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
               }`}
-              onClick={() => handlePersonClick(index)}
+              
             >
               <div className="w-[180px] xxl:w-[198px] h-[219px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex">
                 <div className="flex justify-between space-x-[140px] mt-2 ">
@@ -211,6 +211,7 @@ const Page = () => {
               </div>
               
               <p
+              key={index}
                 className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
                 onClick={() => {handlePersonClick(index)}}
               >
@@ -239,62 +240,63 @@ const Page = () => {
         </div>
         )}
         {activeTab === 'Public' && (
-          <div className="grid grid-cols-6 gap-x-[25px] 3xl:gap-x-[50px] gap-y-[50px] mt-5">
-          {[...Array(36)].map((_, index) => (
-            <div
-              key={index}
-              className={`relative w-[180px] xxl:w-[198px] h-[265px] dropShadow rounded-[12px] bg-[#338CDD] ${
-                activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
-              }`}
-              onClick={() => handlePersonClick(index)}
-            >
-              <div className="w-[180px] xxl:w-[198px] h-[219px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex">
-                <div className="flex justify-between space-x-[140px] mt-2 ">
-                  <Image src="/more.svg" alt="more" width={14} height={20} className="mb-2 cursor-pointer" />
-                  <div className="relative">
-                    <Image src="/3Dots.svg" alt="dots" width={8} height={8} className="mb-2 mr-0 cursor-pointer z-20" />
-                  </div>
-                </div>
-                
-                {index < 4 && (
-                  <img
-                    src={imagePaths[index]}
-                    alt='models'
-                    className='model-Image w-[170px] h-auto -mt-4'
-                  />
-                )}
-                <div className='mb-2'>
-                  <RatingStars />
-                </div>
-              </div>
-              
-              <p
-                className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
-                onClick={() => {handlePersonClick(index)}}
-              >
-                Person Name
-              </p>
-              {openPopup && activePerson === index && (
-               <div className='w-full flex justify-center items-center z-50 h-full fixed inset-0 bg-black bg-opacity-50 '>
-                  <section className="bg-white popup-content w-[283px] h-[224px] border mx-5  z-50 boxShadow">
-      <div>
-        <div className="px-[11px] pt-[5px]">
-          <div className="mx-auto border flex space-x-6 rounded-[8px] justify-center items-center bg-white boxShadow">
-          <p
-              className={`text-[12px] my-[8px] cursor-pointer rounded-[6px] px-2 bg-[#2B303A] text-white py-1`}
-            >
-              Panorama
-            </p>
-          </div>
-        </div>
-        
-      </div>
-    </section>
-          </div>
-        )}
-        </div>
-          ))}
-        </div>
+         <div className="grid grid-cols-6 gap-x-[25px] 3xl:gap-x-[50px] gap-y-[50px] mt-5">
+         {[...Array(36)].map((_, index) => (
+           <div
+             key={index}
+             className={`relative w-[180px] xxl:w-[198px] h-[265px]  dropShadow rounded-[12px] bg-[#338CDD] ${
+               activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
+             }`}
+             
+           >
+             <div className="w-[180px] xxl:w-[198px] h-[219px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex">
+               <div className="flex justify-between space-x-[140px] mt-2 ">
+                 <Image src="/more.svg" alt="more" width={14} height={20} className="mb-2 cursor-pointer" />
+                 <div className="relative">
+                   <Image src="/3Dots.svg" alt="dots" width={8} height={8} className="mb-2 mr-0 cursor-pointer z-20" />
+                 </div>
+               </div>
+               
+               {index < 4 && (
+                 <img
+                   src={imagePaths[index]}
+                   alt='models'
+                   className='model-Image w-[170px] h-auto -mt-4'
+                 />
+               )}
+               <div className='mb-2'>
+                 <RatingStars />
+               </div>
+             </div>
+             
+             <p
+             key={index}
+               className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
+               onClick={() => {handlePersonClick(index)}}
+             >
+               Person Name
+             </p>
+             {openPopup && activePerson === index && (
+              <div className='w-full flex justify-center items-center z-50 h-full fixed inset-0 bg-black bg-opacity-50 '>
+                 <section className="bg-white popup-content w-[283px] h-[224px] border mx-5  z-50 boxShadow">
+     <div>
+       <div className="px-[11px] pt-[5px]">
+         <div className="mx-auto border flex space-x-6 rounded-[8px] justify-center items-center bg-white boxShadow">
+         <p
+             className={`text-[12px] my-[8px] cursor-pointer rounded-[6px] px-2 bg-[#2B303A] text-white py-1`}
+           >
+             Panorama
+           </p>
+         </div>
+       </div>
+       
+     </div>
+   </section>
+         </div>
+       )}
+       </div>
+         ))}
+       </div>
         )}
         <div className="pagination flex justify-center space-x-[55px] mt-10">
           <button className="pagination-button" onClick={handleLeftArrowClick}>
