@@ -68,7 +68,6 @@ const Page = () => {
 
   const closePopup = () => {
     setOpenPopup(false);
-    setActivePerson(null);
   };
 
   useEffect(() => {
@@ -185,7 +184,7 @@ const Page = () => {
           {[...Array(36)].map((_, index) => (
             <div
               key={index}
-              className={`relative w-[180px] xxl:w-[198px] h-[265px]  dropShadow rounded-[12px] bg-[#338CDD] ${
+              className={`relative w-[180px] xxl:w-[198px] h-[265px] dropShadow rounded-[12px] bg-[#338CDD] ${
                 activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
               }`}
               
@@ -212,7 +211,7 @@ const Page = () => {
               
               <p
               key={index}
-                className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
+                className={`font-semibold flex justify-center items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
                 onClick={() => {handlePersonClick(index)}}
               >
                 Person Name
