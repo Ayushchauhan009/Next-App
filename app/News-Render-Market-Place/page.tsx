@@ -114,7 +114,7 @@ const Page = () => {
               activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
             }`} >
               <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                <div className='flex justify-between space-x-40 mt-2'>
+                <div className='flex justify-between space-x-36 mt-2'>
                   <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2 cursor-pointer' />
                   <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2 cursor-pointer' />
                 </div>
@@ -141,7 +141,7 @@ const Page = () => {
             activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
           }`} >
             <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-              <div className='flex justify-between space-x-40 mt-2'>
+              <div className='flex justify-between space-x-36 mt-2'>
                 <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2 cursor-pointer' />
                 <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2 cursor-pointer' />
               </div>
@@ -168,7 +168,7 @@ const Page = () => {
               activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
             }`} >
               <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
-                <div className='flex justify-between space-x-40 mt-2'>
+                <div className='flex justify-between space-x-36 mt-2'>
                   <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2 cursor-pointer' />
                   <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2 cursor-pointer' />
                 </div>
@@ -188,7 +188,7 @@ const Page = () => {
           ))}
         </div>
         )}
-        <div className='pagination flex justify-evenly px-20 mt-10'>
+        <div className='pagination flex justify-center space-x-[55px] mt-10'>
           <button className='pagination-button' onClick={handleLeftArrowClick}>
             <Image src="/leftArrow.svg" alt='left' width={12} height={20} />
           </button>

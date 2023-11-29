@@ -26,7 +26,7 @@ const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTab, setActiveTab] = useState('My Creation');
   const [clickedPage, setClickedPage] = useState(1);
-  const totalPages = 20;
+  const totalPages = 10;
 
   const handlePageChange = (page: any) => {
     if (page >= 1 && page <= totalPages) {
@@ -184,7 +184,7 @@ const Page = () => {
           ))}
         </div>
         )}
-        <div className='pagination flex justify-around mt-10'>
+        <div className='pagination flex space-x-[55px] justify-center mt-10'>
           <button className='pagination-button' onClick={handleLeftArrowClick}>
             <Image src="/leftArrow.svg" alt='left' width={12} height={20} />
           </button>
