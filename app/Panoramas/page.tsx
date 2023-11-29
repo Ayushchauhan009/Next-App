@@ -59,10 +59,31 @@ const Page = () => {
   }
 
   const [activePerson, setActivePerson] = useState(null);
+  const [openPopup, setOpenPopup] = useState(false);
 
   const handlePersonClick = (index:any) => {
     setActivePerson(index);
+    setOpenPopup(true);
   };
+
+  const closePopup = () => {
+    setOpenPopup(false);
+    setActivePerson(null);
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event:any) => {
+      if (openPopup && !event.target.closest(".popup-content")) {
+        closePopup();
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [openPopup]);
 
   return (
     <div className="max-container flexTwo padding-container2 pb-[33px]">
@@ -132,10 +153,29 @@ const Page = () => {
                
                <p
                  className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
+                 onClick={() => {handlePersonClick(index)}}
                >
                  Person Name
                </p>
-             </div>
+               {openPopup && activePerson === index && (
+                <div className='w-full flex justify-center items-center z-50 h-full fixed inset-0 bg-black bg-opacity-50 '>
+                   <section className="bg-white popup-content w-[283px] h-[224px] border mx-5  z-50 boxShadow">
+       <div>
+         <div className="px-[11px] pt-[5px]">
+           <div className="mx-auto border flex space-x-6 rounded-[8px] justify-center items-center bg-white boxShadow">
+           <p
+               className={`text-[12px] my-[8px] cursor-pointer rounded-[6px] px-2 bg-[#2B303A] text-white py-1`}
+             >
+               Panorama
+             </p>
+           </div>
+         </div>
+         
+       </div>
+     </section>
+           </div>
+         )}
+         </div>
            ))}
          </div>
         )}
@@ -171,10 +211,29 @@ const Page = () => {
               
               <p
                 className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
+                onClick={() => {handlePersonClick(index)}}
               >
                 Person Name
               </p>
-            </div>
+              {openPopup && activePerson === index && (
+               <div className='w-full flex justify-center items-center z-50 h-full fixed inset-0 bg-black bg-opacity-50 '>
+                  <section className="bg-white popup-content w-[283px] h-[224px] border mx-5  z-50 boxShadow">
+      <div>
+        <div className="px-[11px] pt-[5px]">
+          <div className="mx-auto border flex space-x-6 rounded-[8px] justify-center items-center bg-white boxShadow">
+          <p
+              className={`text-[12px] my-[8px] cursor-pointer rounded-[6px] px-2 bg-[#2B303A] text-white py-1`}
+            >
+              Panorama
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+          </div>
+        )}
+        </div>
           ))}
         </div>
         )}
@@ -209,11 +268,30 @@ const Page = () => {
               </div>
               
               <p
-                className={`font-semibold flex justify-center items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
+                className={`font-semibold flex justify-center  items-center w-full pt-2.5 rounded-b-[12px] text-white cursor-pointer `}
+                onClick={() => {handlePersonClick(index)}}
               >
                 Person Name
               </p>
-            </div>
+              {openPopup && activePerson === index && (
+               <div className='w-full flex justify-center items-center z-50 h-full fixed inset-0 bg-black bg-opacity-50 '>
+                  <section className="bg-white popup-content w-[283px] h-[224px] border mx-5  z-50 boxShadow">
+      <div>
+        <div className="px-[11px] pt-[5px]">
+          <div className="mx-auto border flex space-x-6 rounded-[8px] justify-center items-center bg-white boxShadow">
+          <p
+              className={`text-[12px] my-[8px] cursor-pointer rounded-[6px] px-2 bg-[#2B303A] text-white py-1`}
+            >
+              Panorama
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+          </div>
+        )}
+        </div>
           ))}
         </div>
         )}
@@ -229,7 +307,7 @@ const Page = () => {
               >
                 1
               </button>
-              {startPage > 3 && <span className="pagination-ellipsis my-auto">...</span>}
+              {startPage > 2 && <span className="pagination-ellipsis my-auto">...</span>}
             </>
           )}
           {Array.from({ length: endPage - startPage + 1 }, (_, index) => {
@@ -246,7 +324,7 @@ const Page = () => {
           })}
           {endPage < totalPages && (
             <>
-              {endPage < totalPages - 3 && <span className="pagination-ellipsis my-auto">...</span>}
+              {endPage < totalPages - 1 && <span className="pagination-ellipsis my-auto">...</span>}
               <button
                 className={`pagination-button ${endPage === totalPages ? 'active paginationBG  text-white' : ''}`}
                 onClick={() => handlePageChange(totalPages)}
