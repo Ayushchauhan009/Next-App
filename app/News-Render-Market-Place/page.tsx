@@ -110,12 +110,12 @@ const Page = () => {
         {activeTab === 'My Creation' && (
           <div className='grid grid-cols-6 gap-x-[17px] gap-y-[50px] mt-5'>
           {[...Array(12)].map((_, index) => (
-            <div key={index} className={`w-[180px] cursor-pointer xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
+            <div key={index} className={`w-[180px]  xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
               activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
             }`} onClick={() => handlePersonClick(index)}>
               <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
                 <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2' />
+                  <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2 cursor' />
                   <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2' />
                 </div>
                 {index < 4 && (
