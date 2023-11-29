@@ -133,9 +133,9 @@ const Page = () => {
         {activeTab === 'My Saved' && (
            <div className='grid grid-cols-5 gap-x-[17px] gap-y-[50px] mt-5'>
            {[...Array(10)].map((_, index) => (
-             <div key={index} className={`w-[180px] cursor-pointer xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
+             <div key={index} className={`w-[180px] xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
                activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
-             }`} onClick={() => handlePersonClick(index)}>
+             }`}>
                <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
                  <div className='flex justify-around space-x-36 mt-2'>
                    <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2' />
@@ -145,14 +145,14 @@ const Page = () => {
                    <img
                      src={imagePaths[index]}
                      alt='models'
-                     className='model-Image w-[170px] h-auto -mt-4 cursor-pointer'
+                     className='model-Image w-[170px] h-auto -mt-4'
                    />
                  )}
                  <div className='mb-2'>
                    <RatingStars />
                  </div>
                </div>
-               <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
+               <p key={index} onClick={() => handlePersonClick(index)} className='font-semibold flex justify-center items-center mt-3 cursor-pointer text-white'>Person Name</p>
              </div>
            ))}
          </div>
@@ -162,7 +162,7 @@ const Page = () => {
           {[...Array(10)].map((_, index) => (
             <div key={index} className={`w-[180px]  xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
               activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
-            }`} onClick={() => handlePersonClick(index)}>
+            }`} >
               <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
                 <div className='flex justify-around space-x-36 mt-2'>
                   <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2' />
@@ -179,7 +179,7 @@ const Page = () => {
                   <RatingStars />
                 </div>
               </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
+              <p key={index} onClick={() => handlePersonClick(index)} className='font-semibold flex justify-center items-center mt-3 cursor-pointer text-white'>Person Name</p>
             </div>
           ))}
         </div>
