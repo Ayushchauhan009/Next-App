@@ -112,24 +112,24 @@ const Page = () => {
           {[...Array(12)].map((_, index) => (
             <div key={index} className={`w-[180px]  xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
               activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
-            }`} onClick={() => handlePersonClick(index)}>
+            }`} >
               <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
                 <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2 cursor' />
-                  <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2' />
+                  <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2 cursor-pointer' />
+                  <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2 cursor-pointer' />
                 </div>
                 {index < 4 && (
                   <img
                     src={imagePaths[index]}
                     alt='models'
-                    className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                    className='model-Image w-[170px] h-auto -mt-4'
                   />
                 )}
-                <div className=''>
+                <div className='mb-2'>
                   <RatingStars />
                 </div>
               </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
+              <p key={index} onClick={() => handlePersonClick(index)} className='font-semibold flex cursor-pointer justify-center items-center mt-3 text-white'>Person Name</p>
             </div>
           ))}
         </div>
@@ -137,26 +137,26 @@ const Page = () => {
         {activeTab === 'My Saved' && (
         <div className='grid grid-cols-6 gap-x-[17px] gap-y-[50px] mt-5'>
         {[...Array(12)].map((_, index) => (
-          <div key={index} className={`w-[180px] cursor-pointer xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
+          <div key={index} className={`w-[180px]  xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
             activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
-          }`} onClick={() => handlePersonClick(index)}>
+          }`} >
             <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
               <div className='flex justify-between space-x-40 mt-2'>
-                <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2' />
-                <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2' />
+                <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2 cursor-pointer' />
+                <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2 cursor-pointer' />
               </div>
               {index < 4 && (
                 <img
                   src={imagePaths[index]}
                   alt='models'
-                  className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                  className='model-Image w-[170px] h-auto -mt-4'
                 />
               )}
-              <div className=''>
+              <div className='mb-2'>
                 <RatingStars />
               </div>
             </div>
-            <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
+            <p key={index} onClick={() => handlePersonClick(index)} className='font-semibold cursor-pointer flex justify-center items-center mt-3 text-white'>Person Name</p>
           </div>
         ))}
       </div>
@@ -164,26 +164,26 @@ const Page = () => {
         {activeTab === 'Public' && (
           <div className='grid grid-cols-6 gap-x-[17px] gap-y-[50px] mt-5'>
           {[...Array(12)].map((_, index) => (
-            <div key={index} className={`w-[180px] cursor-pointer xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
+            <div key={index} className={`w-[180px]  xxl:w-[198px] h-[272px] dropShadow rounded-[12px] bg-[#338CDD] ${
               activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
-            }`} onClick={() => handlePersonClick(index)}>
+            }`} >
               <div className='w-[180px] xxl:w-[198px] h-[224px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex'>
                 <div className='flex justify-between space-x-40 mt-2'>
-                  <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2' />
-                  <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2' />
+                  <Image src='/more.svg' alt='more' width={14} height={20} className='mb-2 cursor-pointer' />
+                  <Image src='/3Dots.svg' alt='dots' width={10} height={14} className='mb-2 cursor-pointer' />
                 </div>
                 {index < 4 && (
                   <img
                     src={imagePaths[index]}
                     alt='models'
-                    className='model-Image w-[170px] h-auto -mt-2 cursor-pointer'
+                    className='model-Image w-[170px] h-auto -mt-4'
                   />
                 )}
-                <div className=''>
+                <div className='mb-2'>
                   <RatingStars />
                 </div>
               </div>
-              <p className='font-semibold flex justify-center items-center mt-3 text-white'>Person Name</p>
+              <p key={index} onClick={() => handlePersonClick(index)} className='font-semibold cursor-pointer flex justify-center items-center mt-3 text-white'>Person Name</p>
             </div>
           ))}
         </div>
