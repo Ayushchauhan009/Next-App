@@ -38,7 +38,7 @@ const AiNewsReader = () => {
     };
 
     return (
-        <form className="bg-white w-[290px] h-[790px] rounded-[10px] boxShadow 2xl:max-container relative flex px-5 flex-col lg:mt-0 pt-[30px] lg:mb-[33px]">
+        <form className="bg-white w-[290px] h-[790px] rounded-[10px] boxShadow 2xl:max-container relative flex px-5 flex-col  pt-[30px] lg:mb-[33px]">
 
             <div className="text-zinc-900 text-base font-semibold font-['Inter'] mb-3">Talk to a:</div>
 

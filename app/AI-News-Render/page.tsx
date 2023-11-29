@@ -15,13 +15,15 @@ const page = () => {
     
   };
   return (
-    <div className='max-container flexCenter padding-container space-x-5 gap-10 pt-10 pb-[33px] md:gap-5 lg:pt-10'>
+    <div className='max-container flexCenter padding-container3 space-x-5 pt-5 gap-x-10  pb-[33px] md:gap-x-5 '>
       <NewAudio onImageUpload={handleImageUpload}/>
-      <div className='w-[570px] xxl:w-[660px] 2xl:w-[820px] dropShadow rounded-[8px] h-[790px]   '>
-      <OutputAI image={imageData}/>
+      <div className='w-[570px] xxl:w-[660px] 2xl:w-[820px] -mt-3 dropShadow rounded-[8px] h-[790px]   '>
+        <OutputAI image={imageData}/>
         </div>
      
+      <div className='mt-5'>
       <AiNewsReader />
+      </div>
     </div>
   )
 }

@@ -41,7 +41,7 @@ const OutputAI: React.FC<GuideProps> = ({ video, image, audio }) => {
         )}
 
         {!video && !image && !audio && (
-          <div className='w-[570px] xxl:w-[660px] 2xl:w-[820px] dropShadow rounded-[8px] h-[790px] my-auto flex items-center justify-center text-center font-bold text-[43px]'>
+          <div className='w-[570px] xxl:w-[660px] 2xl:w-[820px] dropShadow rounded-[8px] h-[790px] flex items-center justify-center text-center font-bold text-[43px]'>
             <h1>Output</h1>
           </div>
         )}
