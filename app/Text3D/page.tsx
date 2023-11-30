@@ -41,9 +41,9 @@ const PopupComponent = ({ isOpen, index, handleClose, handleOptionClick, selecte
           <ThreeScene2 width={255} height={170} />
           </div>; 
       case 'image':
-        return <div className="three-scene-container">Render your image content here</div>; 
+        return <div className="three-scene-container">Render your video content here</div>; 
       case 'video':
-        return <div className='three-scene-container'>Render your video content here</div>; 
+        return <div className='three-scene-container'>Render your Panorama content here</div>; 
       default:
         return null;
     }
