@@ -98,7 +98,7 @@ const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTab, setActiveTab] = useState('My Creation');
   const [clickedPage, setClickedPage] = useState(1);
-  const totalPages = 20;
+  const totalPages = 10;
 
   const handlePageChange = (page: any) => {
     if (page >= 1 && page <= totalPages) {
@@ -136,8 +136,14 @@ const Page = () => {
   }
 
   const [isPopupOpen, setPopupOpen] = useState(Array(10).fill(false));
-  const [selectedOption, setSelectedOption] = useState('text'); // Assuming you have this state
-  // Add other necessary states and functions
+  const [selectedOption, setSelectedOption] = useState('text');
+  const [activePerson, setActivePerson] = useState(null);
+  
+  
+  const handlePersonClick = (index:any) => {
+    setActivePerson(index);
+  };
+
 
   const handleViewClick = (index:any) => {
     const newPopupState = [...isPopupOpen];
@@ -195,7 +201,9 @@ const Page = () => {
           <div className='grid grid-cols-5 gap-x-[25px] gap-y-[50px] mt-5'>
            {[...Array(10)].map((_, index) => (
         <div key={index} className="w-[180px] xxl:w-[198px] h-[280px] dropShadow rounded-[12px] bg-[#338CDD]">
-          <div className='w-[180px] xxl:w-[198px] h-[240px] items-center flex-col justify-between rounded-[12px] bg-teal-400 flex'>
+          <div className={`w-[180px] xxl:w-[198px] h-[240px] items-center flex-col justify-between rounded-[12px] bg-teal-400 ${
+                 activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
+               } flex`}>
                  <div className="w-[180px] xxl:w-[198px] h-[200px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex ">
                    <div className='flex justify-between space-x-[140px] mt-2 '>
                      <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2 cursor-pointer' />
@@ -208,7 +216,13 @@ const Page = () => {
                 </div>
 
                  </div>
-                 <p className='font-semibold flex justify-center items-center mb-2 text-white'>Person Name</p>
+                 <p
+              key={index}
+                className={`font-semibold flex justify-center items-center w-full mb-2 rounded-b-[12px] text-white cursor-pointer `}
+                onClick={() => {handlePersonClick(index)}}
+              >
+                Person Name
+              </p>
                </div>
           <p
             className="font-semibold flex justify-center items-center cursor-pointer mt-2 text-white"
@@ -240,10 +254,68 @@ const Page = () => {
         </div>
         )}
         {activeTab === 'My Saved' && (
+          <div className='grid grid-cols-5 gap-x-[25px] gap-y-[50px] mt-5'>
+          {[...Array(10)].map((_, index) => (
+       <div key={index} className="w-[180px] xxl:w-[198px] h-[280px] dropShadow rounded-[12px] bg-[#338CDD]">
+         <div className={`w-[180px] xxl:w-[198px] h-[240px] items-center flex-col justify-between rounded-[12px] bg-teal-400 ${
+                activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
+              } flex`}>
+                <div className="w-[180px] xxl:w-[198px] h-[200px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex ">
+                  <div className='flex justify-between space-x-[140px] mt-2 '>
+                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2 cursor-pointer' />
+                    <div className="relative">
+                      <Image src="/3Dots.svg" alt='dots' width={8} height={8} className='mb-2 mr-0 cursor-pointer z-20' />
+                    </div>
+                  </div>
+                  <div className='mb-2'>
+                 <RatingStars />
+               </div>
+
+                </div>
+                <p
+             key={index}
+               className={`font-semibold flex justify-center items-center w-full mb-2 rounded-b-[12px] text-white cursor-pointer `}
+               onClick={() => {handlePersonClick(index)}}
+             >
+               Person Name
+             </p>
+              </div>
+         <p
+           className="font-semibold flex justify-center items-center cursor-pointer mt-2 text-white"
+           onClick={() => handleViewClick(index)}
+         >
+           View
+         </p>
+         <PopupComponent
+           index={index}
+           isOpen={isPopupOpen[index]}
+           handleClose={() => handlePopupClose(index)}
+           handleOptionClick={(option:any) => {
+             setSelectedOption(option);
+           }}
+           selectedOption={selectedOption}
+           renderInputBasedOnOption={() => {
+             return <div></div>;
+           }}
+         />
+       </div>
+     ))}
+         
+         
+           
+
+         
+        
+        
+       </div>
+        )}
+        {activeTab === 'Public' && (
          <div className='grid grid-cols-5 gap-x-[25px] gap-y-[50px] mt-5'>
          {[...Array(10)].map((_, index) => (
       <div key={index} className="w-[180px] xxl:w-[198px] h-[280px] dropShadow rounded-[12px] bg-[#338CDD]">
-        <div className='w-[180px] xxl:w-[198px] h-[240px] items-center flex-col justify-between rounded-[12px] bg-teal-400 flex'>
+        <div className={`w-[180px] xxl:w-[198px] h-[240px] items-center flex-col justify-between rounded-[12px] bg-teal-400 ${
+               activePerson === index ? 'bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''
+             } flex`}>
                <div className="w-[180px] xxl:w-[198px] h-[200px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex ">
                  <div className='flex justify-between space-x-[140px] mt-2 '>
                    <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2 cursor-pointer' />
@@ -252,11 +324,17 @@ const Page = () => {
                    </div>
                  </div>
                  <div className='mb-2'>
-                  <RatingStars />
-                </div>
+                <RatingStars />
+              </div>
 
                </div>
-               <p className='font-semibold flex justify-center items-center mb-2 text-white'>Person Name</p>
+               <p
+            key={index}
+              className={`font-semibold flex justify-center items-center w-full mb-2 rounded-b-[12px] text-white cursor-pointer `}
+              onClick={() => {handlePersonClick(index)}}
+            >
+              Person Name
+            </p>
              </div>
         <p
           className="font-semibold flex justify-center items-center cursor-pointer mt-2 text-white"
@@ -286,54 +364,6 @@ const Page = () => {
        
        
       </div>
-        )}
-        {activeTab === 'Public' && (
-        <div className='grid grid-cols-5 gap-x-[25px] gap-y-[50px] mt-5'>
-        {[...Array(10)].map((_, index) => (
-     <div key={index} className="w-[180px] xxl:w-[198px] h-[280px] dropShadow rounded-[12px] bg-[#338CDD]">
-       <div className='w-[180px] xxl:w-[198px] h-[240px] items-center flex-col justify-between rounded-[12px] bg-teal-400 flex'>
-              <div className="w-[180px] xxl:w-[198px] h-[200px] items-center flex-col justify-between rounded-[12px] bg-[#ffffff] flex ">
-                <div className='flex justify-between space-x-[140px] mt-2 '>
-                  <Image src="/more.svg" alt='more' width={14} height={20} className='mb-2 cursor-pointer' />
-                  <div className="relative">
-                    <Image src="/3Dots.svg" alt='dots' width={8} height={8} className='mb-2 mr-0 cursor-pointer z-20' />
-                  </div>
-                </div>
-                <div className='mb-2'>
-                  <RatingStars />
-                </div>
-
-              </div>
-              <p className='font-semibold flex justify-center items-center mb-2 text-white'>Person Name</p>
-            </div>
-       <p
-         className="font-semibold flex justify-center items-center cursor-pointer mt-2 text-white"
-         onClick={() => handleViewClick(index)}
-       >
-         View
-       </p>
-       <PopupComponent
-         index={index}
-         isOpen={isPopupOpen[index]}
-         handleClose={() => handlePopupClose(index)}
-         handleOptionClick={(option:any) => {
-           setSelectedOption(option);
-         }}
-         selectedOption={selectedOption}
-         renderInputBasedOnOption={() => {
-           return <div>Hi there</div>;
-         }}
-       />
-     </div>
-   ))}
-       
-       
-         
-
-       
-      
-      
-     </div>
         )}
         <div className='pagination flex justify-center space-x-[55px] mt-10'>
           <button className='pagination-button' onClick={handleLeftArrowClick}>
