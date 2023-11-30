@@ -1,30 +1,31 @@
 "use client"
 
 import Options from '@/components/Options'
+import RatingStars from '@/components/RatingStars';
+import ThreeScene from '@/components/ThreeScene';
+import ThreeScene2 from '@/components/ThreeScene2';
 import Image from 'next/image'
 import React, { useState, useEffect} from 'react'
 
 
-// import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 
-// GLB model file path
-// const glbFilePath = '/path/to/your/model.glb';
-
-
-// import dynamic from 'next/dynamic';
-
-// interface YourComponentProps {}
-
-// const GLBViewer = dynamic(() => import('@/components/GLBViewer'), { ssr: false });
 
 const PopupComponent = ({ isOpen, index, handleClose, handleOptionClick, selectedOption} : any) => {
   useEffect(() => {
-    const handleOutsideClick = (event:any) => {
-      if (isOpen && !event.target.closest(`.popup-${index}`)) {
-        handleClose();
+    const handleOutsideClick = (event: any) => {
+      if (isOpen) {
+        const popupContainer = document.querySelector(`.popup-${index}`);
+        const sceneContainer = document.querySelector('.three-scene-container');
+    
+        if (
+          !popupContainer  &&
+          sceneContainer &&
+          !sceneContainer.contains(event.target)
+        ) {
+          handleClose();
+        }
       }
     };
-
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
@@ -37,12 +38,12 @@ const PopupComponent = ({ isOpen, index, handleClose, handleOptionClick, selecte
     switch (selectedOption) {
       case 'text':
         return <div>
-          Render your 3D content
-          </div>; // Add your 3D content rendering logic
+          <ThreeScene2 width={255} height={170} />
+          </div>; 
       case 'image':
-        return <div>Render your image content here</div>; // Add your image content rendering logic
+        return <div className="three-scene-container">Render your image content here</div>; 
       case 'video':
-        return <div>Render your video content here</div>; // Add your video content rendering logic
+        return <div className='three-scene-container'>Render your video content here</div>; 
       default:
         return null;
     }
@@ -202,7 +203,9 @@ const Page = () => {
                        <Image src="/3Dots.svg" alt='dots' width={8} height={8} className='mb-2 mr-0 cursor-pointer z-20' />
                      </div>
                    </div>
-                   <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2' />
+                   <div className='mb-2'>
+                  <RatingStars />
+                </div>
 
                  </div>
                  <p className='font-semibold flex justify-center items-center mb-2 text-white'>Person Name</p>
@@ -248,7 +251,9 @@ const Page = () => {
                      <Image src="/3Dots.svg" alt='dots' width={8} height={8} className='mb-2 mr-0 cursor-pointer z-20' />
                    </div>
                  </div>
-                 <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2' />
+                 <div className='mb-2'>
+                  <RatingStars />
+                </div>
 
                </div>
                <p className='font-semibold flex justify-center items-center mb-2 text-white'>Person Name</p>
@@ -294,7 +299,9 @@ const Page = () => {
                     <Image src="/3Dots.svg" alt='dots' width={8} height={8} className='mb-2 mr-0 cursor-pointer z-20' />
                   </div>
                 </div>
-                <Image src="/stars.svg" alt='stars' width={100} height={20} className='mb-2' />
+                <div className='mb-2'>
+                  <RatingStars />
+                </div>
 
               </div>
               <p className='font-semibold flex justify-center items-center mb-2 text-white'>Person Name</p>
@@ -328,7 +335,7 @@ const Page = () => {
       
      </div>
         )}
-        <div className='pagination flex justify-around mt-10'>
+        <div className='pagination flex justify-center space-x-[55px] mt-10'>
           <button className='pagination-button' onClick={handleLeftArrowClick}>
             <Image src="/leftArrow.svg" alt='left' width={12} height={20} />
           </button>

@@ -16,6 +16,7 @@
     "react-dom": "^18",
     "react-player": "^2.13.0",
     "react-select": "^5.7.7",
+    "three": "^0.158.0",
     "use-asset": "^1.0.4"
   },
   "devDependencies": {
