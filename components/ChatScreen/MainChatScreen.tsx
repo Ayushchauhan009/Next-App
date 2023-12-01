@@ -94,9 +94,9 @@ const MainChatScreen = () => {
     const items = [
         // Add your data objects here
         // Example:
-        { id: 1, name: 'Rahul Kumar', },
-        { id: 2, name: 'Ayush Chauhan', },
-        { id: 3, name: 'Johnny Sins', },
+        { id: 1, name: 'PERSON NAME', },
+        { id: 2, name: 'PERSON NAME', },
+        { id: 3, name: 'PERSON NAME', },
         { id: 4, name: 'PERSON NAME', },
         { id: 5, name: 'PERSON NAME', },
         { id: 6, name: 'PERSON NAME', },
