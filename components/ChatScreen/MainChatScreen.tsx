@@ -104,8 +104,6 @@ const MainChatScreen = () => {
         { id: 8, name: 'PERSON NAME', },
         { id: 9, name: 'PERSON NAME', },
         // { id: 10, name: 'PERSON NAME', },
-
-        // ...
     ];
 
 
