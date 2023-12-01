@@ -103,7 +103,7 @@ interface ThreeSceneProps {
       
     }, [width, height]);
   
-    return <div className='-mt-6 rounded-[8px] -ml-2 ' ref={sceneRef} />;
+    return <div className='-mt-6 rounded-[8px] cursor-pointer -ml-2 ' ref={sceneRef} />;
   };
   
   export default ThreeScene2;
