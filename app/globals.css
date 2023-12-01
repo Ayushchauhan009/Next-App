@@ -454,3 +454,20 @@ linear-gradient(0deg, #ECEDED, #ECEDED);
   }
 }
 
+
+
+
+
+.slideClass{
+  animation: slide 0.5s ease-in-out;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(42%);
+  }
+
+  100%{
+    transform: translateX(0);
+  }
+}

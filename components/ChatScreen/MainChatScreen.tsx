@@ -63,8 +63,8 @@ const MainChatScreen = () => {
 
             setActivePerson(null);
         } else {
-
             setActivePerson(id);
+            setActiveGradaint(null);
         }
     };
     const showProfile = (id: any) => {
@@ -74,9 +74,9 @@ const MainChatScreen = () => {
         }
         else {
             setIisProfileDivPresent(true)
-            // setActiveItem(id)
             setActiveGradaint(id)
             setActiveItemId(id)
+            setActivePerson(null);
         }
 
 
@@ -94,16 +94,16 @@ const MainChatScreen = () => {
     const items = [
         // Add your data objects here
         // Example:
-        { id: 1, name: 'PERSON NAME', },
-        { id: 2, name: 'PERSON NAME', },
-        { id: 3, name: 'PERSON NAME', },
+        { id: 1, name: 'Rahul Kumar', },
+        { id: 2, name: 'Ayush Chauhan', },
+        { id: 3, name: 'Johnny Sins', },
         { id: 4, name: 'PERSON NAME', },
         { id: 5, name: 'PERSON NAME', },
         { id: 6, name: 'PERSON NAME', },
         { id: 7, name: 'PERSON NAME', },
         { id: 8, name: 'PERSON NAME', },
         { id: 9, name: 'PERSON NAME', },
-        { id: 10, name: 'PERSON NAME', },
+        // { id: 10, name: 'PERSON NAME', },
 
         // ...
     ];
