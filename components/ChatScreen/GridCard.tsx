@@ -16,7 +16,7 @@ const GridCard = ({card}:any) => (
         <RatingStars2 />
         </div>
       </div>
-      <p className="text-white text-center mt-1 text-[10px] font-semibold font-['Inter']">Person Name</p>
+      <p className="text-white text-center mt-1 text-[12px] font-semibold font-['Inter']">Person Name</p>
     </div>
     
   </div>
