@@ -37,7 +37,7 @@ const AudioRight = ({audio, music} : any) => {
         }
         else if (option === 'models') {
             setShowSelectVoice(true)
-            setShowVoiceContent(false);
+            setShowVoiceContent(true);
 
         }
 
