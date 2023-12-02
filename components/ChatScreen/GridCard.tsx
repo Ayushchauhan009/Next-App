@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import Image from 'next/image';
-import RatingStars from '../RatingStars';
+// import RatingStars from '../RatingStars';
 import RatingStars2 from '../RatingStars2';
 
 const GridCard = ({card}:any) => (

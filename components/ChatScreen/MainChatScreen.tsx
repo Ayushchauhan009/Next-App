@@ -344,7 +344,7 @@ const MainChatScreen = () => {
 
             </div>
             {isProfileDivPresent && (
-                <div className="mainProfileDiv slideClass w-[290px] xxl:w-[350px] h-[805px] bg-white rounded-[10px] shadow dropShadow p-6 flex flex-col justify-start items-center">
+                <div className="mainProfileDiv slideClass w-[290px] xxl:w-[350px] h-[825px] bg-white rounded-[10px] shadow dropShadow p-6 flex flex-col justify-start items-center">
                     {items.map((item) => (
                         // Assuming you have a variable like activeItemId to store the active item's id
                         activeItemId === item.id && (
