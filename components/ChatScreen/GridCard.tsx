@@ -5,9 +5,9 @@ import RatingStars from '../RatingStars';
 import RatingStars2 from '../RatingStars2';
 
 const GridCard = ({card}:any) => (
-  <div className={`w-[98px] h-[146.01px] bg-blue-400 rounded-[10px]  flex-col justify-center items-end`}>
-    <div className={`w-[98px] h-[146.01px] bg-blue-400 rounded-[10px]  flex-col justify-center items-end`}>
-      <div className="w-[98px] h-[119px] bg-[#f0f0f0] rounded-[10px] flex-col py-1 justify-between  relative">
+  <div className={`w-[118px] h-[156.01px] bg-blue-400 rounded-[10px]  flex-col justify-center items-end`}>
+    <div className={`w-[118px] h-[156.01px] bg-blue-400 rounded-[10px]  flex-col justify-center items-end`}>
+      <div className="w-[118px] h-[129px] bg-[#f0f0f0] rounded-[10px] flex-col py-1 justify-between  relative">
         <div className="flex justify-between px-1">
           <Image src="/more.svg" alt="Image" width={10} height={10} className="cursor-pointer" />
           <Image src="/3Dots.svg" alt="Three Dots" width={6} height={6} className="cursor-pointer" />

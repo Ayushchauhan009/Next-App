@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import RatingStars from '../RatingStars';
+import AudioRight from './AudioRight';
 
 const MainChatScreen = () => {
 
@@ -71,19 +72,31 @@ const MainChatScreen = () => {
         if (isProfileDivPresent == true && activeGradaint === id) {
             setIisProfileDivPresent(false)
             setActiveGradaint(null)
+            
         }
         else {
             setIisProfileDivPresent(true)
             setActiveGradaint(id)
             setActiveItemId(id)
+            setIsChatbotOpen(false);
             setActivePerson(null);
         }
-
-
     };
+
+    const showChatbot = () => {
+        if(isChatbotOpen == true){
+            setIsChatbotOpen(false);
+        }
+        else{
+        setIsChatbotOpen(true);
+        setIisProfileDivPresent(false);
+        setActiveGradaint(null);
+        }
+    }
 
     const [showCollapsibleContent, setShowCollapsibleContent] = useState(true);
     const [isProfileDivPresent, setIisProfileDivPresent] = useState(false);
+    const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
     const handleCollapsClick = () => {
         setShowCollapsibleContent(!showCollapsibleContent);
@@ -109,7 +122,7 @@ const MainChatScreen = () => {
 
     return (
         <div className='flexTwo gap-x-6  max-container mb-4'>
-            <div className="w-[290px] xxl:w-[350px] h-[805px] bg-white rounded-[10px] shadow dropShadow p-6 overflow-hidden">
+            <div className="w-[290px] xxl:w-[350px] h-[825px] bg-white rounded-[10px] shadow dropShadow p-6 overflow-hidden">
                 <div className="flex items-center justify-between">
                     <div className="text-black text-xl font-medium font-Inter">Chat History</div>
                     <div className="">
@@ -160,7 +173,10 @@ const MainChatScreen = () => {
                     ))}
                 </div>
             </div>
-            <div className="mainChatDiv slideClass relative h-[805px] bg-white bg-opacity-95 rounded-lg backdrop-blur-[20px] dropShadow p-5" style={{ width: isProfileDivPresent ? '650px' : '950px' }} >
+            <div className="mainChatDiv slideClass relative h-[825px] bg-white bg-opacity-95 rounded-lg backdrop-blur-[20px] dropShadow p-5" style={{ width: isProfileDivPresent || isChatbotOpen ? '650px' : '950px' }} >
+            <div className="flex justify-end  ">
+                   <button onClick={showChatbot} className={`px-[12px]  text-base hover:bg-zinc-900 hover:text-white font-normal py-[8px] bg-white rounded-[7px] shadow h-11 hover:border-none border border-gray-200 items-center ${ isChatbotOpen ? 'bg-zinc-900 border-none text-white' : "text-zinc-900"} `}>ChatBot</button>
+            </div>
                 <div className="senderProfileChat">
                     <div className="flex justify-between">
                         <div className=" flex items-center gap-x-3 ">
@@ -347,6 +363,13 @@ const MainChatScreen = () => {
                     ))}
                 </div>
             )}
+            
+            
+            {
+                isChatbotOpen && (
+                    <AudioRight />
+                )
+            }
 
         </div>
     )

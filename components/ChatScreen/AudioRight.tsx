@@ -6,7 +6,7 @@ import Pagination from './Pagination';
 
 const AudioRight = ({audio, music} : any) => {
     const [selectedFile, setSelectedFile] = useState(null);
-    const [selectedOption, setSelectedOption] = useState('voice');
+    const [selectedOption, setSelectedOption] = useState('chatbot');
     const [currentPage, setCurrentPage] = useState(1);
     const cardsPerPage = 8; // Number of cards per page
     const [showVoiceContent, setShowVoiceContent] = useState(true); 
@@ -31,11 +31,11 @@ const AudioRight = ({audio, music} : any) => {
 
     const handleOptionClick = (option: any) => {
         setSelectedOption(option);
-        if (option === 'voice') {
+        if (option === 'chatbot') {
             setShowVoiceContent(true);
             setShowSelectVoice(false) // Show the content for "Voice" tab
         }
-        else if (option === 'selectVoice') {
+        else if (option === 'models') {
             setShowSelectVoice(true)
             setShowVoiceContent(false);
 
@@ -613,20 +613,20 @@ const AudioRight = ({audio, music} : any) => {
     const totalPages = Math.ceil(gridCardsData.length / cardsPerPage);
     return (
         <>
-            <div className="w-[270px] h-[810px] bg-white rounded-[10px] boxShadow" >
-                <div className="px-[18px] pt-[27px]">
-                    <div className="mx-auto border flex space-x-0 px-4 rounded-[8px] justify-between items-center bg-[#FAFAFA] boxShadow z-50">
+            <div className="w-[290px] slideClass xxl:w-[350px] h-[825px] bg-white rounded-[10px] boxShadow" >
+                <div className="px-[18px] pt-[17px]">
+                    <div className="mx-auto border flex space-x-0 px-6 rounded-[8px] justify-between items-center bg-[#FAFAFA] boxShadow z-50">
                         <p
-                            className={`my-[8px] text-[12px] py-1 cursor-pointer rounded-[6px] font-medium px-3 ${selectedOption === "selectVoice" ? "bg-[#2B303A] text-white" : "text-black"
+                            className={`my-[8px] text-[14px] py-1 cursor-pointer rounded-[6px] font-medium px-5 ${selectedOption === "chatbot" ? "bg-[#2B303A] text-white" : "text-black"
                                 }`}
-                            onClick={() => handleOptionClick("selectVoice")}
+                            onClick={() => handleOptionClick("chatbot")}
                         >
                             ChatBot
                         </p>
                         <p
-                            className={`my-[8px] text-[12px] cursor-pointer rounded-[6px] font-medium px-8 py-1 ${selectedOption === "voice" ? "bg-[#2B303A] text-white" : "text-black"
+                            className={`my-[8px] text-[14px] cursor-pointer rounded-[6px] font-medium px-5 py-1 ${selectedOption === "models" ? "bg-[#2B303A] text-white" : "text-black"
                                 }`}
-                            onClick={() => handleOptionClick("voice")}
+                            onClick={() => handleOptionClick("models")}
                         >
                             Models
                         </p>
@@ -634,7 +634,7 @@ const AudioRight = ({audio, music} : any) => {
                     </div>
                     {showVoiceContent && ( // Render only if showVoiceContent is true
                         <>
-                            <div className="grid grid-cols-2 grid-rows-2 gap-x-9 gap-y-[22px] mt-[29px]">
+                            <div className="grid grid-cols-2 grid-rows-2 justify-items-center gap-x-5 gap-y-[18px] mt-[19px]">
                                 {gridCardsData.slice(startIndex, endIndex).map((card, index) => (
                                     <GridCard key={index} card={card} />
                                 ))}
