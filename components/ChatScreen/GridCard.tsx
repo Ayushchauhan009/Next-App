@@ -12,7 +12,7 @@ const GridCard = ({card}:any) => (
           <Image src="/more.svg" alt="Image" width={10} height={10} className="cursor-pointer" />
           <Image src="/3Dots.svg" alt="Three Dots" width={6} height={6} className="cursor-pointer" />
         </div>
-        <div className='flex h-[80%] items-end px-4 justify-center'>
+        <div className='flex h-[84%] items-end px-4 justify-center'>
         <RatingStars2 />
         </div>
       </div>
