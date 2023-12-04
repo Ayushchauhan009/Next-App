@@ -289,19 +289,19 @@ const MainChatScreen = () => {
                         </p>
                     </div>
 
-                    {showMenuOotion ? (<div className="absolute transitionTransform -top-[84px] left-3 w-[51.02px] h-[140.28px] flex flex-col justify-around items-center bg-white shadow dropShadow" >
+                    {showMenuOotion ? (<div className="absolute transitionTransform -top-[104px] left-3 w-[51.02px] h-auto flex flex-col justify-around items-center bg-white shadow dropShadow" >
                         <div className="w-full hover:bg-gray-10 transition-all" >
 
                             <input type="file" accept="video/*" id="file-input" />
                             <label htmlFor="file-input" className="cursor-pointer">
-                                <img src="/videoUploadInChat.svg" alt="" className='mx-auto cursor-pointer' />
+                                <img src="/videoUploadInChat.svg" alt="" className='mx-auto cursor-pointer w-10 h-10' />
                             </label>
 
                         </div>
                         <div className="w-full hover:bg-gray-10 transition-all">
                             <input type="file" accept=".csv" id="file-input2" />
                             <label htmlFor="file-input2" className="cursor-pointer">
-                                <img src="/csvUploadInChat.svg" alt="" className='mx-auto cursor-pointer' />
+                                <img src="/csvUploadInChat.svg" alt="" className='mx-auto cursor-pointer w-10 h-10' />
                             </label>
 
                         </div>
@@ -310,7 +310,7 @@ const MainChatScreen = () => {
                                 accept="application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf, text/plain"
                                 id="file-input3" />
                             <label htmlFor="file-input3" className="cursor-pointer">
-                                <img src="/docUploadInChat.png" alt="" className='mx-auto cursor-pointer' />
+                                <img src="/docUploadInChat.svg" alt="" className='mx-auto cursor-pointer w-10 h-10' />
                             </label>
 
 
@@ -318,7 +318,7 @@ const MainChatScreen = () => {
                         <div className="w-full hover:bg-gray-10 transition-all">
                             <input type="file" accept=".pdf" id="file-input4" />
                             <label htmlFor="file-input4" className="cursor-pointer">
-                                <img src="/pdfUploadInChat.png" alt="" className='mx-auto cursor-pointer' />
+                                <img src="/pdfUploadInChat.svg" alt="" className='mx-auto cursor-pointer w-10 h-10' />
                             </label>
 
                         </div>
