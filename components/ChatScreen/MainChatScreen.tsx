@@ -163,7 +163,7 @@ const [isPersonNameClick, setPersonNameClick] = useState(null);
                                 }} >
                                     <img src="/profle.svg" alt="" className="w-10 h-10" />
                                 </div>
-                                <div className={`text-black text-[14px] font-semibold font-Inter cursor-pointer uppercase ${activePerson === item.id ? 'text-white' : ''} ${activeGradaint === item.id ? 'text-white' : ''}`} onClick={() => {personClickForGradiant(item.id)}}>{item.name}</div>
+                                <div className={`text-black text-[14px] font-semibold font-Inter cursor-pointer uppercase ${activePerson === item.id ? 'text-white' : ''} ${isPersonNameClick === item.id ? 'text-white' : ''}`} onClick={() => {personClickForGradiant(item.id)}}>{item.name}</div>
                                 <div className="absolute right-2" onClick={() => handlePersonClick(item.id)}>
                                     {activePerson === item.id ? (
                                         <img
