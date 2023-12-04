@@ -72,6 +72,7 @@ const MainChatScreen = () => {
         if (isProfileDivPresent == true && activeGradaint === id) {
             setIisProfileDivPresent(false)
             setActiveGradaint(null)
+
             
         }
         else {
@@ -79,6 +80,7 @@ const MainChatScreen = () => {
             setActiveGradaint(id)
             setActiveItemId(id)
             setIsChatbotOpen(false);
+            setPersonNameClick(null);
             setActivePerson(null);
         }
     };
@@ -93,6 +95,28 @@ const MainChatScreen = () => {
         setActiveGradaint(null);
         }
     }
+
+
+
+    const personClickForGradiant = (id:any) =>{
+        if(isPersonNameClick == true)
+        {
+            setPersonNameClick(id)
+            setActiveGradaint(null)
+            setIisProfileDivPresent(false);
+        }
+        else{
+            setPersonNameClick(id)
+            setActiveGradaint(id)
+            setIisProfileDivPresent(false)
+            setActivePerson(null);
+            setActiveGradaint(null)
+        }
+        
+    }
+
+const [isPersonNameClick, setPersonNameClick] = useState(null);
+
 
     const [showCollapsibleContent, setShowCollapsibleContent] = useState(true);
     const [isProfileDivPresent, setIisProfileDivPresent] = useState(false);
@@ -133,13 +157,13 @@ const MainChatScreen = () => {
                 <div className="mt-10">
                     {items.map((item) => (
                         <div className=" flex flex-col space-y-0">
-                            <div className={`relative flex justify-start items-center space-x-3 rounded-tl-[15px] rounded-bl-[15px] rounded-tr-[15px] rounded-bl-[15px h-[68.71px] bg-transparent ${activePerson === item.id ? 'px-3 bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''} ${activeGradaint === item.id ? 'px-3  bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''}  `} >
+                            <div className={`relative flex justify-start items-center space-x-3 rounded-tl-[15px] rounded-bl-[15px] rounded-tr-[15px] rounded-bl-[15px h-[68.71px] bg-transparent ${activePerson === item.id ? 'px-3 bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''} ${isPersonNameClick == item.id ? 'px-3  bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''} ${activeGradaint === item.id ? 'px-3  bg-gradient-to-l from-[#4CA9F0] to-[#70F2A4]' : ''}  `} >
                                 <div className="w-[54.04px] h-[54.04px] rounded-[27.02px] bg-blue-400 flex justify-center items-center cursor-pointer" onClick={() => {
                                     showProfile(item.id)
                                 }} >
                                     <img src="/profle.svg" alt="" className="w-10 h-10" />
                                 </div>
-                                <div className={`text-black text-[14px] font-semibold font-Inter uppercase ${activePerson === item.id ? 'text-white' : ''} ${activeGradaint === item.id ? 'text-white' : ''}`}>{item.name}</div>
+                                <div className={`text-black text-[14px] font-semibold font-Inter cursor-pointer uppercase ${activePerson === item.id ? 'text-white' : ''} ${activeGradaint === item.id ? 'text-white' : ''}`} onClick={() => {personClickForGradiant(item.id)}}>{item.name}</div>
                                 <div className="absolute right-2" onClick={() => handlePersonClick(item.id)}>
                                     {activePerson === item.id ? (
                                         <img
